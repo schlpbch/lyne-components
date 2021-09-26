@@ -1,0 +1,112 @@
+:host {
+  display: block;
+
+  --single-toggle-width: 48;
+  --single-toggle-height: 28;
+  --single-toggle-handler-size: 24;
+  --single-toggle-background-color-checked: var(--color-red-default);
+
+  --two-values-toggle-height: 32;
+  --two-values-toggle-padding-inline: var(--spacing-fixed-4x);
+
+  --background-color: var(--color-cloud-default);
+  --toggle-padding: 2;
+
+  --transition-duration: 125ms;
+  --transition-easing-function: ease-in;
+
+}
+
+input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+// One value
+// ----------------------------------------------
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(var(--spacing-fixed-3x));
+}
+
+label {
+  @include text-s--regular();
+}
+
+.toggle__checkbox-wrapper {
+  position: relative;
+  width: pxToRem(var(--single-toggle-width));
+  height: pxToRem(var(--single-toggle-height));
+}
+
+.toggle__checkbox {
+  width: pxToRem(var(--single-toggle-width));
+  height: pxToRem(var(--single-toggle-height));
+}
+
+.toggle__checkbox-styled {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  padding: pxToRem(var(--toggle-padding));
+  background: var(--background-color);
+  border-radius: pxToRem(var(--single-toggle-height));
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-easing-function);
+  transition-property: background-color;
+  will-change: background-color;
+}
+
+.toggle__checkbox-styled:before {
+  @include box-shadow-5-hard();
+  position: absolute;
+  inset: pxToRem(var(--single-toggle-padding));
+  content: '';
+  width: pxToRem(var(--single-toggle-handler-size));
+  height: pxToRem(var(--single-toggle-handler-size));
+  border-radius: 100%;
+  background: var(--color-white-default);
+  transition-duration: inherit;
+  transition-property: transform;
+  will-change: transform;
+}
+
+.toggle__checkbox:checked + .toggle__checkbox-styled {
+  background: var(--single-toggle-background-color-checked);
+}
+
+.toggle__checkbox:checked + .toggle__checkbox-styled:before {
+  transform: translateX(pxToRem(20));
+}
+
+// Two values
+// ----------------------------------------------
+.toggle__radios-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  height: pxToRem(var(--two-values-toggle-height));
+  padding: pxToRem(var(--toggle-padding));
+  border-radius: pxToRem(var(--two-values-toggle-height));
+  background: var(--background-color);
+}
+
+.toggle__radio-wrapper {
+  position: relative;
+  height: pxToRem(var(--two-values-toggle-height));
+  border-radius: pxToRem(var(--two-values-toggle-height));
+  padding-inline-start: pxToRem(var(--two-values-toggle-padding-inline));
+  padding-inline-end: pxToRem(var(--two-values-toggle-padding-inline));
+}
+
+.toggle__label-radio {
+  width: 100%;
+  height: 100%;
+}
+
+
+// TODO right to left style
+// TODO high contrast style

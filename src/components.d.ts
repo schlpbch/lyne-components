@@ -13,6 +13,7 @@ import { InterfacePearlChainAttributes } from "./components/lyne-pearl-chain/lyn
 import { Time } from "./components/lyne-sbb-clock/lyne-sbb-clock.custom.d";
 import { InterfaceLogoAttributes } from "./components/lyne-sbb-logo/lyne-sbb-logo.custom.d";
 import { InterfaceTitleAttributes } from "./components/lyne-title/lyne-title.custom.d";
+import { InterfaceToggleAttributes } from "./components/lyne-toggle/lyne-toggle.custom.d";
 export namespace Components {
     interface LyneAccordion {
         /**
@@ -232,6 +233,72 @@ export namespace Components {
          */
         "visuallyHidden"?: false;
     }
+    interface LyneToggle {
+        /**
+          * If you use the button to trigger another widget which itself is covering the page, you must provide an according attribute for aria-haspopup.
+         */
+        "ariaHaspopup"?: InterfaceToggleAttributes['popup'];
+        /**
+          * Set to true to get a disabled button
+         */
+        "disabled"?: boolean;
+        /**
+          * Id which is sent in the click event payload
+         */
+        "eventId"?: string;
+        /**
+          * Define if icon should be shown or not
+         */
+        "icon"?: boolean;
+        /**
+          * If you use an icon without a label, you must provide an iconDescription
+         */
+        "iconDescription"?: string;
+        /**
+          * Label text to show on the button
+         */
+        "label"?: string;
+        /**
+          * The name attribute to use for the button
+         */
+        "labelLeft"?: string;
+        /**
+          * The value attribute to use for the button
+         */
+        "labelRight"?: string;
+        /**
+          * The name attribute to use for the button
+         */
+        "name"?: string;
+        /**
+          * Size variant, either large or small.
+         */
+        "size"?: InterfaceToggleAttributes['size'];
+        /**
+          * The type attribute to use for the button
+         */
+        "type"?: InterfaceToggleAttributes['type'];
+        /**
+          * The value attribute to use for the button
+         */
+        "value"?: string;
+        /**
+          * The name attribute to use for the button
+         */
+        "valueLeft"?: string;
+        /**
+          * The value attribute to use for the button
+         */
+        "valueRight"?: string;
+        /**
+          * Variant of the button, like primary, secondary etc.
+         */
+        "variant"?: InterfaceToggleAttributes['variant'];
+        /**
+          * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
+         */
+        "visualButtonOnly"?: boolean;
+    }
 }
 declare global {
     interface HTMLLyneAccordionElement extends Components.LyneAccordion, HTMLStencilElement {
@@ -288,6 +355,12 @@ declare global {
         prototype: HTMLLyneTitleElement;
         new (): HTMLLyneTitleElement;
     };
+    interface HTMLLyneToggleElement extends Components.LyneToggle, HTMLStencilElement {
+    }
+    var HTMLLyneToggleElement: {
+        prototype: HTMLLyneToggleElement;
+        new (): HTMLLyneToggleElement;
+    };
     interface HTMLElementTagNameMap {
         "lyne-accordion": HTMLLyneAccordionElement;
         "lyne-accordion-item": HTMLLyneAccordionItemElement;
@@ -298,6 +371,7 @@ declare global {
         "lyne-sbb-clock": HTMLLyneSbbClockElement;
         "lyne-sbb-logo": HTMLLyneSbbLogoElement;
         "lyne-title": HTMLLyneTitleElement;
+        "lyne-toggle": HTMLLyneToggleElement;
     }
 }
 declare namespace LocalJSX {
@@ -519,6 +593,72 @@ declare namespace LocalJSX {
          */
         "visuallyHidden"?: false;
     }
+    interface LyneToggle {
+        /**
+          * If you use the button to trigger another widget which itself is covering the page, you must provide an according attribute for aria-haspopup.
+         */
+        "ariaHaspopup"?: InterfaceToggleAttributes['popup'];
+        /**
+          * Set to true to get a disabled button
+         */
+        "disabled"?: boolean;
+        /**
+          * Id which is sent in the click event payload
+         */
+        "eventId"?: string;
+        /**
+          * Define if icon should be shown or not
+         */
+        "icon"?: boolean;
+        /**
+          * If you use an icon without a label, you must provide an iconDescription
+         */
+        "iconDescription"?: string;
+        /**
+          * Label text to show on the button
+         */
+        "label"?: string;
+        /**
+          * The name attribute to use for the button
+         */
+        "labelLeft"?: string;
+        /**
+          * The value attribute to use for the button
+         */
+        "labelRight"?: string;
+        /**
+          * The name attribute to use for the button
+         */
+        "name"?: string;
+        /**
+          * Size variant, either large or small.
+         */
+        "size"?: InterfaceToggleAttributes['size'];
+        /**
+          * The type attribute to use for the button
+         */
+        "type"?: InterfaceToggleAttributes['type'];
+        /**
+          * The value attribute to use for the button
+         */
+        "value"?: string;
+        /**
+          * The name attribute to use for the button
+         */
+        "valueLeft"?: string;
+        /**
+          * The value attribute to use for the button
+         */
+        "valueRight"?: string;
+        /**
+          * Variant of the button, like primary, secondary etc.
+         */
+        "variant"?: InterfaceToggleAttributes['variant'];
+        /**
+          * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
+         */
+        "visualButtonOnly"?: boolean;
+    }
     interface IntrinsicElements {
         "lyne-accordion": LyneAccordion;
         "lyne-accordion-item": LyneAccordionItem;
@@ -529,6 +669,7 @@ declare namespace LocalJSX {
         "lyne-sbb-clock": LyneSbbClock;
         "lyne-sbb-logo": LyneSbbLogo;
         "lyne-title": LyneTitle;
+        "lyne-toggle": LyneToggle;
     }
 }
 export { LocalJSX as JSX };
@@ -544,6 +685,7 @@ declare module "@stencil/core" {
             "lyne-sbb-clock": LocalJSX.LyneSbbClock & JSXBase.HTMLAttributes<HTMLLyneSbbClockElement>;
             "lyne-sbb-logo": LocalJSX.LyneSbbLogo & JSXBase.HTMLAttributes<HTMLLyneSbbLogoElement>;
             "lyne-title": LocalJSX.LyneTitle & JSXBase.HTMLAttributes<HTMLLyneTitleElement>;
+            "lyne-toggle": LocalJSX.LyneToggle & JSXBase.HTMLAttributes<HTMLLyneToggleElement>;
         }
     }
 }
