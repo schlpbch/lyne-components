@@ -108,12 +108,18 @@ export class LyneToggle {
               ? (
                 <div class="toggle__radios-wrapper">
                   <div class="toggle__radio-wrapper">
-                    <input type="radio" name="toggle__input" value={this.valueLeft}/>
-                    <label class="toggle__label-radio">{this.labelLeft}</label>
+                    <input
+                      class="toggle__radio"
+                      type="radio"
+                      name="toggle__input"
+                      value={this.valueLeft}
+                    />
+                    <label
+                      class="toggle__radio-label">{this.labelLeft}</label>
                   </div>
                   <div class="toggle__radio-wrapper">
-                    <input type="radio" name="toggle__input" value={this.valueRight}/>
-                    <label class="toggle__label-radio">{this.labelRight}</label>
+                    <input class="toggle__radio" type="radio" name="toggle__input" value={this.valueRight}/>
+                    <label class="toggle__radio-label">{this.labelRight}</label>
                   </div>
                 </div>
               )

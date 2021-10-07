@@ -7,6 +7,7 @@
   --single-toggle-background-color-checked: var(--color-red-default);
 
   --two-values-toggle-height: 32;
+  --two-values-toggle-inner-height: 28;
   --two-values-toggle-padding-inline: var(--spacing-fixed-4x);
 
   --background-color: var(--color-cloud-default);
@@ -17,10 +18,18 @@
 
 }
 
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
 input {
   position: absolute;
   inset: 0;
   margin: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   z-index: 1;
 }
@@ -96,15 +105,29 @@ label {
 
 .toggle__radio-wrapper {
   position: relative;
-  height: pxToRem(var(--two-values-toggle-height));
-  border-radius: pxToRem(var(--two-values-toggle-height));
-  padding-inline-start: pxToRem(var(--two-values-toggle-padding-inline));
-  padding-inline-end: pxToRem(var(--two-values-toggle-padding-inline));
 }
 
-.toggle__label-radio {
+.toggle__radio {
+  position: absolute;
+  inset: 0;
+}
+
+.toggle__radio:checked + .toggle__radio-label {
+  @include text-s--bold();
+  background: var(--color-white-default);
+}
+
+.toggle__radio-label {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100%;
+  padding-inline-start: pxToRem(var(--two-values-toggle-padding-inline));
+  padding-inline-end: pxToRem(var(--two-values-toggle-padding-inline));
+  border-radius: pxToRem(var(--two-values-toggle-height));
+  line-height: var(--two-values-toggle-inner-height);
 }
 
 
