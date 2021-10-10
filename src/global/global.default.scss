@@ -34,7 +34,7 @@
 :host {
   //@include theme-sbb-ch-mode--dark-variables;
   //@include theme-sbb-ch-mode--compact-variables;
-  @include theme-sbb-ch-mode--dark-compact-variables;
+  //@include theme-sbb-ch-mode--dark-compact-variables;
 }
 
 @import "global.scss";

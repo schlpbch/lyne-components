@@ -4,7 +4,8 @@ import {
   Component,
   Element,
   h,
-  Prop
+  Prop,
+  State
 } from '@stencil/core';
 import events from './lyne-toggle.events';
 import { InterfaceToggleAttributes } from './lyne-toggle.custom.d';
@@ -20,6 +21,17 @@ import { InterfaceToggleAttributes } from './lyne-toggle.custom.d';
 })
 
 export class LyneToggle {
+
+  @State() private _disabledStateClass: string;
+
+  @Prop({
+    reflect: true
+  }) public disabled?: boolean;
+
+  @Watch('disabled')
+  public watchStateHandler(newValue: boolean): void {
+    this._toggleDisabledStateClass();
+  }
 
   /** Label text to show on the button */
   @Prop() public label? = 'Default button text';
@@ -97,47 +109,73 @@ export class LyneToggle {
     this._element.dispatchEvent(event);
   }; */
 
+  private _toggleDisabledStateClass(): void {
+    if (this.disabled) {
+      this._disabledStateClass = ' toggle--disabled';
+    } else {
+      this._disabledStateClass = '';
+    }
+  }
+
+  public componentWillLoad(): void {
+    this._toggleDisabledStateClass();
+  }
 
   public render(): JSX.Element {
 
     return (
 
-      <div class="toggle">
+      <div class={`toggle${this._disabledStateClass}`}>
           {
             this.labelLeft && this.labelRight
               ? (
-                <div class="toggle__radios-wrapper">
-                  <div class="toggle__radio-wrapper">
+                <div class='toggle__radios-wrapper'>
+                  <div class='toggle__radio-wrapper'>
                     <input
-                      class="toggle__radio"
-                      type="radio"
-                      name="toggle__input"
+                      class='toggle__radio'
+                      type='radio'
+                      name='toggle__input'
                       value={this.valueLeft}
                     />
                     <label
-                      class="toggle__radio-label">{this.labelLeft}</label>
+                      class='toggle__radio-label'
+                      data-label={this.labelLeft}
+                    >
+                      <span>{this.labelLeft}</span>
+                    </label>
                   </div>
-                  <div class="toggle__radio-wrapper">
-                    <input class="toggle__radio" type="radio" name="toggle__input" value={this.valueRight}/>
-                    <label class="toggle__radio-label">{this.labelRight}</label>
+                  <div class='toggle__radio-wrapper'>
+                    <input
+                      class='toggle__radio'
+                      type='radio'
+                      name='toggle__input'
+                      value={this.valueRight}
+                    />
+                    <label
+                      class='toggle__radio-label'
+                      data-label={this.labelLeft}
+                    >
+                      <span>{this.labelRight}</span>
+                    </label>
                   </div>
                 </div>
               )
               : [
                 <label
-                  class="toggle__label"
-                  for="demo"
+                  class='toggle__label'
+                  for='demo'
                 >
                   {this.label}
                 </label>,
-                <div class="toggle__checkbox-wrapper">
+                <div class='toggle__checkbox-wrapper'>
                   <input
-                    class="toggle__checkbox"
-                    id="demo"
-                    type="checkbox"
-                    name="toggle__input"
+                    class='toggle__checkbox'
+                    id='demo'
+                    type='checkbox'
+                    name='toggle__input'
+                    disabled={this.disabled}
                   />
-                  <span class="toggle__checkbox-styled">
+                  <span class='toggle__checkbox-styled'>
                   </span>
                 </div>
               ]
