@@ -16,7 +16,10 @@ import { InterfaceToggleAttributes } from './lyne-toggle.custom.d';
 
 @Component({
   shadow: true,
-  styleUrl: 'lyne-toggle.scss',
+  styleUrls: {
+    default: 'styles/lyne-toggle.default.scss',
+    shared: 'styles/lyne-toggle.shared.scss'
+  },
   tag: 'lyne-toggle'
 })
 
