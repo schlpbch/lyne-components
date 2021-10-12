@@ -1,3 +1,3 @@
 export default {
-  change: 'lyne-toggle_change'
+  change: 'lyne-toggle-multi_change'
 };

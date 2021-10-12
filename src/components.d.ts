@@ -14,7 +14,6 @@ import { Time } from "./components/lyne-sbb-clock/lyne-sbb-clock.custom.d";
 import { InterfaceLogoAttributes } from "./components/lyne-sbb-logo/lyne-sbb-logo.custom.d";
 import { InterfaceSignetAttributes } from "./components/lyne-sbb-signet/lyne-sbb-signet.custom.d";
 import { InterfaceTitleAttributes } from "./components/lyne-title/lyne-title.custom.d";
-import { InterfaceToggleAttributes } from "./components/lyne-toggle/lyne-toggle.custom.d";
 export namespace Components {
     interface LyneAccordion {
         /**
@@ -246,9 +245,43 @@ export namespace Components {
     }
     interface LyneToggle {
         /**
-          * If you use the button to trigger another widget which itself is covering the page, you must provide an according attribute for aria-haspopup.
+          * Set to true to to show checked state initially
          */
-        "ariaHaspopup"?: InterfaceToggleAttributes['popup'];
+        "checked"?: boolean;
+        /**
+          * Set to true to get a disabled button
+         */
+        "disabled"?: boolean;
+        /**
+          * Id which is sent in the click event payload
+         */
+        "eventId"?: string;
+        /**
+          * Define if icon should be shown or not
+         */
+        "icon"?: boolean;
+        /**
+          * Label text to show on the button
+         */
+        "label"?: string;
+        /**
+          * If you use an icon without a label, you must provide an iconDescription
+         */
+        "labelPlacement": string;
+        /**
+          * The name attribute to use for the button
+         */
+        "name"?: string;
+        /**
+          * The value attribute to use for the button
+         */
+        "value"?: string;
+        /**
+          * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
+         */
+        "visualButtonOnly"?: boolean;
+    }
+    interface LyneToggleMulti {
         /**
           * Set to true to get a disabled button
          */
@@ -272,23 +305,15 @@ export namespace Components {
         /**
           * The name attribute to use for the button
          */
-        "labelLeft"?: string;
+        "labelFirst"?: string;
         /**
           * The value attribute to use for the button
          */
-        "labelRight"?: string;
+        "labelSecond"?: string;
         /**
           * The name attribute to use for the button
          */
         "name"?: string;
-        /**
-          * Size variant, either large or small.
-         */
-        "size"?: InterfaceToggleAttributes['size'];
-        /**
-          * The type attribute to use for the button
-         */
-        "type"?: InterfaceToggleAttributes['type'];
         /**
           * The value attribute to use for the button
          */
@@ -296,15 +321,11 @@ export namespace Components {
         /**
           * The name attribute to use for the button
          */
-        "valueLeft"?: string;
+        "valueFirst"?: string;
         /**
           * The value attribute to use for the button
          */
-        "valueRight"?: string;
-        /**
-          * Variant of the button, like primary, secondary etc.
-         */
-        "variant"?: InterfaceToggleAttributes['variant'];
+        "valueSecond"?: string;
         /**
           * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
          */
@@ -378,6 +399,12 @@ declare global {
         prototype: HTMLLyneToggleElement;
         new (): HTMLLyneToggleElement;
     };
+    interface HTMLLyneToggleMultiElement extends Components.LyneToggleMulti, HTMLStencilElement {
+    }
+    var HTMLLyneToggleMultiElement: {
+        prototype: HTMLLyneToggleMultiElement;
+        new (): HTMLLyneToggleMultiElement;
+    };
     interface HTMLElementTagNameMap {
         "lyne-accordion": HTMLLyneAccordionElement;
         "lyne-accordion-item": HTMLLyneAccordionItemElement;
@@ -390,6 +417,7 @@ declare global {
         "lyne-sbb-signet": HTMLLyneSbbSignetElement;
         "lyne-title": HTMLLyneTitleElement;
         "lyne-toggle": HTMLLyneToggleElement;
+        "lyne-toggle-multi": HTMLLyneToggleMultiElement;
     }
 }
 declare namespace LocalJSX {
@@ -623,9 +651,43 @@ declare namespace LocalJSX {
     }
     interface LyneToggle {
         /**
-          * If you use the button to trigger another widget which itself is covering the page, you must provide an according attribute for aria-haspopup.
+          * Set to true to to show checked state initially
          */
-        "ariaHaspopup"?: InterfaceToggleAttributes['popup'];
+        "checked"?: boolean;
+        /**
+          * Set to true to get a disabled button
+         */
+        "disabled"?: boolean;
+        /**
+          * Id which is sent in the click event payload
+         */
+        "eventId"?: string;
+        /**
+          * Define if icon should be shown or not
+         */
+        "icon"?: boolean;
+        /**
+          * Label text to show on the button
+         */
+        "label"?: string;
+        /**
+          * If you use an icon without a label, you must provide an iconDescription
+         */
+        "labelPlacement": string;
+        /**
+          * The name attribute to use for the button
+         */
+        "name"?: string;
+        /**
+          * The value attribute to use for the button
+         */
+        "value"?: string;
+        /**
+          * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
+         */
+        "visualButtonOnly"?: boolean;
+    }
+    interface LyneToggleMulti {
         /**
           * Set to true to get a disabled button
          */
@@ -649,23 +711,15 @@ declare namespace LocalJSX {
         /**
           * The name attribute to use for the button
          */
-        "labelLeft"?: string;
+        "labelFirst"?: string;
         /**
           * The value attribute to use for the button
          */
-        "labelRight"?: string;
+        "labelSecond"?: string;
         /**
           * The name attribute to use for the button
          */
         "name"?: string;
-        /**
-          * Size variant, either large or small.
-         */
-        "size"?: InterfaceToggleAttributes['size'];
-        /**
-          * The type attribute to use for the button
-         */
-        "type"?: InterfaceToggleAttributes['type'];
         /**
           * The value attribute to use for the button
          */
@@ -673,15 +727,11 @@ declare namespace LocalJSX {
         /**
           * The name attribute to use for the button
          */
-        "valueLeft"?: string;
+        "valueFirst"?: string;
         /**
           * The value attribute to use for the button
          */
-        "valueRight"?: string;
-        /**
-          * Variant of the button, like primary, secondary etc.
-         */
-        "variant"?: InterfaceToggleAttributes['variant'];
+        "valueSecond"?: string;
         /**
           * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
          */
@@ -699,6 +749,7 @@ declare namespace LocalJSX {
         "lyne-sbb-signet": LyneSbbSignet;
         "lyne-title": LyneTitle;
         "lyne-toggle": LyneToggle;
+        "lyne-toggle-multi": LyneToggleMulti;
     }
 }
 export { LocalJSX as JSX };
@@ -716,6 +767,7 @@ declare module "@stencil/core" {
             "lyne-sbb-signet": LocalJSX.LyneSbbSignet & JSXBase.HTMLAttributes<HTMLLyneSbbSignetElement>;
             "lyne-title": LocalJSX.LyneTitle & JSXBase.HTMLAttributes<HTMLLyneTitleElement>;
             "lyne-toggle": LocalJSX.LyneToggle & JSXBase.HTMLAttributes<HTMLLyneToggleElement>;
+            "lyne-toggle-multi": LocalJSX.LyneToggleMulti & JSXBase.HTMLAttributes<HTMLLyneToggleMultiElement>;
         }
     }
 }

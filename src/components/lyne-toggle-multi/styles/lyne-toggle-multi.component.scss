@@ -5,11 +5,6 @@
 
 :host {
 
-  --single-toggle-width: 48;
-  --single-toggle-height: 28;
-  --single-toggle-handler-size: 24;
-  --single-toggle-background-color-checked: var(--color-red-default);
-
   --two-values-toggle-height: 32;
   --two-values-toggle-inner-height: 28;
   --two-values-toggle-padding-inline: var(--spacing-fixed-4x);
@@ -35,8 +30,6 @@ input {
   z-index: 1;
 }
 
-// One value
-// ----------------------------------------------
 .toggle {
   display: flex;
   align-items: center;
@@ -52,54 +45,6 @@ label {
   color: var(--color-graphite-default);
 }
 
-.toggle__checkbox-wrapper {
-  position: relative;
-  width: pxToRem(var(--single-toggle-width));
-  height: pxToRem(var(--single-toggle-height));
-}
-
-.toggle__checkbox {
-  width: pxToRem(var(--single-toggle-width));
-  height: pxToRem(var(--single-toggle-height));
-}
-
-.toggle__checkbox-styled {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  padding: pxToRem(var(--toggle-padding));
-  background: var(--background-color);
-  border-radius: pxToRem(var(--single-toggle-height));
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-easing-function);
-  transition-property: background-color;
-  will-change: background-color;
-}
-
-.toggle__checkbox-styled:before {
-  @include box-shadow-5-hard();
-  position: absolute;
-  inset: pxToRem(var(--single-toggle-padding));
-  content: '';
-  width: pxToRem(var(--single-toggle-handler-size));
-  height: pxToRem(var(--single-toggle-handler-size));
-  border-radius: 100%;
-  background: var(--color-white-default);
-  transition-duration: inherit;
-  transition-property: transform;
-  will-change: transform;
-}
-
-.toggle:not(.toggle--disabled) .toggle__checkbox:checked + .toggle__checkbox-styled {
-  background: var(--single-toggle-background-color-checked);
-}
-
-.toggle__checkbox:checked + .toggle__checkbox-styled:before {
-  transform: translateX(pxToRem(20));
-}
-
-// Multiple values
-// ----------------------------------------------
 .toggle__radios-wrapper {
   display: flex;
   flex-wrap: nowrap;

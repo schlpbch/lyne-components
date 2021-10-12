@@ -5,30 +5,23 @@
 
 :host {
 
-  --single-toggle-width: 48;
-  --single-toggle-height: 28;
-  --single-toggle-handler-size: 24;
-  --single-toggle-background-color-checked: var(--color-red-default);
+  display: inline-block;
 
-  --two-values-toggle-height: 32;
-  --two-values-toggle-inner-height: 28;
-  --two-values-toggle-padding-inline: var(--spacing-fixed-4x);
+  --toggle-width: 48;
+  --toggle-height: 28;
+  --toggle-handler-size: 24;
+  --toggle-background-color-checked: var(--color-red-default);
 
-  --background-color: var(--color-cloud-default);
+  --background-color: var(--color-smoke-default);
+  --background-color-disabled: var(--color-cloud-default);
   --toggle-padding: 2;
 
   --text-color: var(--color-charcoal-default);
   --text-color-checked: var(--color-anthracite-default);
 
-  --transition-duration: 125ms;
+  --transition-duration: 50ms;
   --transition-easing-function: ease-in;
 
-}
-
-*,
-::before,
-::after {
-  box-sizing: border-box;
 }
 
 input {
@@ -41,12 +34,15 @@ input {
   z-index: 1;
 }
 
-// One value
-// ----------------------------------------------
 .toggle {
   display: flex;
+  flex: 1 1 auto;
   align-items: center;
   gap: pxToRem(var(--spacing-fixed-3x));
+}
+
+.toggle--label-right {
+  flex-direction: row-reverse;
 }
 
 label {
@@ -60,13 +56,13 @@ label {
 
 .toggle__checkbox-wrapper {
   position: relative;
-  width: pxToRem(var(--single-toggle-width));
-  height: pxToRem(var(--single-toggle-height));
+  width: pxToRem(var(--toggle-width));
+  height: pxToRem(var(--toggle-height));
 }
 
 .toggle__checkbox {
-  width: pxToRem(var(--single-toggle-width));
-  height: pxToRem(var(--single-toggle-height));
+  width: pxToRem(var(--toggle-width));
+  height: pxToRem(var(--toggle-height));
 }
 
 .toggle__checkbox-styled {
@@ -75,20 +71,25 @@ label {
   z-index: 0;
   padding: pxToRem(var(--toggle-padding));
   background: var(--background-color);
-  border-radius: pxToRem(var(--single-toggle-height));
+  border-radius: pxToRem(var(--toggle-height));
   transition-duration: var(--transition-duration);
   transition-timing-function: var(--transition-easing-function);
   transition-property: background-color;
+  transform: translateX(pxToRem(0));
   will-change: background-color;
+}
+
+.toggle--disabled .toggle__checkbox-styled {
+  background-color: var(--background-color-disabled);
 }
 
 .toggle__checkbox-styled:before {
   @include box-shadow-5-hard();
   position: absolute;
-  inset: pxToRem(var(--single-toggle-padding));
+  inset: pxToRem(var(--toggle-padding));
   content: '';
-  width: pxToRem(var(--single-toggle-handler-size));
-  height: pxToRem(var(--single-toggle-handler-size));
+  width: pxToRem(var(--toggle-handler-size));
+  height: pxToRem(var(--toggle-handler-size));
   border-radius: 100%;
   background: var(--color-white-default);
   transition-duration: inherit;
@@ -97,88 +98,51 @@ label {
 }
 
 .toggle:not(.toggle--disabled) .toggle__checkbox:checked + .toggle__checkbox-styled {
-  background: var(--single-toggle-background-color-checked);
+  background: var(--toggle-background-color-checked);
 }
 
-.toggle__checkbox:checked + .toggle__checkbox-styled:before {
+.toggle:dir(ltr) .toggle__checkbox:checked + .toggle__checkbox-styled:before {
   transform: translateX(pxToRem(20));
 }
 
-// Two values
+.toggle:dir(rtl) .toggle__checkbox:checked + .toggle__checkbox-styled:before {
+  transform: translateX(pxToRem(-20));
+}
+
+// Tick Icon
 // ----------------------------------------------
-.toggle__radios-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  height: pxToRem(var(--two-values-toggle-height));
-  padding: pxToRem(var(--toggle-padding));
-  border-radius: pxToRem(var(--two-values-toggle-height));
-  background: var(--background-color);
-}
-
-.toggle__radio-wrapper {
-  position: relative;
-}
-
-.toggle__radio {
+.toggle__checkbox-tick {
   position: absolute;
-  z-index: 2;
-  inset: 0;
-}
-
-.toggle__radio:checked + .toggle__radio-label {
-  @include text-s--bold();
-}
-
-.toggle__radio:checked + .toggle__radio-label:after {
-  opacity: 0.999999;
-  transform: scale(1);
-  color: var(--text-color-checked);
-}
-
-.toggle__radio-label {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  padding-inline-start: pxToRem(var(--two-values-toggle-padding-inline));
-  padding-inline-end: pxToRem(var(--two-values-toggle-padding-inline));
-  line-height: var(--two-values-toggle-inner-height);
-}
-
-.toggle__radio-label span {
-  position: relative;
+  inset-inline-start: pxToRem(var(--toggle-padding));
+  inset-block-start: pxToRem(var(--toggle-padding));
   z-index: 1;
-}
-
-.toggle__radio-label:before {
-  @include text-s--bold();
-  display: block;
-  content: attr(data-label);
-  height: 0;
-  text-align: center;
-  color: transparent;
-  visibility: hidden;
-}
-
-.toggle__radio-label:after {
-  @include text-s--bold();
-  @include box-shadow-5-hard();
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  content: '';
-  border-radius: pxToRem(var(--two-values-toggle-height));
-  background: var(--color-white-default);
+  width: pxToRem(var(--toggle-handler-size)); // TODO check why --icon-size-ui-small is not defined here
+  height: pxToRem(var(--toggle-handler-size));
+  overflow: hidden;
+  fill: var(--toggle-background-color-checked);
   opacity: 0.000001;
-  transition-duration: 75ms;
-  transition-timing-function: var(--transition-easing-function);
-  transition-property: opacity, transform;
-  transform: scale(0.8);
+  transition-duration: var(--transition-duration);
+  transition-property: transform, opacity;
+  transform: translateX(pxToRem(0)) scale3d(0.5,0.5,0.5);
+  will-change: transform;
+  pointer-events: none;
 }
 
+.toggle__checkbox:checked ~ .toggle__checkbox-tick {
+  opacity: 0.999999;
+}
+
+.toggle:dir(ltr) .toggle__checkbox:checked ~ .toggle__checkbox-tick {
+  transform: translateX(pxToRem(20)) scale3d(1,1,1);
+}
+
+.toggle:dir(rtl) .toggle__checkbox:checked ~ .toggle__checkbox-tick {
+  transform: translateX(pxToRem(-20)) scale3d(1,1,1);
+}
+
+.toggle--disabled .toggle__checkbox-tick {
+  fill: var(--background-color-disabled);
+}
 
 
 // TODO right to left style

@@ -8,6 +8,18 @@ const Template = (args) => (
   </lyne-toggle>
 );
 
+const checked = {
+  control: {
+    type: 'boolean'
+  }
+};
+
+const value = {
+  control: {
+    type: 'text'
+  }
+};
+
 const disabledArg = {
   control: {
     type: 'boolean'
@@ -20,24 +32,6 @@ const label = {
   }
 };
 
-const labelLeft = {
-  control: {
-    type: 'text'
-  },
-  table: {
-    category: 'Two Values Variant'
-  }
-};
-
-const labelRight = {
-  control: {
-    type: 'text'
-  },
-  table: {
-    category: 'Two Values Variant'
-  }
-};
-
 const labelPlacement = {
   control: {
     type: 'inline-radio'
@@ -45,86 +39,116 @@ const labelPlacement = {
   options: [
     'left',
     'right'
-  ],
-  table: {
-    category: 'Single Value Variant'
-  }
-};
-
-const valueLeft = {
-  control: {
-    type: 'text'
-  },
-  table: {
-    category: 'Two Values Variant'
-  }
-};
-
-const valueRight = {
-  control: {
-    type: 'text'
-  },
-  table: {
-    category: 'Two Values Variant'
-  }
+  ]
 };
 
 const basicArgTypes = {
-  label,
-  'label-left': labelLeft,
-  'label-right': labelRight,
-  'label-placement': labelPlacement,
+  checked,
   'disabled': disabledArg,
-  'value-left': valueLeft,
-  'value-right': valueRight
+  label,
+  'label-placement': labelPlacement,
+  value
 };
 
 const basicArgs = {
+  checked: false,
   disabled: false,
   label: 'Toggle Label',
-  'label-left': '',
-  'label-right': '',
   'label-placement': labelPlacement.options[0],
-  'value-left': '',
-  'value-right': ''
+  value: 'togglevalue'
 };
 /* eslint-enable sort-keys */
 
 /* ************************************************* */
 /* The Stories                                       */
 /* ************************************************* */
-export const singleValueTextLeft = Template.bind({});
+export const LabelLeft = Template.bind({});
 
-singleValueTextLeft.argTypes = basicArgTypes;
-singleValueTextLeft.args = JSON.parse(JSON.stringify(basicArgs));
+LabelLeft.argTypes = basicArgTypes;
+LabelLeft.args = JSON.parse(JSON.stringify(basicArgs));
 
-singleValueTextLeft.documentation = {
-  title: 'Text left'
+LabelLeft.documentation = {
+  title: 'Label left'
 };
 
-export const singleValueTextRight = Template.bind({});
+export const LabelLeftChecked = Template.bind({});
 
-singleValueTextRight.argTypes = basicArgTypes;
-singleValueTextRight.args = JSON.parse(JSON.stringify(basicArgs));
-singleValueTextRight.args['label-placement'] = labelPlacement.options[1];
+LabelLeftChecked.argTypes = basicArgTypes;
+LabelLeftChecked.args = JSON.parse(JSON.stringify(basicArgs));
+LabelLeftChecked.args['checked'] = true;
 
-singleValueTextRight.documentation = {
-  title: 'Text Right'
+LabelLeftChecked.documentation = {
+  title: 'Label Left Checked'
 };
 
-export const twoValues = Template.bind({});
+export const LabelLeftCheckedDisabled = Template.bind({});
 
-twoValues.argTypes = basicArgTypes;
-twoValues.args = JSON.parse(JSON.stringify(basicArgs));
-twoValues.args['label-left'] = 'Ab';
-twoValues.args['value-left'] = 'ab';
-twoValues.args['label-right'] = 'An';
-twoValues.args['value-right'] = 'an';
+LabelLeftCheckedDisabled.argTypes = basicArgTypes;
+LabelLeftCheckedDisabled.args = JSON.parse(JSON.stringify(basicArgs));
+LabelLeftCheckedDisabled.args['checked'] = true;
+LabelLeftCheckedDisabled.args['disabled'] = true;
 
-twoValues.documentation = {
-  title: 'Two values'
+LabelLeftCheckedDisabled.documentation = {
+  title: 'Label Left Checked & Disabled'
 };
 
+export const LabelLeftDisabled = Template.bind({});
+
+LabelLeftDisabled.argTypes = basicArgTypes;
+LabelLeftDisabled.args = JSON.parse(JSON.stringify(basicArgs));
+LabelLeftDisabled.args['disabled'] = true;
+
+LabelLeftDisabled.documentation = {
+  title: 'Label Left Disabled'
+};
+
+export const LabelRight = Template.bind({});
+
+LabelRight.argTypes = basicArgTypes;
+LabelRight.args = JSON.parse(JSON.stringify(basicArgs));
+LabelRight.args['label-placement'] = labelPlacement.options[1],
+
+LabelRight.documentation = {
+  title: 'Label Right'
+};
+
+export const LabelRightChecked = Template.bind({});
+
+LabelRightChecked.argTypes = basicArgTypes;
+LabelRightChecked.args = JSON.parse(JSON.stringify(basicArgs));
+LabelRightChecked.args['checked'] = true;
+LabelRightChecked.args['label-placement'] = labelPlacement.options[1],
+
+LabelRightChecked.documentation = {
+  title: 'Label Right Checked'
+};
+
+export const LabelRightCheckedDisabled = Template.bind({});
+
+LabelRightCheckedDisabled.argTypes = basicArgTypes;
+LabelRightCheckedDisabled.args = JSON.parse(JSON.stringify(basicArgs));
+LabelRightCheckedDisabled.args['checked'] = true;
+LabelRightCheckedDisabled.args['disabled'] = true;
+LabelRightCheckedDisabled.args['label-placement'] = labelPlacement.options[1],
+
+LabelRightCheckedDisabled.documentation = {
+  title: 'Label Right Checked & Disabled'
+};
+
+export const LabelRightDisabled = Template.bind({});
+
+LabelRightDisabled.argTypes = basicArgTypes;
+LabelRightDisabled.args = JSON.parse(JSON.stringify(basicArgs));
+LabelRightDisabled.args['disabled'] = true;
+LabelRightDisabled.args['label-placement'] = labelPlacement.options[1],
+
+LabelRightDisabled.documentation = {
+  title: 'Label Right Disabled'
+};
+
+/* ************************************************* */
+/* The Export                                        */
+/* ************************************************* */
 export default {
   decorators: [
     (Story, context) => (

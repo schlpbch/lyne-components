@@ -7,8 +7,8 @@ import {
   Prop,
   State
 } from '@stencil/core';
-import events from './lyne-toggle.events';
-import { InterfaceToggleAttributes } from './lyne-toggle.custom.d';
+import events from './lyne-toggle-multi.events';
+import { InterfaceToggleMultiAttributes } from './lyne-toggle-multi.custom.d';
 
 /**
  * @slot unnamed - Slot to render svg icon. You must pass an svg-element.
@@ -17,13 +17,13 @@ import { InterfaceToggleAttributes } from './lyne-toggle.custom.d';
 @Component({
   shadow: true,
   styleUrls: {
-    default: 'styles/lyne-toggle.default.scss',
-    shared: 'styles/lyne-toggle.shared.scss'
+    default: 'styles/lyne-toggle-multi.default.scss',
+    shared: 'styles/lyne-toggle-multi.shared.scss'
   },
   tag: 'lyne-toggle-multi'
 })
 
-export class LyneToggle {
+export class LyneToggleMulti {
 
   @State() private _disabledStateClass: string;
 
@@ -39,11 +39,6 @@ export class LyneToggle {
   /** Label text to show on the button */
   @Prop() public label? = 'Default button text';
 
-  /** Variant of the button, like primary, secondary etc. */
-  @Prop() public variant?: InterfaceToggleAttributes['variant'] = 'primary';
-
-  /** Size variant, either large or small. */
-  @Prop() public size?: InterfaceToggleAttributes['size'] = 'large';
 
   /**
    * Set this property to true if you want only a visual represenation of a
@@ -63,15 +58,12 @@ export class LyneToggle {
   /** If you use an icon without a label, you must provide an iconDescription */
   @Prop() public iconDescription?: string;
 
-  /** The type attribute to use for the button */
-  @Prop() public type?: InterfaceToggleAttributes['type'] = 'button';
-
   /** The name attribute to use for the button */
   @Prop() public name?: string;
 
   /** The value attribute to use for the button */
   @Prop() public value?: string;
-  
+
   /** The name attribute to use for the button */
   @Prop() public labelFirst?: string;
 
@@ -83,12 +75,6 @@ export class LyneToggle {
 
   /** The value attribute to use for the button */
   @Prop() public valueSecond?: string;
-
-  /**
-   * If you use the button to trigger another widget which itself is covering
-   * the page, you must provide an according attribute for aria-haspopup.
-   */
-  @Prop() public ariaHaspopup?: InterfaceToggleAttributes['popup'];
 
   @Element() private _element: HTMLElement;
 
