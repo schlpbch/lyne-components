@@ -1,6 +1,6 @@
 {
   "name": "lyne-test",
-  "version": "9.55.4",
+  "version": "9.56.0",
   "description": "Lyne Design System",
   "keywords": [
     "design system",
@@ -27,7 +27,7 @@
     "build": "npm-run-all --sequential build:stencil build:storybook",
     "chromatic": "chromatic --storybook-build-dir=./storybook-static --exit-zero-on-changes --exit-once-uploaded",
     "chromatic:master": "chromatic --storybook-build-dir=./storybook-static --exit-zero-on-changes --auto-accept-changes",
-    "generate": "stencil generate",
+    "generate": "node convenience/generate-component/index.js",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:yml",
     "lint:ts": "eslint ./ --ext .ts,.tsx",
     "lint:js": "eslint ./ --ext .js",
@@ -58,8 +58,8 @@
     "@storybook/html": "~6.3.7",
     "@types/jest": "27.0.2",
     "@types/puppeteer": "5.4.4",
-    "@typescript-eslint/eslint-plugin": "~4.32.0",
-    "@typescript-eslint/parser": "~4.32.0",
+    "@typescript-eslint/eslint-plugin": "~4.33.0",
+    "@typescript-eslint/parser": "~4.33.0",
     "axios": "~0.22.0",
     "babel-loader": "^8.1.0",
     "chromatic": "~5.10.1",
