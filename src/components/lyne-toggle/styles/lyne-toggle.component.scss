@@ -19,8 +19,8 @@
   --text-color: var(--color-charcoal-default);
   --text-color-checked: var(--color-anthracite-default);
 
-  --transition-duration: 50ms;
-  --transition-easing-function: ease-in;
+  --transition-duration: 100ms;
+  --transition-easing-function: ease-in-out;
 
 }
 
@@ -93,6 +93,7 @@ label {
   border-radius: 100%;
   background: var(--color-white-default);
   transition-duration: inherit;
+  transition-timing-function: inherit;
   transition-property: transform;
   will-change: transform;
 }
@@ -101,13 +102,15 @@ label {
   background: var(--toggle-background-color-checked);
 }
 
-.toggle:dir(ltr) .toggle__checkbox:checked + .toggle__checkbox-styled:before {
+//.toggle:dir(ltr) .toggle__checkbox:checked + .toggle__checkbox-styled:before {
+.toggle__checkbox:checked + .toggle__checkbox-styled:before {
   transform: translateX(pxToRem(20));
 }
 
+/*
 .toggle:dir(rtl) .toggle__checkbox:checked + .toggle__checkbox-styled:before {
   transform: translateX(pxToRem(-20));
-}
+} */
 
 // Tick Icon
 // ----------------------------------------------
@@ -122,6 +125,7 @@ label {
   fill: var(--toggle-background-color-checked);
   opacity: 0.000001;
   transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-easing-function);
   transition-property: transform, opacity;
   transform: translateX(pxToRem(0)) scale3d(0.5,0.5,0.5);
   will-change: transform;
@@ -132,13 +136,15 @@ label {
   opacity: 0.999999;
 }
 
-.toggle:dir(ltr) .toggle__checkbox:checked ~ .toggle__checkbox-tick {
+//.toggle:dir(ltr) .toggle__checkbox:checked ~ .toggle__checkbox-tick {
+.toggle__checkbox:checked ~ .toggle__checkbox-tick {
   transform: translateX(pxToRem(20)) scale3d(1,1,1);
 }
 
+/*
 .toggle:dir(rtl) .toggle__checkbox:checked ~ .toggle__checkbox-tick {
   transform: translateX(pxToRem(-20)) scale3d(1,1,1);
-}
+} */
 
 .toggle--disabled .toggle__checkbox-tick {
   fill: var(--background-color-disabled);

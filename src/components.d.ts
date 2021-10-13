@@ -282,6 +282,7 @@ export namespace Components {
         "visualButtonOnly"?: boolean;
     }
     interface LyneToggleMulti {
+        "checkedToggle"?: string;
         /**
           * Set to true to get a disabled button
          */
@@ -294,10 +295,6 @@ export namespace Components {
           * Define if icon should be shown or not
          */
         "icon"?: boolean;
-        /**
-          * If you use an icon without a label, you must provide an iconDescription
-         */
-        "iconDescription"?: string;
         /**
           * Label text to show on the button
          */
@@ -688,6 +685,7 @@ declare namespace LocalJSX {
         "visualButtonOnly"?: boolean;
     }
     interface LyneToggleMulti {
+        "checkedToggle"?: string;
         /**
           * Set to true to get a disabled button
          */
@@ -700,10 +698,6 @@ declare namespace LocalJSX {
           * Define if icon should be shown or not
          */
         "icon"?: boolean;
-        /**
-          * If you use an icon without a label, you must provide an iconDescription
-         */
-        "iconDescription"?: string;
         /**
           * Label text to show on the button
          */

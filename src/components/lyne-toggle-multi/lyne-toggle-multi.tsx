@@ -36,6 +36,8 @@ export class LyneToggleMulti {
     this._toggleDisabledStateClass();
   }
 
+  @Prop() public checkedToggle?: string;
+
   /** Label text to show on the button */
   @Prop() public label? = 'Default button text';
 
@@ -54,9 +56,6 @@ export class LyneToggleMulti {
 
   /** Define if icon should be shown or not */
   @Prop() public icon? = false;
-
-  /** If you use an icon without a label, you must provide an iconDescription */
-  @Prop() public iconDescription?: string;
 
   /** The name attribute to use for the button */
   @Prop() public name?: string;
@@ -118,9 +117,11 @@ export class LyneToggleMulti {
         <div class='toggle__radios-wrapper'>
           <div class='toggle__radio-wrapper'>
             <input
+              checked={this.checkedToggle === 'first' ? true : false }
               class='toggle__radio'
-              type='radio'
+              disabled={this.disabled}
               name='toggle__input'
+              type='radio'
               value={this.valueFirst}
             />
             <label
@@ -132,9 +133,11 @@ export class LyneToggleMulti {
           </div>
           <div class='toggle__radio-wrapper'>
             <input
+              checked={this.checkedToggle === 'second' ? true : false }
               class='toggle__radio'
-              type='radio'
+              disabled={this.disabled}
               name='toggle__input'
+              type='radio'
               value={this.valueSecond}
             />
             <label

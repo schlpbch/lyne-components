@@ -8,7 +8,7 @@ const Template = (args) => (
   </lyne-toggle-multi>
 );
 
-const checkedValue = {
+const checkedToggle = {
   control: {
     type: 'inline-radio'
   },
@@ -55,7 +55,7 @@ const valueRight = {
 };
 
 const basicArgTypes = {
-  'checked-toggle': checkedValue,
+  'checked-toggle': checkedToggle,
   'disabled': disabledArg,
   label,
   'label-first': labelFirst,
@@ -65,7 +65,7 @@ const basicArgTypes = {
 };
 
 const basicArgs = {
-  'checked-toggle': checkedValue.options[0],
+  'checked-toggle': checkedToggle.options[0],
   disabled: false,
   label: 'Toggle Label',
   'label-first': '',
@@ -82,7 +82,7 @@ export const FirstValueChecked = Template.bind({});
 
 FirstValueChecked.argTypes = basicArgTypes;
 FirstValueChecked.args = JSON.parse(JSON.stringify(basicArgs));
-FirstValueChecked.args['checked-toggle'] = checkedValue.options[0];
+FirstValueChecked.args['checked-toggle'] = checkedToggle.options[0];
 FirstValueChecked.args['label-first'] = 'Ab';
 FirstValueChecked.args['value-first'] = 'ab';
 FirstValueChecked.args['label-second'] = 'An';
@@ -97,7 +97,7 @@ export const FirstValueCheckedDisabled = Template.bind({});
 FirstValueCheckedDisabled.argTypes = basicArgTypes;
 FirstValueCheckedDisabled.args = JSON.parse(JSON.stringify(basicArgs));
 FirstValueCheckedDisabled.args['disabled'] = true;
-FirstValueCheckedDisabled.args['checked-toggle'] = checkedValue.options[0];
+FirstValueCheckedDisabled.args['checked-toggle'] = checkedToggle.options[0];
 FirstValueCheckedDisabled.args['label-first'] = 'Ab';
 FirstValueCheckedDisabled.args['value-first'] = 'ab';
 FirstValueCheckedDisabled.args['label-second'] = 'An';
@@ -111,7 +111,7 @@ export const SecondValueChecked = Template.bind({});
 
 SecondValueChecked.argTypes = basicArgTypes;
 SecondValueChecked.args = JSON.parse(JSON.stringify(basicArgs));
-SecondValueChecked.args['checked-toggle'] = checkedValue.options[1];
+SecondValueChecked.args['checked-toggle'] = checkedToggle.options[1];
 SecondValueChecked.args['label-first'] = 'Ab';
 SecondValueChecked.args['value-first'] = 'ab';
 SecondValueChecked.args['label-second'] = 'An';
@@ -126,7 +126,7 @@ export const SecondValueCheckedDisabled = Template.bind({});
 SecondValueCheckedDisabled.argTypes = basicArgTypes;
 SecondValueCheckedDisabled.args = JSON.parse(JSON.stringify(basicArgs));
 SecondValueCheckedDisabled.args['disabled'] = true;
-SecondValueCheckedDisabled.args['checked-toggle'] = checkedValue.options[1];
+SecondValueCheckedDisabled.args['checked-toggle'] = checkedToggle.options[1];
 SecondValueCheckedDisabled.args['label-first'] = 'Ab';
 SecondValueCheckedDisabled.args['value-first'] = 'ab';
 SecondValueCheckedDisabled.args['label-second'] = 'An';
