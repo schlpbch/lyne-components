@@ -64,16 +64,16 @@ export class LyneToggleMulti {
   @Prop() public value?: string;
 
   /** The name attribute to use for the button */
-  @Prop() public labelFirst?: string;
+  @Prop() public firstOptionLabel?: string;
 
   /** The value attribute to use for the button */
-  @Prop() public labelSecond?: string;
+  @Prop() public secondOptionLabel?: string;
 
   /** The name attribute to use for the button */
-  @Prop() public valueFirst?: string;
+  @Prop() public firstOptionValue?: string;
 
   /** The value attribute to use for the button */
-  @Prop() public valueSecond?: string;
+  @Prop() public secondOptionValue?: string;
 
   @Element() private _element: HTMLElement;
 
@@ -122,13 +122,13 @@ export class LyneToggleMulti {
               disabled={this.disabled}
               name='toggle__input'
               type='radio'
-              value={this.valueFirst}
+              value={this.firstOptionValue}
             />
             <label
               class='toggle__radio-label'
-              data-label={this.labelFirst}
+              data-label={this.firstOptionLabel}
             >
-              <span>{this.labelFirst}</span>
+              <span>{this.firstOptionLabel}</span>
             </label>
           </div>
           <div class='toggle__radio-wrapper'>
@@ -138,13 +138,13 @@ export class LyneToggleMulti {
               disabled={this.disabled}
               name='toggle__input'
               type='radio'
-              value={this.valueSecond}
+              value={this.secondOptionValue}
             />
             <label
               class='toggle__radio-label'
-              data-label={this.labelSecond}
+              data-label={this.secondOptionLabel}
             >
-              <span>{this.labelSecond}</span>
+              <span>{this.secondOptionLabel}</span>
             </label>
           </div>
         </div>

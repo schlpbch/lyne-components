@@ -326,6 +326,14 @@ export namespace Components {
          */
         "eventId"?: string;
         /**
+          * The name attribute to use for the button
+         */
+        "firstOptionLabel"?: string;
+        /**
+          * The name attribute to use for the button
+         */
+        "firstOptionValue"?: string;
+        /**
           * Define if icon should be shown or not
          */
         "icon"?: boolean;
@@ -336,27 +344,19 @@ export namespace Components {
         /**
           * The name attribute to use for the button
          */
-        "labelFirst"?: string;
-        /**
-          * The value attribute to use for the button
-         */
-        "labelSecond"?: string;
-        /**
-          * The name attribute to use for the button
-         */
         "name"?: string;
         /**
           * The value attribute to use for the button
          */
-        "value"?: string;
-        /**
-          * The name attribute to use for the button
-         */
-        "valueFirst"?: string;
+        "secondOptionLabel"?: string;
         /**
           * The value attribute to use for the button
          */
-        "valueSecond"?: string;
+        "secondOptionValue"?: string;
+        /**
+          * The value attribute to use for the button
+         */
+        "value"?: string;
         /**
           * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
          */
@@ -770,6 +770,14 @@ declare namespace LocalJSX {
          */
         "eventId"?: string;
         /**
+          * The name attribute to use for the button
+         */
+        "firstOptionLabel"?: string;
+        /**
+          * The name attribute to use for the button
+         */
+        "firstOptionValue"?: string;
+        /**
           * Define if icon should be shown or not
          */
         "icon"?: boolean;
@@ -780,27 +788,19 @@ declare namespace LocalJSX {
         /**
           * The name attribute to use for the button
          */
-        "labelFirst"?: string;
-        /**
-          * The value attribute to use for the button
-         */
-        "labelSecond"?: string;
-        /**
-          * The name attribute to use for the button
-         */
         "name"?: string;
         /**
           * The value attribute to use for the button
          */
-        "value"?: string;
-        /**
-          * The name attribute to use for the button
-         */
-        "valueFirst"?: string;
+        "secondOptionLabel"?: string;
         /**
           * The value attribute to use for the button
          */
-        "valueSecond"?: string;
+        "secondOptionValue"?: string;
+        /**
+          * The value attribute to use for the button
+         */
+        "value"?: string;
         /**
           * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
          */

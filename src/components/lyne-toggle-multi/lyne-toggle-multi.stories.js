@@ -30,13 +30,13 @@ const label = {
   }
 };
 
-const labelFirst = {
+const firstOptionLabel = {
   control: {
     type: 'text'
   }
 };
 
-const labelSecond = {
+const secondOptionLabel = {
   control: {
     type: 'text'
   }
@@ -58,20 +58,20 @@ const basicArgTypes = {
   'checked-toggle': checkedToggle,
   'disabled': disabledArg,
   label,
-  'label-first': labelFirst,
-  'label-second': labelSecond,
-  'value-first': valueLeft,
-  'value-second': valueRight
+  'first-option-label': firstOptionLabel,
+  'first-option-value': valueLeft,
+  'second-option-label': secondOptionLabel,
+  'second-option-value': valueRight
 };
 
 const basicArgs = {
   'checked-toggle': checkedToggle.options[0],
   disabled: false,
   label: 'Toggle Label',
-  'label-first': '',
-  'label-second': '',
-  'value-first': '',
-  'value-second': ''
+  'first-option-label': '',
+  'first-option-value': '',
+  'second-option-label': '',
+  'second-option-value': ''
 };
 /* eslint-enable sort-keys */
 
@@ -83,10 +83,10 @@ export const FirstValueChecked = Template.bind({});
 FirstValueChecked.argTypes = basicArgTypes;
 FirstValueChecked.args = JSON.parse(JSON.stringify(basicArgs));
 FirstValueChecked.args['checked-toggle'] = checkedToggle.options[0];
-FirstValueChecked.args['label-first'] = 'Ab';
-FirstValueChecked.args['value-first'] = 'ab';
-FirstValueChecked.args['label-second'] = 'An';
-FirstValueChecked.args['value-second'] = 'an';
+FirstValueChecked.args['first-option-label'] = 'Ab';
+FirstValueChecked.args['first-option-value'] = 'ab';
+FirstValueChecked.args['second-option-label'] = 'An';
+FirstValueChecked.args['second-option-value'] = 'an';
 
 FirstValueChecked.documentation = {
   title: 'First Value Checked'
@@ -98,10 +98,10 @@ FirstValueCheckedDisabled.argTypes = basicArgTypes;
 FirstValueCheckedDisabled.args = JSON.parse(JSON.stringify(basicArgs));
 FirstValueCheckedDisabled.args['disabled'] = true;
 FirstValueCheckedDisabled.args['checked-toggle'] = checkedToggle.options[0];
-FirstValueCheckedDisabled.args['label-first'] = 'Ab';
-FirstValueCheckedDisabled.args['value-first'] = 'ab';
-FirstValueCheckedDisabled.args['label-second'] = 'An';
-FirstValueCheckedDisabled.args['value-second'] = 'an';
+FirstValueCheckedDisabled.args['first-option-label'] = 'Ab';
+FirstValueCheckedDisabled.args['first-option-value'] = 'ab';
+FirstValueCheckedDisabled.args['second-option-label'] = 'An';
+FirstValueCheckedDisabled.args['second-option-value'] = 'an';
 
 FirstValueCheckedDisabled.documentation = {
   title: 'First Value Checked & Disabled'
@@ -112,10 +112,10 @@ export const SecondValueChecked = Template.bind({});
 SecondValueChecked.argTypes = basicArgTypes;
 SecondValueChecked.args = JSON.parse(JSON.stringify(basicArgs));
 SecondValueChecked.args['checked-toggle'] = checkedToggle.options[1];
-SecondValueChecked.args['label-first'] = 'Ab';
-SecondValueChecked.args['value-first'] = 'ab';
-SecondValueChecked.args['label-second'] = 'An';
-SecondValueChecked.args['value-second'] = 'an';
+SecondValueChecked.args['first-option-label'] = 'Ab';
+SecondValueChecked.args['first-option-value'] = 'ab';
+SecondValueChecked.args['second-option-label'] = 'An';
+SecondValueChecked.args['second-option-value'] = 'an';
 
 SecondValueChecked.documentation = {
   title: 'Second Value Checked'
@@ -127,10 +127,10 @@ SecondValueCheckedDisabled.argTypes = basicArgTypes;
 SecondValueCheckedDisabled.args = JSON.parse(JSON.stringify(basicArgs));
 SecondValueCheckedDisabled.args['disabled'] = true;
 SecondValueCheckedDisabled.args['checked-toggle'] = checkedToggle.options[1];
-SecondValueCheckedDisabled.args['label-first'] = 'Ab';
-SecondValueCheckedDisabled.args['value-first'] = 'ab';
-SecondValueCheckedDisabled.args['label-second'] = 'An';
-SecondValueCheckedDisabled.args['value-second'] = 'an';
+SecondValueCheckedDisabled.args['first-option-label'] = 'Ab';
+SecondValueCheckedDisabled.args['first-option-value'] = 'ab';
+SecondValueCheckedDisabled.args['second-option-label'] = 'An';
+SecondValueCheckedDisabled.args['second-option-value'] = 'an';
 
 SecondValueCheckedDisabled.documentation = {
   title: 'Second Value Checked & Disabled'
