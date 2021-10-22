@@ -54,6 +54,10 @@ label {
   background: var(--background-color);
 }
 
+.toggle__radios_label {
+  @include screenreaderOnly();
+}
+
 .toggle__radio-wrapper {
   position: relative;
 }

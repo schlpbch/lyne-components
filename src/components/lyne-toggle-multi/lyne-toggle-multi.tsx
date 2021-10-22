@@ -114,6 +114,12 @@ export class LyneToggleMulti {
     return (
 
       <div class={`toggle${this._disabledStateClass}`}>
+        <p
+          class="toggle__radios_label"
+          id='toggle__radios_label'
+        >
+          {this.label}
+        </p>
         <div class='toggle__radios-wrapper'>
           <div class='toggle__radio-wrapper'>
             <input
@@ -123,10 +129,13 @@ export class LyneToggleMulti {
               name='toggle__input'
               type='radio'
               value={this.firstOptionValue}
+              aria-labelledby='toggle-option-1-label toggle__radios_label'
             />
             <label
+              id='toggle-option-1-label'
               class='toggle__radio-label'
               data-label={this.firstOptionLabel}
+              aria-hidden='true'
             >
               <span>{this.firstOptionLabel}</span>
             </label>
@@ -139,10 +148,13 @@ export class LyneToggleMulti {
               name='toggle__input'
               type='radio'
               value={this.secondOptionValue}
+              aria-labelledby='toggle-option-2-label toggle__radios_label'
             />
             <label
+              id='toggle-option-2-label'
               class='toggle__radio-label'
               data-label={this.secondOptionLabel}
+              aria-hidden='true'
             >
               <span>{this.secondOptionLabel}</span>
             </label>

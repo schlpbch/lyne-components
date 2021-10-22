@@ -67,7 +67,7 @@ const basicArgTypes = {
 const basicArgs = {
   'checked-toggle': checkedToggle.options[0],
   disabled: false,
-  label: 'Toggle Label',
+  label: 'Zwischen Ankunfts- und Abfahrtszeit wechseln',
   'first-option-label': '',
   'first-option-value': '',
   'second-option-label': '',
@@ -83,9 +83,9 @@ export const FirstValueChecked = Template.bind({});
 FirstValueChecked.argTypes = basicArgTypes;
 FirstValueChecked.args = JSON.parse(JSON.stringify(basicArgs));
 FirstValueChecked.args['checked-toggle'] = checkedToggle.options[0];
-FirstValueChecked.args['first-option-label'] = 'Ab';
+FirstValueChecked.args['first-option-label'] = 'Abfahrt';
 FirstValueChecked.args['first-option-value'] = 'ab';
-FirstValueChecked.args['second-option-label'] = 'An';
+FirstValueChecked.args['second-option-label'] = 'Ankunft';
 FirstValueChecked.args['second-option-value'] = 'an';
 
 FirstValueChecked.documentation = {
@@ -98,9 +98,9 @@ FirstValueCheckedDisabled.argTypes = basicArgTypes;
 FirstValueCheckedDisabled.args = JSON.parse(JSON.stringify(basicArgs));
 FirstValueCheckedDisabled.args['disabled'] = true;
 FirstValueCheckedDisabled.args['checked-toggle'] = checkedToggle.options[0];
-FirstValueCheckedDisabled.args['first-option-label'] = 'Ab';
+FirstValueCheckedDisabled.args['first-option-label'] = 'Abfahrt';
 FirstValueCheckedDisabled.args['first-option-value'] = 'ab';
-FirstValueCheckedDisabled.args['second-option-label'] = 'An';
+FirstValueCheckedDisabled.args['second-option-label'] = 'Ankunft';
 FirstValueCheckedDisabled.args['second-option-value'] = 'an';
 
 FirstValueCheckedDisabled.documentation = {
