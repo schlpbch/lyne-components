@@ -1,15 +1,12 @@
-// @ts-nocheck
-
 import {
   Component,
-  Element,
   h,
   Prop,
-  State
+  State,
+  Watch
 } from '@stencil/core';
-import events from './lyne-toggle.events';
+// import events from './lyne-toggle-checkbox.events';
 import { guid } from '../../global/guid';
-import { InterfaceToggleAttributes } from './lyne-toggle.custom.d';
 import tickIcon from 'lyne-icons/dist/icons/tick-small.svg';
 
 /**
@@ -19,10 +16,10 @@ import tickIcon from 'lyne-icons/dist/icons/tick-small.svg';
 @Component({
   shadow: true,
   styleUrls: {
-    default: 'styles/lyne-toggle.default.scss',
-    shared: 'styles/lyne-toggle.shared.scss'
+    default: 'styles/lyne-toggle-checkbox.default.scss',
+    shared: 'styles/lyne-toggle-checkbox.shared.scss'
   },
-  tag: 'lyne-toggle'
+  tag: 'lyne-toggle-checkbox'
 })
 
 export class LyneToggle {
@@ -36,21 +33,12 @@ export class LyneToggle {
   }) public disabled?: boolean;
 
   @Watch('disabled')
-  public watchStateHandler(newValue: boolean): void {
+  public watchStateHandler(): void {
     this._toggleDisabledStateClass();
   }
 
-  /** Label text to show on the button */
+  /** Label text for the toggle checkbox */
   @Prop() public label? = 'Default button text';
-
-  /**
-   * Set this property to true if you want only a visual represenation of a
-   * button, but no interaction (a div instead of a button will be rendered).
-   */
-  @Prop() public visualButtonOnly?: boolean;
-
-  /** Set to true to get a disabled button */
-  @Prop() public disabled? = false;
 
   /** Set to true to to show checked state initially */
   @Prop() public checked? = false;
@@ -69,28 +57,6 @@ export class LyneToggle {
 
   /** The value attribute to use for the button */
   @Prop() public value?: string;
-
-  @Element() private _element: HTMLElement;
-
-  /* private _toggleChange = (): void => {
-    let eventDetail;
-
-    if (this.visualButtonOnly) {
-      return;
-    }
-
-    if (this.eventId) {
-      eventDetail = this.eventId;
-    }
-
-    const event = new CustomEvent(events.change, {
-      bubbles: true,
-      composed: true,
-      detail: eventDetail
-    });
-
-    this._element.dispatchEvent(event);
-  }; */
 
   private _toggleDisabledStateClass(): void {
     if (this.disabled) {
@@ -117,10 +83,10 @@ export class LyneToggle {
 
       <div class={`toggle${this._disabledStateClass}${labelPositionClass}`}>
         <label
+          aria-hidden='true'
           class='toggle__label'
           id={`toggle-${this._guid}__label`}
-          for={`toggle-${this._guid}`}
-          aria-hidden='true'
+          htmlFor={`toggle-${this._guid}`}
         >
           {this.label}
         </label>

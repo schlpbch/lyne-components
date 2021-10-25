@@ -1,15 +1,12 @@
-// @ts-nocheck
-
 import {
   Component,
-  Element,
   h,
   Prop,
-  State
+  State,
+  Watch
 } from '@stencil/core';
-import events from './lyne-toggle-multi.events';
+// import events from './lyne-toggle-radio.events';
 import { guid } from '../../global/guid';
-import { InterfaceToggleMultiAttributes } from './lyne-toggle-multi.custom.d';
 
 /**
  * @slot unnamed - Slot to render svg icon. You must pass an svg-element.
@@ -18,10 +15,10 @@ import { InterfaceToggleMultiAttributes } from './lyne-toggle-multi.custom.d';
 @Component({
   shadow: true,
   styleUrls: {
-    default: 'styles/lyne-toggle-multi.default.scss',
-    shared: 'styles/lyne-toggle-multi.shared.scss'
+    default: 'styles/lyne-toggle-radio.default.scss',
+    shared: 'styles/lyne-toggle-radio.shared.scss'
   },
-  tag: 'lyne-toggle-multi'
+  tag: 'lyne-toggle-radio'
 })
 
 export class LyneToggleMulti {
@@ -35,70 +32,32 @@ export class LyneToggleMulti {
   }) public disabled?: boolean;
 
   @Watch('disabled')
-  public watchStateHandler(newValue: boolean): void {
+  public watchStateHandler(): void {
     this._toggleDisabledStateClass();
   }
 
   @Prop() public checkedToggle?: string;
 
-  /** Label text to show on the button */
-  @Prop() public label? = 'Default button text';
-
-
-  /**
-   * Set this property to true if you want only a visual represenation of a
-   * button, but no interaction (a div instead of a button will be rendered).
-   */
-  @Prop() public visualButtonOnly?: boolean;
-
-  /** Set to true to get a disabled button */
-  @Prop() public disabled? = false;
+  /** Label text for the radio group (visually hidden). */
+  @Prop() public label? = 'Radio Group Label';
 
   /** Id which is sent in the click event payload */
   @Prop() public eventId?: string;
 
-  /** Define if icon should be shown or not */
-  @Prop() public icon? = false;
-
-  /** The name attribute to use for the button */
+  /** The name attribute to use with the radio group elements */
   @Prop() public name?: string;
 
-  /** The value attribute to use for the button */
-  @Prop() public value?: string;
-
-  /** The name attribute to use for the button */
+  /** The label for the first radio option */
   @Prop() public firstOptionLabel?: string;
 
-  /** The value attribute to use for the button */
+  /** The label for the second radio option */
   @Prop() public secondOptionLabel?: string;
 
-  /** The name attribute to use for the button */
+  /** The value for the first radio option */
   @Prop() public firstOptionValue?: string;
 
-  /** The value attribute to use for the button */
+  /** The value for the second radio option */
   @Prop() public secondOptionValue?: string;
-
-  @Element() private _element: HTMLElement;
-
-  /* private _toggleChange = (): void => {
-    let eventDetail;
-
-    if (this.visualButtonOnly) {
-      return;
-    }
-
-    if (this.eventId) {
-      eventDetail = this.eventId;
-    }
-
-    const event = new CustomEvent(events.change, {
-      bubbles: true,
-      composed: true,
-      detail: eventDetail
-    });
-
-    this._element.dispatchEvent(event);
-  }; */
 
   private _toggleDisabledStateClass(): void {
     if (this.disabled) {
@@ -119,7 +78,7 @@ export class LyneToggleMulti {
 
       <div class={`toggle${this._disabledStateClass}`}>
         <p
-          class="toggle__radios_label"
+          class='toggle__radios_label'
           id={`toggle-${this._guid}__radios_label`}
         >
           {this.label}
@@ -127,7 +86,7 @@ export class LyneToggleMulti {
         <div class='toggle__radios-wrapper'>
           <div class='toggle__radio-wrapper'>
             <input
-              checked={this.checkedToggle === 'first' ? true : false }
+              checked={this.checkedToggle === 'first'}
               class='toggle__radio'
               disabled={this.disabled}
               name={this.name}
@@ -146,7 +105,7 @@ export class LyneToggleMulti {
           </div>
           <div class='toggle__radio-wrapper'>
             <input
-              checked={this.checkedToggle === 'second' ? true : false }
+              checked={this.checkedToggle === 'second'}
               class='toggle__radio'
               disabled={this.disabled}
               name={this.name}

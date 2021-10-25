@@ -1,11 +1,11 @@
-import events from './lyne-toggle.events.ts';
+import events from './lyne-toggle-checkbox.events.ts';
 import { h } from 'jsx-dom';
 import readme from './readme.md';
 
 // --- Component
 const Template = (args) => (
-  <lyne-toggle {...args}>
-  </lyne-toggle>
+  <lyne-toggle-checkbox {...args}>
+  </lyne-toggle-checkbox>
 );
 
 const checked = {
@@ -58,12 +58,12 @@ const basicArgTypes = {
 };
 
 const basicArgs = {
-  checked: false,
-  disabled: false,
-  label: 'Toggle Label',
+  'checked': false,
+  'disabled': false,
+  'label': 'Toggle Label',
   'label-placement': labelPlacement.options[0],
-  name: 'demo',
-  value: 'togglevalue'
+  'name': 'demo',
+  'value': 'togglevalue'
 };
 /* eslint-enable sort-keys */
 
@@ -113,8 +113,10 @@ LabelLeftDisabled.documentation = {
 export const LabelRight = Template.bind({});
 
 LabelRight.argTypes = basicArgTypes;
-LabelRight.args = JSON.parse(JSON.stringify(basicArgs));
-LabelRight.args['label-placement'] = labelPlacement.options[1],
+LabelRight.args = {
+  ...basicArgs,
+  'label-placement': labelPlacement.options[1]
+};
 
 LabelRight.documentation = {
   title: 'Label Right'
@@ -123,9 +125,11 @@ LabelRight.documentation = {
 export const LabelRightChecked = Template.bind({});
 
 LabelRightChecked.argTypes = basicArgTypes;
-LabelRightChecked.args = JSON.parse(JSON.stringify(basicArgs));
-LabelRightChecked.args['checked'] = true;
-LabelRightChecked.args['label-placement'] = labelPlacement.options[1],
+LabelRightChecked.args = {
+  ...basicArgs,
+  'checked': true,
+  'label-placement': labelPlacement.options[1]
+};
 
 LabelRightChecked.documentation = {
   title: 'Label Right Checked'
@@ -134,10 +138,12 @@ LabelRightChecked.documentation = {
 export const LabelRightCheckedDisabled = Template.bind({});
 
 LabelRightCheckedDisabled.argTypes = basicArgTypes;
-LabelRightCheckedDisabled.args = JSON.parse(JSON.stringify(basicArgs));
-LabelRightCheckedDisabled.args['checked'] = true;
-LabelRightCheckedDisabled.args['disabled'] = true;
-LabelRightCheckedDisabled.args['label-placement'] = labelPlacement.options[1],
+LabelRightCheckedDisabled.args = {
+  ...basicArgs,
+  'checked': true,
+  'disabled': true,
+  'label-placement': labelPlacement.options[1]
+};
 
 LabelRightCheckedDisabled.documentation = {
   title: 'Label Right Checked & Disabled'
@@ -146,9 +152,11 @@ LabelRightCheckedDisabled.documentation = {
 export const LabelRightDisabled = Template.bind({});
 
 LabelRightDisabled.argTypes = basicArgTypes;
-LabelRightDisabled.args = JSON.parse(JSON.stringify(basicArgs));
-LabelRightDisabled.args['disabled'] = true;
-LabelRightDisabled.args['label-placement'] = labelPlacement.options[1],
+LabelRightDisabled.args = {
+  ...basicArgs,
+  'disabled': true,
+  'label-placement': labelPlacement.options[1]
+};
 
 LabelRightDisabled.documentation = {
   title: 'Label Right Disabled'
@@ -159,8 +167,8 @@ LabelRightDisabled.documentation = {
 /* ************************************************* */
 export default {
   decorators: [
-    (Story, context) => (
-      <div style={`padding: 2rem`}>
+    (Story) => (
+      <div style='padding: 2rem'>
         <Story/>
       </div>
     )
@@ -176,5 +184,5 @@ export default {
       extractComponentDescription: () => readme
     }
   },
-  title: 'Form Elements/lyne-toggle'
+  title: 'Form Elements/lyne-toggle-checkbox'
 };

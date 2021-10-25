@@ -289,14 +289,11 @@ export namespace Components {
          */
         "visuallyHidden"?: false;
     }
-    interface LyneToggle {
+    interface LyneToggleCheckbox {
         /**
           * Set to true to to show checked state initially
          */
         "checked"?: boolean;
-        /**
-          * Set to true to get a disabled button
-         */
         "disabled"?: boolean;
         /**
           * Id which is sent in the click event payload
@@ -307,7 +304,7 @@ export namespace Components {
          */
         "icon"?: boolean;
         /**
-          * Label text to show on the button
+          * Label text for the toggle checkbox
          */
         "label"?: string;
         /**
@@ -322,57 +319,38 @@ export namespace Components {
           * The value attribute to use for the button
          */
         "value"?: string;
-        /**
-          * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
-         */
-        "visualButtonOnly"?: boolean;
     }
-    interface LyneToggleMulti {
+    interface LyneToggleRadio {
         "checkedToggle"?: string;
-        /**
-          * Set to true to get a disabled button
-         */
         "disabled"?: boolean;
         /**
           * Id which is sent in the click event payload
          */
         "eventId"?: string;
         /**
-          * The name attribute to use for the button
+          * The label for the first radio option
          */
         "firstOptionLabel"?: string;
         /**
-          * The name attribute to use for the button
+          * The value for the first radio option
          */
         "firstOptionValue"?: string;
         /**
-          * Define if icon should be shown or not
-         */
-        "icon"?: boolean;
-        /**
-          * Label text to show on the button
+          * Label text for the radio group (visually hidden).
          */
         "label"?: string;
         /**
-          * The name attribute to use for the button
+          * The name attribute to use with the radio group elements
          */
         "name"?: string;
         /**
-          * The value attribute to use for the button
+          * The label for the second radio option
          */
         "secondOptionLabel"?: string;
         /**
-          * The value attribute to use for the button
+          * The value for the second radio option
          */
         "secondOptionValue"?: string;
-        /**
-          * The value attribute to use for the button
-         */
-        "value"?: string;
-        /**
-          * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
-         */
-        "visualButtonOnly"?: boolean;
     }
 }
 declare global {
@@ -442,17 +420,17 @@ declare global {
         prototype: HTMLLyneTitleElement;
         new (): HTMLLyneTitleElement;
     };
-    interface HTMLLyneToggleElement extends Components.LyneToggle, HTMLStencilElement {
+    interface HTMLLyneToggleCheckboxElement extends Components.LyneToggleCheckbox, HTMLStencilElement {
     }
-    var HTMLLyneToggleElement: {
-        prototype: HTMLLyneToggleElement;
-        new (): HTMLLyneToggleElement;
+    var HTMLLyneToggleCheckboxElement: {
+        prototype: HTMLLyneToggleCheckboxElement;
+        new (): HTMLLyneToggleCheckboxElement;
     };
-    interface HTMLLyneToggleMultiElement extends Components.LyneToggleMulti, HTMLStencilElement {
+    interface HTMLLyneToggleRadioElement extends Components.LyneToggleRadio, HTMLStencilElement {
     }
-    var HTMLLyneToggleMultiElement: {
-        prototype: HTMLLyneToggleMultiElement;
-        new (): HTMLLyneToggleMultiElement;
+    var HTMLLyneToggleRadioElement: {
+        prototype: HTMLLyneToggleRadioElement;
+        new (): HTMLLyneToggleRadioElement;
     };
     interface HTMLElementTagNameMap {
         "lyne-accordion": HTMLLyneAccordionElement;
@@ -466,8 +444,8 @@ declare global {
         "lyne-sbb-signet": HTMLLyneSbbSignetElement;
         "lyne-teaser-hero": HTMLLyneTeaserHeroElement;
         "lyne-title": HTMLLyneTitleElement;
-        "lyne-toggle": HTMLLyneToggleElement;
-        "lyne-toggle-multi": HTMLLyneToggleMultiElement;
+        "lyne-toggle-checkbox": HTMLLyneToggleCheckboxElement;
+        "lyne-toggle-radio": HTMLLyneToggleRadioElement;
     }
 }
 declare namespace LocalJSX {
@@ -745,14 +723,11 @@ declare namespace LocalJSX {
          */
         "visuallyHidden"?: false;
     }
-    interface LyneToggle {
+    interface LyneToggleCheckbox {
         /**
           * Set to true to to show checked state initially
          */
         "checked"?: boolean;
-        /**
-          * Set to true to get a disabled button
-         */
         "disabled"?: boolean;
         /**
           * Id which is sent in the click event payload
@@ -763,7 +738,7 @@ declare namespace LocalJSX {
          */
         "icon"?: boolean;
         /**
-          * Label text to show on the button
+          * Label text for the toggle checkbox
          */
         "label"?: string;
         /**
@@ -778,57 +753,38 @@ declare namespace LocalJSX {
           * The value attribute to use for the button
          */
         "value"?: string;
-        /**
-          * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
-         */
-        "visualButtonOnly"?: boolean;
     }
-    interface LyneToggleMulti {
+    interface LyneToggleRadio {
         "checkedToggle"?: string;
-        /**
-          * Set to true to get a disabled button
-         */
         "disabled"?: boolean;
         /**
           * Id which is sent in the click event payload
          */
         "eventId"?: string;
         /**
-          * The name attribute to use for the button
+          * The label for the first radio option
          */
         "firstOptionLabel"?: string;
         /**
-          * The name attribute to use for the button
+          * The value for the first radio option
          */
         "firstOptionValue"?: string;
         /**
-          * Define if icon should be shown or not
-         */
-        "icon"?: boolean;
-        /**
-          * Label text to show on the button
+          * Label text for the radio group (visually hidden).
          */
         "label"?: string;
         /**
-          * The name attribute to use for the button
+          * The name attribute to use with the radio group elements
          */
         "name"?: string;
         /**
-          * The value attribute to use for the button
+          * The label for the second radio option
          */
         "secondOptionLabel"?: string;
         /**
-          * The value attribute to use for the button
+          * The value for the second radio option
          */
         "secondOptionValue"?: string;
-        /**
-          * The value attribute to use for the button
-         */
-        "value"?: string;
-        /**
-          * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
-         */
-        "visualButtonOnly"?: boolean;
     }
     interface IntrinsicElements {
         "lyne-accordion": LyneAccordion;
@@ -842,8 +798,8 @@ declare namespace LocalJSX {
         "lyne-sbb-signet": LyneSbbSignet;
         "lyne-teaser-hero": LyneTeaserHero;
         "lyne-title": LyneTitle;
-        "lyne-toggle": LyneToggle;
-        "lyne-toggle-multi": LyneToggleMulti;
+        "lyne-toggle-checkbox": LyneToggleCheckbox;
+        "lyne-toggle-radio": LyneToggleRadio;
     }
 }
 export { LocalJSX as JSX };
@@ -861,8 +817,8 @@ declare module "@stencil/core" {
             "lyne-sbb-signet": LocalJSX.LyneSbbSignet & JSXBase.HTMLAttributes<HTMLLyneSbbSignetElement>;
             "lyne-teaser-hero": LocalJSX.LyneTeaserHero & JSXBase.HTMLAttributes<HTMLLyneTeaserHeroElement>;
             "lyne-title": LocalJSX.LyneTitle & JSXBase.HTMLAttributes<HTMLLyneTitleElement>;
-            "lyne-toggle": LocalJSX.LyneToggle & JSXBase.HTMLAttributes<HTMLLyneToggleElement>;
-            "lyne-toggle-multi": LocalJSX.LyneToggleMulti & JSXBase.HTMLAttributes<HTMLLyneToggleMultiElement>;
+            "lyne-toggle-checkbox": LocalJSX.LyneToggleCheckbox & JSXBase.HTMLAttributes<HTMLLyneToggleCheckboxElement>;
+            "lyne-toggle-radio": LocalJSX.LyneToggleRadio & JSXBase.HTMLAttributes<HTMLLyneToggleRadioElement>;
         }
     }
 }
