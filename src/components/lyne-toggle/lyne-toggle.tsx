@@ -114,7 +114,8 @@ export class LyneToggle {
       <div class={`toggle${this._disabledStateClass}${labelPositionClass}`}>
         <label
           class='toggle__label'
-          for='demo'
+          id='toggle__label'
+          aria-hidden='true'
         >
           {this.label}
         </label>
@@ -126,6 +127,7 @@ export class LyneToggle {
             name='toggle__input'
             disabled={this.disabled}
             checked={this.checked}
+            aria-labelledby='toggle__label'
           />
           <span class='toggle__checkbox-styled'>
           </span>
