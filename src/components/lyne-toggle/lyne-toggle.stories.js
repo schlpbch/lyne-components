@@ -42,11 +42,18 @@ const labelPlacement = {
   ]
 };
 
+const name = {
+  control: {
+    type: 'text'
+  }
+};
+
 const basicArgTypes = {
   checked,
   'disabled': disabledArg,
   label,
   'label-placement': labelPlacement,
+  name,
   value
 };
 
@@ -55,6 +62,7 @@ const basicArgs = {
   disabled: false,
   label: 'Toggle Label',
   'label-placement': labelPlacement.options[0],
+  name: 'demo',
   value: 'togglevalue'
 };
 /* eslint-enable sort-keys */

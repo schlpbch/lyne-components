@@ -8,6 +8,7 @@ import {
   State
 } from '@stencil/core';
 import events from './lyne-toggle-multi.events';
+import { guid } from '../../global/guid';
 import { InterfaceToggleMultiAttributes } from './lyne-toggle-multi.custom.d';
 
 /**
@@ -24,6 +25,8 @@ import { InterfaceToggleMultiAttributes } from './lyne-toggle-multi.custom.d';
 })
 
 export class LyneToggleMulti {
+
+  private _guid: string;
 
   @State() private _disabledStateClass: string;
 
@@ -106,6 +109,7 @@ export class LyneToggleMulti {
   }
 
   public componentWillLoad(): void {
+    this._guid = guid();
     this._toggleDisabledStateClass();
   }
 
@@ -116,7 +120,7 @@ export class LyneToggleMulti {
       <div class={`toggle${this._disabledStateClass}`}>
         <p
           class="toggle__radios_label"
-          id='toggle__radios_label'
+          id={`toggle-${this._guid}__radios_label`}
         >
           {this.label}
         </p>
@@ -126,13 +130,13 @@ export class LyneToggleMulti {
               checked={this.checkedToggle === 'first' ? true : false }
               class='toggle__radio'
               disabled={this.disabled}
-              name='toggle__input'
+              name={this.name}
               type='radio'
               value={this.firstOptionValue}
-              aria-labelledby='toggle-option-1-label toggle__radios_label'
+              aria-labelledby={`toggle-${this._guid}-option-1__label toggle-${this._guid}__radios_label`}
             />
             <label
-              id='toggle-option-1-label'
+              id={`toggle-${this._guid}-option-1__label`}
               class='toggle__radio-label'
               data-label={this.firstOptionLabel}
               aria-hidden='true'
@@ -145,13 +149,13 @@ export class LyneToggleMulti {
               checked={this.checkedToggle === 'second' ? true : false }
               class='toggle__radio'
               disabled={this.disabled}
-              name='toggle__input'
+              name={this.name}
               type='radio'
               value={this.secondOptionValue}
-              aria-labelledby='toggle-option-2-label toggle__radios_label'
+              aria-labelledby={`toggle-${this._guid}-option-2-label toggle-${this._guid}__radios_label`}
             />
             <label
-              id='toggle-option-2-label'
+              id={`toggle-${this._guid}-option-2__label`}
               class='toggle__radio-label'
               data-label={this.secondOptionLabel}
               aria-hidden='true'

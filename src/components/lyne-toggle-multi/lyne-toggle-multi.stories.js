@@ -30,27 +30,45 @@ const label = {
   }
 };
 
+const name = {
+  control: {
+    type: 'text'
+  }
+};
+
 const firstOptionLabel = {
   control: {
     type: 'text'
+  },
+  table: {
+    category: 'Toggle Content'
   }
 };
 
 const secondOptionLabel = {
   control: {
     type: 'text'
+  },
+  table: {
+    category: 'Toggle Content'
   }
 };
 
 const valueLeft = {
   control: {
     type: 'text'
+  },
+  table: {
+    category: 'Toggle Content'
   }
 };
 
 const valueRight = {
   control: {
     type: 'text'
+  },
+  table: {
+    category: 'Toggle Content'
   }
 };
 
@@ -58,6 +76,7 @@ const basicArgTypes = {
   'checked-toggle': checkedToggle,
   'disabled': disabledArg,
   label,
+  name,
   'first-option-label': firstOptionLabel,
   'first-option-value': valueLeft,
   'second-option-label': secondOptionLabel,
@@ -68,6 +87,7 @@ const basicArgs = {
   'checked-toggle': checkedToggle.options[0],
   disabled: false,
   label: 'Zwischen Ankunfts- und Abfahrtszeit wechseln',
+  name: 'demo',
   'first-option-label': '',
   'first-option-value': '',
   'second-option-label': '',

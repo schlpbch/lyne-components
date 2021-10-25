@@ -86,6 +86,7 @@ label {
 
 .toggle__radio:checked + .toggle__radio-label {
   @include text-s--bold();
+  line-height: 1;
 }
 
 .toggle__radio:checked + .toggle__radio-label span {
@@ -129,7 +130,7 @@ label {
   height: 100%;
   padding-inline-start: pxToRem(var(--two-values-toggle-padding-inline));
   padding-inline-end: pxToRem(var(--two-values-toggle-padding-inline));
-  line-height: pxToRem(var(--two-values-toggle-inner-height));
+  line-height: 1;
 }
 
 .toggle__radio-label span {
@@ -166,8 +167,6 @@ label {
   transition-property: opacity, transform;
   transform: scale(0.8);
 }
-
-
 
 // TODO right to left style
 // TODO high contrast style

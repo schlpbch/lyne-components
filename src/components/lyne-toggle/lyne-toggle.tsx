@@ -8,6 +8,7 @@ import {
   State
 } from '@stencil/core';
 import events from './lyne-toggle.events';
+import { guid } from '../../global/guid';
 import { InterfaceToggleAttributes } from './lyne-toggle.custom.d';
 import tickIcon from 'lyne-icons/dist/icons/tick-small.svg';
 
@@ -25,6 +26,8 @@ import tickIcon from 'lyne-icons/dist/icons/tick-small.svg';
 })
 
 export class LyneToggle {
+
+  private _guid: string;
 
   @State() private _disabledStateClass: string;
 
@@ -98,6 +101,7 @@ export class LyneToggle {
   }
 
   public componentWillLoad(): void {
+    this._guid = guid();
     this._toggleDisabledStateClass();
   }
 
@@ -114,7 +118,8 @@ export class LyneToggle {
       <div class={`toggle${this._disabledStateClass}${labelPositionClass}`}>
         <label
           class='toggle__label'
-          id='toggle__label'
+          id={`toggle-${this._guid}__label`}
+          for={`toggle-${this._guid}`}
           aria-hidden='true'
         >
           {this.label}
@@ -122,12 +127,12 @@ export class LyneToggle {
         <div class='toggle__checkbox-wrapper'>
           <input
             class='toggle__checkbox'
-            id='demo'
+            id={`toggle-${this._guid}`}
             type='checkbox'
-            name='toggle__input'
+            name={this.name}
             disabled={this.disabled}
             checked={this.checked}
-            aria-labelledby='toggle__label'
+            aria-labelledby={`toggle-${this._guid}__label`}
           />
           <span class='toggle__checkbox-styled'>
           </span>
