@@ -52,11 +52,23 @@ export class LyneImage {
 
   /**
    * A caption can provide additional context to the image (e.g.
-   * name of the photographer, copyright information and the like).
+   * descriptions and the like).
    * Links will automatically receive tabindex=-1 if hideFromScreenreader
    * is set to true. That way they will no longer become focusable.
    */
   @Prop() public caption?: string;
+
+  /**
+   * If a copyright text is provided, we will add it to the caption
+   * and create a structured data json-ld block with the copyright
+   * information.
+   */
+  @Prop() public copyright?: string;
+
+  /**
+   * Copyright holder can either be an Organization or a Person
+   */
+  @Prop() public copyrightHolder: InterfaceImageAttributes['copyrightHolder'] = 'Organization';
 
   /**
    * Set this to true, if you want to pass a custom focal point
@@ -110,10 +122,21 @@ export class LyneImage {
   @Prop() public imageSrc?: string;
 
   /**
-   * Just some example image filey you can use to play around with
+   * Just some example image file you can use to play around with
    * the module.
    */
   @Prop() public imageSrcExamples?: string;
+
+  /**
+   * The importance attribute is fairly new attribute which should
+   * help the browser decide which resources it should prioritise
+   * during page load. We will set the attribute value based on the
+   * value, we receive in the loading attribute. 'eager', which we use
+   * for the largest image within the initial viewport, will set the
+   * attribute value to 'high'. 'lazy', which we use for images below
+   * the fold, will set the attribute value to 'low'.
+   */
+  @Prop() public importance: InterfaceImageAttributes['importance'] = 'high';
 
   /**
    * With the support of native image lazy loading, we can now
@@ -297,6 +320,26 @@ export class LyneImage {
 
     if (this.loading === 'lazy') {
       this.decoding = 'async';
+      this.importance = 'low';
+    }
+
+    let {
+      caption
+    } = this;
+
+    let schemaData = '';
+
+    if (this.copyright) {
+      caption = `${this.caption} ©${this.copyright}`;
+      schemaData = `{
+        "@context": "https://schema.org",
+        "@type": "Photograph",
+        "image": "${imageSrc}",
+        "copyrightHolder": {
+          "@type": "${this.copyrightHolder}",
+          "name": "${this.copyright}"
+        }
+      }`;
     }
 
     let {
@@ -446,6 +489,7 @@ export class LyneImage {
               height='562'
               loading={this.loading}
               decoding={this.decoding}
+              importance={this.importance}
               ref={(el): void => {
                 this._imageElement = el;
               }}
@@ -454,16 +498,27 @@ export class LyneImage {
 
         </div>
         {
-          this.caption
+          caption
             ? (
               <figcaption
                 class='image__caption'
-                innerHTML={this.caption}
+                innerHTML={caption}
                 ref={(el): void => {
                   this._captionElement = el;
                 }}
               >
               </figcaption>
+            )
+            : ''
+        }
+        {
+          schemaData
+            ? (
+              <script
+                type='application/ld+json'
+                innerHTML={schemaData}
+              >
+              </script>
             )
             : ''
         }

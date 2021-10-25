@@ -107,9 +107,17 @@ export namespace Components {
          */
         "alt"?: string;
         /**
-          * A caption can provide additional context to the image (e.g. name of the photographer, copyright information and the like). Links will automatically receive tabindex=-1 if hideFromScreenreader is set to true. That way they will no longer become focusable.
+          * A caption can provide additional context to the image (e.g. descriptions and the like). Links will automatically receive tabindex=-1 if hideFromScreenreader is set to true. That way they will no longer become focusable.
          */
         "caption"?: string;
+        /**
+          * If a copyright text is provided, we will add it to the caption and create a structured data json-ld block with the copyright information.
+         */
+        "copyright"?: string;
+        /**
+          * Copyright holder can either be an Organization or a Person
+         */
+        "copyrightHolder": InterfaceImageAttributes['copyrightHolder'];
         /**
           * Set this to true, if you want to pass a custom focal point for the image. See full documentation here: https://docs.imgix.com/apis/rendering/focalpoint-crop
          */
@@ -139,9 +147,13 @@ export namespace Components {
          */
         "imageSrc"?: string;
         /**
-          * Just some example image filey you can use to play around with the module.
+          * Just some example image file you can use to play around with the module.
          */
         "imageSrcExamples"?: string;
+        /**
+          * The importance attribute is fairly new attribute which should help the browser decide which resources it should prioritise during page load. We will set the attribute value based on the value, we receive in the loading attribute. 'eager', which we use for the largest image within the initial viewport, will set the attribute value to 'high'. 'lazy', which we use for images below the fold, will set the attribute value to 'low'.
+         */
+        "importance": InterfaceImageAttributes['importance'];
         /**
           * With the support of native image lazy loading, we can now decide whether we want to load the image immediately or only once it is close to the visible viewport. The value eager is best used for images within the initial viewport. We want to load these images as fast as possible to improve the Core Web Vitals values. lazy on the other hand works best for images which are further down the page or invisible during the loading of the initial viewport.
          */
@@ -551,9 +563,17 @@ declare namespace LocalJSX {
          */
         "alt"?: string;
         /**
-          * A caption can provide additional context to the image (e.g. name of the photographer, copyright information and the like). Links will automatically receive tabindex=-1 if hideFromScreenreader is set to true. That way they will no longer become focusable.
+          * A caption can provide additional context to the image (e.g. descriptions and the like). Links will automatically receive tabindex=-1 if hideFromScreenreader is set to true. That way they will no longer become focusable.
          */
         "caption"?: string;
+        /**
+          * If a copyright text is provided, we will add it to the caption and create a structured data json-ld block with the copyright information.
+         */
+        "copyright"?: string;
+        /**
+          * Copyright holder can either be an Organization or a Person
+         */
+        "copyrightHolder"?: InterfaceImageAttributes['copyrightHolder'];
         /**
           * Set this to true, if you want to pass a custom focal point for the image. See full documentation here: https://docs.imgix.com/apis/rendering/focalpoint-crop
          */
@@ -583,9 +603,13 @@ declare namespace LocalJSX {
          */
         "imageSrc"?: string;
         /**
-          * Just some example image filey you can use to play around with the module.
+          * Just some example image file you can use to play around with the module.
          */
         "imageSrcExamples"?: string;
+        /**
+          * The importance attribute is fairly new attribute which should help the browser decide which resources it should prioritise during page load. We will set the attribute value based on the value, we receive in the loading attribute. 'eager', which we use for the largest image within the initial viewport, will set the attribute value to 'high'. 'lazy', which we use for images below the fold, will set the attribute value to 'low'.
+         */
+        "importance"?: InterfaceImageAttributes['importance'];
         /**
           * With the support of native image lazy loading, we can now decide whether we want to load the image immediately or only once it is close to the visible viewport. The value eager is best used for images within the initial viewport. We want to load these images as fast as possible to improve the Core Web Vitals values. lazy on the other hand works best for images which are further down the page or invisible during the loading of the initial viewport.
          */
