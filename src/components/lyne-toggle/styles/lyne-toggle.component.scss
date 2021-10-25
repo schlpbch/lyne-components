@@ -52,6 +52,11 @@ label {
 
 .toggle--disabled label {
   color: var(--color-graphite-default);
+
+  @include ifForcedColors {
+    color: GrayText;
+  }
+
 }
 
 .toggle__checkbox-wrapper {
@@ -77,10 +82,20 @@ label {
   transition-property: background-color;
   transform: translateX(pxToRem(0));
   will-change: background-color;
+
+  @include ifForcedColors {
+    border: pxToRem(1) solid CanvasText;
+  }
+
 }
 
 .toggle--disabled .toggle__checkbox-styled {
   background-color: var(--background-color-disabled);
+
+  @include ifForcedColors {
+    border-color: GrayText;
+  }
+
 }
 
 .toggle__checkbox-styled:before {
@@ -96,15 +111,44 @@ label {
   transition-timing-function: inherit;
   transition-property: transform;
   will-change: transform;
+
+  @include ifForcedColors {
+    width: pxToRem(22);
+    height: pxToRem(22);
+    border: pxToRem(1) solid CanvasText;
+  }
+
 }
 
 .toggle:not(.toggle--disabled) .toggle__checkbox:checked + .toggle__checkbox-styled {
   background: var(--toggle-background-color-checked);
+
+  @include ifForcedColors {
+    background: CanvasText;
+  }
+
+}
+
+.toggle--disabled .toggle__checkbox + .toggle__checkbox-styled:before {
+  @include ifForcedColors {
+    border-color: GrayText;
+  }
+}
+
+.toggle--disabled .toggle__checkbox:checked + .toggle__checkbox-styled {
+   @include ifForcedColors {
+    background: GrayText;
+  }
 }
 
 //.toggle:dir(ltr) .toggle__checkbox:checked + .toggle__checkbox-styled:before {
 .toggle__checkbox:checked + .toggle__checkbox-styled:before {
   transform: translateX(pxToRem(20));
+
+  @include ifForcedColors {
+    border: pxToRem(1) solid Canvas;
+  }
+
 }
 
 /*
@@ -119,7 +163,7 @@ label {
   inset-inline-start: pxToRem(var(--toggle-padding));
   inset-block-start: pxToRem(var(--toggle-padding));
   z-index: 1;
-  width: pxToRem(var(--toggle-handler-size)); // TODO check why --icon-size-ui-small is not defined here
+  width: pxToRem(var(--toggle-handler-size));
   height: pxToRem(var(--toggle-handler-size));
   overflow: hidden;
   fill: var(--toggle-background-color-checked);
@@ -130,6 +174,11 @@ label {
   transform: translateX(pxToRem(0)) scale3d(0.5,0.5,0.5);
   will-change: transform;
   pointer-events: none;
+
+  @include ifForcedColors {
+    fill: CanvasText;
+  }
+
 }
 
 .toggle__checkbox:checked ~ .toggle__checkbox-tick {
@@ -148,6 +197,11 @@ label {
 
 .toggle--disabled .toggle__checkbox-tick {
   fill: var(--background-color-disabled);
+
+  @include ifForcedColors {
+    fill: GrayText;
+  }
+
 }
 
 

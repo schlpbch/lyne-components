@@ -52,6 +52,11 @@ label {
   padding: pxToRem(var(--toggle-padding));
   border-radius: pxToRem(var(--two-values-toggle-height));
   background: var(--background-color);
+
+  @include ifForcedColors {
+    border: pxToRem(1) solid CanvasText;
+  }
+
 }
 
 .toggle__radios_label {
@@ -70,12 +75,26 @@ label {
 
 .toggle__radio:checked + .toggle__radio-label {
   @include text-s--bold();
+
+  span {
+    @include ifForcedColors {
+      background: CanvasText;
+      color: Canvas;
+    }
+  }
+
 }
 
 .toggle__radio:checked + .toggle__radio-label:after {
-  opacity: 0.999999;
+  opacity: 1;
   transform: scale(1);
   color: var(--text-color-checked);
+
+  @include ifForcedColors {
+    background: CanvasText;
+    color: Canvas;
+  }
+
 }
 
 .toggle__radio-label {
@@ -88,7 +107,7 @@ label {
   height: 100%;
   padding-inline-start: pxToRem(var(--two-values-toggle-padding-inline));
   padding-inline-end: pxToRem(var(--two-values-toggle-padding-inline));
-  line-height: var(--two-values-toggle-inner-height);
+  line-height: pxToRem(var(--two-values-toggle-inner-height));
 }
 
 .toggle__radio-label span {
@@ -97,13 +116,17 @@ label {
 }
 
 .toggle__radio-label:before {
+  position: relative;
+  z-index: 0;
   @include text-s--bold();
   display: block;
   content: attr(data-label);
   height: 0;
+  line-height: 0;
   text-align: center;
   color: transparent;
   visibility: hidden;
+  opacity: 0;
 }
 
 .toggle__radio-label:after {
