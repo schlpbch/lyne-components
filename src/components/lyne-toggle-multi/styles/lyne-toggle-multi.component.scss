@@ -43,6 +43,11 @@ label {
 
 .toggle--disabled label {
   color: var(--color-graphite-default);
+
+  @include ifForcedColors {
+    color: GrayText;
+  }
+
 }
 
 .toggle__radios-wrapper {
@@ -57,6 +62,12 @@ label {
     border: pxToRem(1) solid CanvasText;
   }
 
+}
+
+.toggle--disabled .toggle__radios-wrapper {
+  @include ifForcedColors {
+    border-color: GrayText;
+  }
 }
 
 .toggle__radios_label {
@@ -75,14 +86,13 @@ label {
 
 .toggle__radio:checked + .toggle__radio-label {
   @include text-s--bold();
+}
 
-  span {
-    @include ifForcedColors {
-      background: CanvasText;
-      color: Canvas;
-    }
+.toggle__radio:checked + .toggle__radio-label span {
+  @include ifForcedColors {
+    forced-color-adjust: none;
+    color: Canvas;
   }
-
 }
 
 .toggle__radio:checked + .toggle__radio-label:after {
@@ -95,6 +105,18 @@ label {
     color: Canvas;
   }
 
+}
+
+.toggle--disabled .toggle__radio:checked  + .toggle__radio-label:after {
+  @include ifForcedColors {
+    background: GrayText;
+  }
+}
+
+.toggle--disabled .toggle__radio:checked  + .toggle__radio-label span {
+  @include ifForcedColors {
+    color: Canvas;
+  }
 }
 
 .toggle__radio-label {
