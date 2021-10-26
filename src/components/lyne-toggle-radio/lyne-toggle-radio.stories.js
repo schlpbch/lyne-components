@@ -89,6 +89,7 @@ const basicArgs = {
   'checked-toggle': checkedToggle.options[0],
   'disabled': false,
   'label': 'Zwischen Ankunfts- und Abfahrtszeit wechseln',
+  'name': 'demo',
   'first-option-label': '',
   'first-option-value': '',
   'second-option-label': '',

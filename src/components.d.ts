@@ -321,7 +321,7 @@ export namespace Components {
         "value"?: string;
     }
     interface LyneToggleRadio {
-        "checkedToggle"?: string;
+        "checkedToggle": string;
         "disabled"?: boolean;
         /**
           * Id which is sent in the click event payload
