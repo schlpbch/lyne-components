@@ -10,6 +10,7 @@ import { InterfaceButtonAttributes } from "./components/lyne-button/lyne-button.
 import { InterfaceImageAttributes } from "./components/lyne-image/lyne-image.custom.d";
 import { InterfacePanelAttributes } from "./components/lyne-panel/lyne-panel.custom.d";
 import { InterfacePearlChainAttributes } from "./components/lyne-pearl-chain/lyne-pearl-chain.custom.d";
+import { InterfaceLyneSavingsLabelAttributes } from "./components/lyne-savings-label/lyne-savings-label.custom.d";
 import { Time } from "./components/lyne-sbb-clock/lyne-sbb-clock.custom.d";
 import { InterfaceLogoAttributes } from "./components/lyne-sbb-logo/lyne-sbb-logo.custom.d";
 import { InterfaceSignetAttributes } from "./components/lyne-sbb-signet/lyne-sbb-signet.custom.d";
@@ -207,6 +208,12 @@ export namespace Components {
          */
         "status"?: InterfacePearlChainAttributes['status'];
     }
+    interface LyneSavingsLabel {
+        /**
+          * Documentation for someProp
+         */
+        "someProp"?: InterfaceLyneSavingsLabelAttributes['someInterface'];
+    }
     interface LyneSbbClock {
         /**
           * initialTime accepts a string following a ${number}:${number}:${number} pattern. If left empty or the string 'now' is used we will set the current time the client has on its device.
@@ -321,6 +328,9 @@ export namespace Components {
         "value"?: string;
     }
     interface LyneToggleRadio {
+        /**
+          * Decides which option should be initially checked.
+         */
         "checkedToggle": string;
         "disabled"?: boolean;
         /**
@@ -328,13 +338,21 @@ export namespace Components {
          */
         "eventId"?: string;
         /**
+          * The icon name for the first radio option, choose from the small icon variants from the ui-icons category from here https://lyne.sbb.ch/tokens/icons/
+         */
+        "firstOptionIcon"?: string;
+        /**
           * The label for the first radio option
          */
-        "firstOptionLabel"?: string;
+        "firstOptionLabel": string;
         /**
           * The value for the first radio option
          */
-        "firstOptionValue"?: string;
+        "firstOptionValue": string;
+        /**
+          * Define if icons should be shown or not
+         */
+        "icon"?: boolean;
         /**
           * Label text for the radio group (visually hidden).
          */
@@ -344,13 +362,21 @@ export namespace Components {
          */
         "name"?: string;
         /**
+          * The icon name for the second radio option, choose from the small icon variants from the ui-icons category from here https://lyne.sbb.ch/tokens/icons/
+         */
+        "secondOptionIcon"?: string;
+        /**
           * The label for the second radio option
          */
-        "secondOptionLabel"?: string;
+        "secondOptionLabel": string;
         /**
           * The value for the second radio option
          */
-        "secondOptionValue"?: string;
+        "secondOptionValue": string;
+        /**
+          * Decides whether icon should be shown or not
+         */
+        "showIcons": boolean;
     }
 }
 declare global {
@@ -389,6 +415,12 @@ declare global {
     var HTMLLynePearlChainElement: {
         prototype: HTMLLynePearlChainElement;
         new (): HTMLLynePearlChainElement;
+    };
+    interface HTMLLyneSavingsLabelElement extends Components.LyneSavingsLabel, HTMLStencilElement {
+    }
+    var HTMLLyneSavingsLabelElement: {
+        prototype: HTMLLyneSavingsLabelElement;
+        new (): HTMLLyneSavingsLabelElement;
     };
     interface HTMLLyneSbbClockElement extends Components.LyneSbbClock, HTMLStencilElement {
     }
@@ -439,6 +471,7 @@ declare global {
         "lyne-image": HTMLLyneImageElement;
         "lyne-panel": HTMLLynePanelElement;
         "lyne-pearl-chain": HTMLLynePearlChainElement;
+        "lyne-savings-label": HTMLLyneSavingsLabelElement;
         "lyne-sbb-clock": HTMLLyneSbbClockElement;
         "lyne-sbb-logo": HTMLLyneSbbLogoElement;
         "lyne-sbb-signet": HTMLLyneSbbSignetElement;
@@ -641,6 +674,12 @@ declare namespace LocalJSX {
          */
         "status"?: InterfacePearlChainAttributes['status'];
     }
+    interface LyneSavingsLabel {
+        /**
+          * Documentation for someProp
+         */
+        "someProp"?: InterfaceLyneSavingsLabelAttributes['someInterface'];
+    }
     interface LyneSbbClock {
         /**
           * initialTime accepts a string following a ${number}:${number}:${number} pattern. If left empty or the string 'now' is used we will set the current time the client has on its device.
@@ -755,20 +794,31 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface LyneToggleRadio {
-        "checkedToggle"?: string;
+        /**
+          * Decides which option should be initially checked.
+         */
+        "checkedToggle": string;
         "disabled"?: boolean;
         /**
           * Id which is sent in the click event payload
          */
         "eventId"?: string;
         /**
+          * The icon name for the first radio option, choose from the small icon variants from the ui-icons category from here https://lyne.sbb.ch/tokens/icons/
+         */
+        "firstOptionIcon"?: string;
+        /**
           * The label for the first radio option
          */
-        "firstOptionLabel"?: string;
+        "firstOptionLabel": string;
         /**
           * The value for the first radio option
          */
-        "firstOptionValue"?: string;
+        "firstOptionValue": string;
+        /**
+          * Define if icons should be shown or not
+         */
+        "icon"?: boolean;
         /**
           * Label text for the radio group (visually hidden).
          */
@@ -778,13 +828,21 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * The icon name for the second radio option, choose from the small icon variants from the ui-icons category from here https://lyne.sbb.ch/tokens/icons/
+         */
+        "secondOptionIcon"?: string;
+        /**
           * The label for the second radio option
          */
-        "secondOptionLabel"?: string;
+        "secondOptionLabel": string;
         /**
           * The value for the second radio option
          */
-        "secondOptionValue"?: string;
+        "secondOptionValue": string;
+        /**
+          * Decides whether icon should be shown or not
+         */
+        "showIcons"?: boolean;
     }
     interface IntrinsicElements {
         "lyne-accordion": LyneAccordion;
@@ -793,6 +851,7 @@ declare namespace LocalJSX {
         "lyne-image": LyneImage;
         "lyne-panel": LynePanel;
         "lyne-pearl-chain": LynePearlChain;
+        "lyne-savings-label": LyneSavingsLabel;
         "lyne-sbb-clock": LyneSbbClock;
         "lyne-sbb-logo": LyneSbbLogo;
         "lyne-sbb-signet": LyneSbbSignet;
@@ -812,6 +871,7 @@ declare module "@stencil/core" {
             "lyne-image": LocalJSX.LyneImage & JSXBase.HTMLAttributes<HTMLLyneImageElement>;
             "lyne-panel": LocalJSX.LynePanel & JSXBase.HTMLAttributes<HTMLLynePanelElement>;
             "lyne-pearl-chain": LocalJSX.LynePearlChain & JSXBase.HTMLAttributes<HTMLLynePearlChainElement>;
+            "lyne-savings-label": LocalJSX.LyneSavingsLabel & JSXBase.HTMLAttributes<HTMLLyneSavingsLabelElement>;
             "lyne-sbb-clock": LocalJSX.LyneSbbClock & JSXBase.HTMLAttributes<HTMLLyneSbbClockElement>;
             "lyne-sbb-logo": LocalJSX.LyneSbbLogo & JSXBase.HTMLAttributes<HTMLLyneSbbLogoElement>;
             "lyne-sbb-signet": LocalJSX.LyneSbbSignet & JSXBase.HTMLAttributes<HTMLLyneSbbSignetElement>;

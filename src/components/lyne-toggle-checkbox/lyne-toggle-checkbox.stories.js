@@ -11,6 +11,9 @@ const Template = (args) => (
 const checked = {
   control: {
     type: 'boolean'
+  },
+  table: {
+    category: 'State'
   }
 };
 
@@ -23,12 +26,18 @@ const value = {
 const disabledArg = {
   control: {
     type: 'boolean'
+  },
+  table: {
+    category: 'State'
   }
 };
 
 const label = {
   control: {
     type: 'text'
+  },
+  table: {
+    category: 'Label'
   }
 };
 
@@ -39,7 +48,10 @@ const labelPlacement = {
   options: [
     'left',
     'right'
-  ]
+  ],
+  table: {
+    category: 'Label'
+  }
 };
 
 const name = {
@@ -173,9 +185,6 @@ export default {
       </div>
     )
   ],
-  documentation: {
-    disableArgs: ['iconslot']
-  },
   parameters: {
     actions: {
       handles: [events.change]

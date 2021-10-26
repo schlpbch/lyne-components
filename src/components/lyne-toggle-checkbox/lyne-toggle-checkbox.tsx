@@ -9,10 +9,6 @@ import {
 import { guid } from '../../global/guid';
 import tickIcon from 'lyne-icons/dist/icons/tick-small.svg';
 
-/**
- * @slot unnamed - Slot to render svg icon. You must pass an svg-element.
- */
-
 @Component({
   shadow: true,
   styleUrls: {

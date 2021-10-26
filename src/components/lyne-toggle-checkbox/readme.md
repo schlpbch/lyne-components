@@ -19,13 +19,6 @@
 | `value`                       | `value`           | The value attribute to use for the button                               | `string`  | `undefined`             |
 
 
-## Slots
-
-| Slot        | Description                                            |
-| ----------- | ------------------------------------------------------ |
-| `"unnamed"` | Slot to render svg icon. You must pass an svg-element. |
-
-
 ----------------------------------------------
 
 
