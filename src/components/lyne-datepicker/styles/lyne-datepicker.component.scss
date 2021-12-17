@@ -3,12 +3,109 @@
 // and default mode
 @include host-component-properties;
 
+@mixin selectedDayStyle {
+  content: "";
+  position: absolute;
+  top: pxToRem(var(--day-selected-cricle-border-width) / 2);
+  display: block;
+  width: pxToRem(var(--day-selected-cricle-size));
+  height: pxToRem(var(--day-selected-cricle-size));
+  border-radius: 50%;
+  border: pxToRem(var(--day-selected-cricle-border-width)) solid var(--text-default-color);
+}
+
 :host {
   display: block;
 
-  --some-color-var: black;
+  --text-default-color: var(--color-charcoal-default);
+  --text-gray-color: var(--color-granite-default);
+  --text-color-hover-focus: var(--color-red125-default);
+  --datepicker-width: 312;
+  --day-cell-size: 44;
+  --day-selected-cricle-size: 40;
+  --day-selected-cricle-border-width: 2;
+  --day-disabled-line-width: 22;
+
+  @include mq($from: micro) {
+    --datepicker-width: 340;
+  }
 }
 
-.some-class {
-  color: var(--some-color-var);
+.datepicker {
+  width: pxToRem(var(--datepicker-width));
+  padding: pxToRem(var(--spacing-fixed-4x));
+  border-radius: pxToRem(var(--border-radius-8x));
+  border: 1px solid black;
+}
+
+.datepicker__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-end: pxToRem(var(--spacing-fixed-4x));
+}
+
+.datepicker__header-month-current {
+  @include text-s--regular();
+  color: var(--text-default-color);
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+th {
+  @include text-xs--regular();
+  color: var(--text-gray-color);
+  padding-block-end: pxToRem(var(--spacing-fixed-4x));
+}
+
+td {
+  @include text-s--regular();
+  color: var(--text-default-color);
+  text-align: center;
+  cursor: default;
+  position: relative;
+  height: pxToRem(var(--day-cell-size));
+  width: pxToRem(var(--day-cell-size));
+
+  &:not(.datepicker__day--disabled):not(.datepicker__day--empty):not(.datepicker__day--selected):hover {
+    color: var(--text-color-hover-focus);
+
+    &:after {
+      @include selectedDayStyle();
+      border-color: var(--text-color-hover-focus);
+    }
+  }
+
+  &.datepicker__day--past {
+    color: var(--text-gray-color);
+  }
+
+  &.datepicker__day--today {
+    @include text--bold();
+  }
+
+  &.datepicker__day--selected {
+    color: var(--text-default-color);
+
+    &:after {
+      @include selectedDayStyle();
+    }
+  }
+
+  &.datepicker__day--disabled {
+    color: var(--text-gray-color);
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: calc((#{pxToRem(var(--day-cell-size))} - #{pxToRem(var(--day-disabled-line-width))}) / 2);
+      top: calc(#{pxToRem(var(--day-selected-cricle-size))} / 2);
+      display: block;
+      width: pxToRem(var(--day-disabled-line-width));
+      border-top: pxToRem(1) solid var(--text-gray-color);
+    }
+  }
 }
