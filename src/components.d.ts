@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { InterfaceAccordionItemAttributes } from "./components/lyne-accordion-item/lyne-accordion-item.custom.d";
 import { InterfaceButtonAttributes } from "./components/lyne-button/lyne-button.custom.d";
+import { InterfaceLyneDatepickerAttributes } from "./components/lyne-datepicker/lyne-datepicker.custom.d";
 import { InterfaceImageAttributes } from "./components/lyne-image/lyne-image.custom.d";
 import { InterfaceLinkAttributes } from "./components/lyne-link/lyne-link.custom.d";
 import { InterfaceLinkButtonAttributes } from "./components/lyne-link-button/lyne-link-button.custom.d";
@@ -104,6 +105,12 @@ export namespace Components {
           * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
          */
         "visualButtonOnly"?: boolean;
+    }
+    interface LyneDatepicker {
+        /**
+          * Documentation for someProp
+         */
+        "someProp"?: InterfaceLyneDatepickerAttributes['someInterface'];
     }
     interface LyneImage {
         /**
@@ -469,6 +476,12 @@ declare global {
         prototype: HTMLLyneButtonElement;
         new (): HTMLLyneButtonElement;
     };
+    interface HTMLLyneDatepickerElement extends Components.LyneDatepicker, HTMLStencilElement {
+    }
+    var HTMLLyneDatepickerElement: {
+        prototype: HTMLLyneDatepickerElement;
+        new (): HTMLLyneDatepickerElement;
+    };
     interface HTMLLyneImageElement extends Components.LyneImage, HTMLStencilElement {
     }
     var HTMLLyneImageElement: {
@@ -557,6 +570,7 @@ declare global {
         "lyne-accordion": HTMLLyneAccordionElement;
         "lyne-accordion-item": HTMLLyneAccordionItemElement;
         "lyne-button": HTMLLyneButtonElement;
+        "lyne-datepicker": HTMLLyneDatepickerElement;
         "lyne-image": HTMLLyneImageElement;
         "lyne-input-error": HTMLLyneInputErrorElement;
         "lyne-link": HTMLLyneLinkElement;
@@ -659,6 +673,12 @@ declare namespace LocalJSX {
           * Set this property to true if you want only a visual represenation of a button, but no interaction (a div instead of a button will be rendered).
          */
         "visualButtonOnly"?: boolean;
+    }
+    interface LyneDatepicker {
+        /**
+          * Documentation for someProp
+         */
+        "someProp"?: InterfaceLyneDatepickerAttributes['someInterface'];
     }
     interface LyneImage {
         /**
@@ -1008,6 +1028,7 @@ declare namespace LocalJSX {
         "lyne-accordion": LyneAccordion;
         "lyne-accordion-item": LyneAccordionItem;
         "lyne-button": LyneButton;
+        "lyne-datepicker": LyneDatepicker;
         "lyne-image": LyneImage;
         "lyne-input-error": LyneInputError;
         "lyne-link": LyneLink;
@@ -1031,6 +1052,7 @@ declare module "@stencil/core" {
             "lyne-accordion": LocalJSX.LyneAccordion & JSXBase.HTMLAttributes<HTMLLyneAccordionElement>;
             "lyne-accordion-item": LocalJSX.LyneAccordionItem & JSXBase.HTMLAttributes<HTMLLyneAccordionItemElement>;
             "lyne-button": LocalJSX.LyneButton & JSXBase.HTMLAttributes<HTMLLyneButtonElement>;
+            "lyne-datepicker": LocalJSX.LyneDatepicker & JSXBase.HTMLAttributes<HTMLLyneDatepickerElement>;
             "lyne-image": LocalJSX.LyneImage & JSXBase.HTMLAttributes<HTMLLyneImageElement>;
             "lyne-input-error": LocalJSX.LyneInputError & JSXBase.HTMLAttributes<HTMLLyneInputErrorElement>;
             "lyne-link": LocalJSX.LyneLink & JSXBase.HTMLAttributes<HTMLLyneLinkElement>;
