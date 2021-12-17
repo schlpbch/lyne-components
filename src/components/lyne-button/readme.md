@@ -34,11 +34,13 @@
 
 ### Used by
 
+ - [lyne-datepicker](../lyne-datepicker)
  - [lyne-panel](../lyne-panel)
 
 ### Graph
 ```mermaid
 graph TD;
+  lyne-datepicker --> lyne-button
   lyne-panel --> lyne-button
   style lyne-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
