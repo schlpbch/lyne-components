@@ -32,10 +32,10 @@
 }
 
 .datepicker {
+  @include shadowElevationLevel5;
   width: pxToRem(var(--datepicker-width));
   padding: pxToRem(var(--spacing-fixed-4x));
   border-radius: pxToRem(var(--border-radius-8x));
-  border: 1px solid black;
 }
 
 .datepicker__header {
