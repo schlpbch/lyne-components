@@ -7,9 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                | Type               | Default     |
-| ---------- | ----------- | -------------------------- | ------------------ | ----------- |
-| `someProp` | `some-prop` | Documentation for someProp | `"opt1" \| "opt2"` | `undefined` |
+| Property                 | Attribute    | Description                | Type               | Default     |
+| ------------------------ | ------------ | -------------------------- | ------------------ | ----------- |
+| `days` _(required)_      | `days`       |                            | `string`           | `undefined` |
+| `daysShort` _(required)_ | `days-short` |                            | `string`           | `undefined` |
+| `someProp`               | `some-prop`  | Documentation for someProp | `"opt1" \| "opt2"` | `undefined` |
 
 
 ## Slots

@@ -5,6 +5,7 @@ import {
 } from '@stencil/core';
 
 import { InterfaceLyneDatepickerDaysAttributes } from './lyne-datepicker-days.custom.d';
+import { guid } from '../../global/guid';
 
 /**
  * @slot unnamed - Use this to document a slot.
@@ -24,18 +25,29 @@ export class LyneDatepickerDays {
   /** Documentation for someProp */
   @Prop() public someProp?: InterfaceLyneDatepickerDaysAttributes['someInterface'];
 
+  @Prop() public days!: string;
+
+  @Prop() public daysShort!: string;
+
+  private _arrayDays!: [any];
+  private _arrayDaysShort!: [any];
+  private _guid: string;
+
+  public componentWillLoad(): void {
+    this._guid = guid();
+  }
+
   public render(): JSX.Element {
+    this._arrayDaysShort = JSON.parse(this.daysShort);
+    this._arrayDays = JSON.parse(this.days);
+
     return (
       <table>
         <thead>
           <tr>
-            <th>Mo</th>
-            <th>Di</th>
-            <th>Mi</th>
-            <th>Do</th>
-            <th>Fr</th>
-            <th>Sa</th>
-            <th>So</th>
+            {this._arrayDaysShort.map((item, index) => (
+              <th id={`${this._guid}${this._arrayDays[index]}`}>{item}</th>
+            ))}
           </tr>
         </thead>
         <tbody>

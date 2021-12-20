@@ -50,7 +50,26 @@ export class LyneDatepicker {
             innerHTML={chevronIconRight}
           ></lyne-button>
         </div>
-        <lyne-datepicker-days></lyne-datepicker-days>
+        <lyne-datepicker-days
+          days='[
+            "Montag",
+            "Dienstag",
+            "Mittwoch",
+            "Donnerstag",
+            "Freitag",
+            "Samstag",
+            "Sonntag"
+          ]'
+          daysShort='[
+            "Mo",
+            "Di",
+            "Mi",
+            "Do",
+            "Fr",
+            "Sa",
+            "So"
+          ]'
+        ></lyne-datepicker-days>
       </div>
     );
   }

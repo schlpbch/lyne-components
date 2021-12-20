@@ -114,6 +114,8 @@ export namespace Components {
         "someProp"?: InterfaceLyneDatepickerAttributes['someInterface'];
     }
     interface LyneDatepickerDays {
+        "days": string;
+        "daysShort": string;
         /**
           * Documentation for someProp
          */
@@ -695,6 +697,8 @@ declare namespace LocalJSX {
         "someProp"?: InterfaceLyneDatepickerAttributes['someInterface'];
     }
     interface LyneDatepickerDays {
+        "days": string;
+        "daysShort": string;
         /**
           * Documentation for someProp
          */
