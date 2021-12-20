@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { InterfaceAccordionItemAttributes } from "./components/lyne-accordion-item/lyne-accordion-item.custom.d";
 import { InterfaceButtonAttributes } from "./components/lyne-button/lyne-button.custom.d";
 import { InterfaceLyneDatepickerAttributes } from "./components/lyne-datepicker/lyne-datepicker.custom.d";
+import { InterfaceLyneDatepickerDaysAttributes } from "./components/lyne-datepicker-days/lyne-datepicker-days.custom.d";
 import { InterfaceImageAttributes } from "./components/lyne-image/lyne-image.custom.d";
 import { InterfaceLinkAttributes } from "./components/lyne-link/lyne-link.custom.d";
 import { InterfaceLinkButtonAttributes } from "./components/lyne-link-button/lyne-link-button.custom.d";
@@ -111,6 +112,12 @@ export namespace Components {
           * Documentation for someProp
          */
         "someProp"?: InterfaceLyneDatepickerAttributes['someInterface'];
+    }
+    interface LyneDatepickerDays {
+        /**
+          * Documentation for someProp
+         */
+        "someProp"?: InterfaceLyneDatepickerDaysAttributes['someInterface'];
     }
     interface LyneImage {
         /**
@@ -482,6 +489,12 @@ declare global {
         prototype: HTMLLyneDatepickerElement;
         new (): HTMLLyneDatepickerElement;
     };
+    interface HTMLLyneDatepickerDaysElement extends Components.LyneDatepickerDays, HTMLStencilElement {
+    }
+    var HTMLLyneDatepickerDaysElement: {
+        prototype: HTMLLyneDatepickerDaysElement;
+        new (): HTMLLyneDatepickerDaysElement;
+    };
     interface HTMLLyneImageElement extends Components.LyneImage, HTMLStencilElement {
     }
     var HTMLLyneImageElement: {
@@ -571,6 +584,7 @@ declare global {
         "lyne-accordion-item": HTMLLyneAccordionItemElement;
         "lyne-button": HTMLLyneButtonElement;
         "lyne-datepicker": HTMLLyneDatepickerElement;
+        "lyne-datepicker-days": HTMLLyneDatepickerDaysElement;
         "lyne-image": HTMLLyneImageElement;
         "lyne-input-error": HTMLLyneInputErrorElement;
         "lyne-link": HTMLLyneLinkElement;
@@ -679,6 +693,12 @@ declare namespace LocalJSX {
           * Documentation for someProp
          */
         "someProp"?: InterfaceLyneDatepickerAttributes['someInterface'];
+    }
+    interface LyneDatepickerDays {
+        /**
+          * Documentation for someProp
+         */
+        "someProp"?: InterfaceLyneDatepickerDaysAttributes['someInterface'];
     }
     interface LyneImage {
         /**
@@ -1029,6 +1049,7 @@ declare namespace LocalJSX {
         "lyne-accordion-item": LyneAccordionItem;
         "lyne-button": LyneButton;
         "lyne-datepicker": LyneDatepicker;
+        "lyne-datepicker-days": LyneDatepickerDays;
         "lyne-image": LyneImage;
         "lyne-input-error": LyneInputError;
         "lyne-link": LyneLink;
@@ -1053,6 +1074,7 @@ declare module "@stencil/core" {
             "lyne-accordion-item": LocalJSX.LyneAccordionItem & JSXBase.HTMLAttributes<HTMLLyneAccordionItemElement>;
             "lyne-button": LocalJSX.LyneButton & JSXBase.HTMLAttributes<HTMLLyneButtonElement>;
             "lyne-datepicker": LocalJSX.LyneDatepicker & JSXBase.HTMLAttributes<HTMLLyneDatepickerElement>;
+            "lyne-datepicker-days": LocalJSX.LyneDatepickerDays & JSXBase.HTMLAttributes<HTMLLyneDatepickerDaysElement>;
             "lyne-image": LocalJSX.LyneImage & JSXBase.HTMLAttributes<HTMLLyneImageElement>;
             "lyne-input-error": LocalJSX.LyneInputError & JSXBase.HTMLAttributes<HTMLLyneInputErrorElement>;
             "lyne-link": LocalJSX.LyneLink & JSXBase.HTMLAttributes<HTMLLyneLinkElement>;
