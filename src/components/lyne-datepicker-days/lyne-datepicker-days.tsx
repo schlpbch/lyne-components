@@ -5,6 +5,7 @@ import {
 } from '@stencil/core';
 
 import { InterfaceLyneDatepickerDaysAttributes } from './lyne-datepicker-days.custom.d';
+import daysHelper from './lyne-datepicker-days.helper';
 import { guid } from '../../global/guid';
 
 /**
@@ -29,8 +30,6 @@ export class LyneDatepickerDays {
 
   @Prop() public daysShort!: string;
 
-  private _arrayDays!: [any];
-  private _arrayDaysShort!: [any];
   private _guid: string;
 
   public componentWillLoad(): void {
@@ -38,16 +37,27 @@ export class LyneDatepickerDays {
   }
 
   public render(): JSX.Element {
-    this._arrayDaysShort = JSON.parse(this.daysShort);
-    this._arrayDays = JSON.parse(this.days);
+    const objDays = daysHelper(this.daysShort, this.days);
+    let renderWeekdays = false;
+
+    if (objDays) {
+      if (objDays.long.length > 0 && objDays.short.length > 0) {
+        renderWeekdays = true;
+      }
+    }
 
     return (
       <table>
         <thead>
           <tr>
-            {this._arrayDaysShort.map((item, index) => (
-              <th id={`${this._guid}${this._arrayDays[index]}`}>{item}</th>
-            ))}
+            {renderWeekdays
+              ? (
+                objDays.short.map((item, index) => (
+                  <th id={`${this._guid}${objDays.long[index]}`}>{item}</th>
+                ))
+              )
+              : ''
+            }
           </tr>
         </thead>
         <tbody>
