@@ -4,13 +4,8 @@ import {
   Prop
 } from '@stencil/core';
 
-import { InterfaceLyneDatepickerAttributes } from './lyne-datepicker.custom.d';
 import chevronIconRight from 'lyne-icons/dist/icons/chevron-small-right-small.svg';
 import chevronIconLeft from 'lyne-icons/dist/icons/chevron-small-left-small.svg';
-
-/**
- * @slot unnamed - Use this to document a slot.
- */
 
 @Component({
   shadow: true,

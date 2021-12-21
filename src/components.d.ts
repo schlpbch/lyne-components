@@ -7,8 +7,6 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { InterfaceAccordionItemAttributes } from "./components/lyne-accordion-item/lyne-accordion-item.custom.d";
 import { InterfaceButtonAttributes } from "./components/lyne-button/lyne-button.custom.d";
-import { InterfaceLyneDatepickerAttributes } from "./components/lyne-datepicker/lyne-datepicker.custom.d";
-import { InterfaceLyneDatepickerDaysAttributes } from "./components/lyne-datepicker-days/lyne-datepicker-days.custom.d";
 import { InterfaceImageAttributes } from "./components/lyne-image/lyne-image.custom.d";
 import { InterfaceLinkAttributes } from "./components/lyne-link/lyne-link.custom.d";
 import { InterfaceLinkButtonAttributes } from "./components/lyne-link-button/lyne-link-button.custom.d";
@@ -108,18 +106,17 @@ export namespace Components {
         "visualButtonOnly"?: boolean;
     }
     interface LyneDatepicker {
-        /**
-          * Documentation for someProp
-         */
-        "someProp"?: InterfaceLyneDatepickerAttributes['someInterface'];
+        "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerDays {
-        "days": string;
-        "daysShort": string;
         /**
-          * Documentation for someProp
+          * Stringified Array to define the written out weekdays. Format: `["Montag","Dienstag","Mittwoch", ...]` Length: the array must have the same length as the array of the propery daysShort.
          */
-        "someProp"?: InterfaceLyneDatepickerDaysAttributes['someInterface'];
+        "days": string;
+        /**
+          * Stringified Array to define the short form of weekdays. Format: `["Mo","Di","Mi", ...]` Length: the array must have the same length as the array of the property days.
+         */
+        "daysShort": string;
     }
     interface LyneImage {
         /**
@@ -691,18 +688,17 @@ declare namespace LocalJSX {
         "visualButtonOnly"?: boolean;
     }
     interface LyneDatepicker {
-        /**
-          * Documentation for someProp
-         */
-        "someProp"?: InterfaceLyneDatepickerAttributes['someInterface'];
+        "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerDays {
-        "days": string;
-        "daysShort": string;
         /**
-          * Documentation for someProp
+          * Stringified Array to define the written out weekdays. Format: `["Montag","Dienstag","Mittwoch", ...]` Length: the array must have the same length as the array of the propery daysShort.
          */
-        "someProp"?: InterfaceLyneDatepickerDaysAttributes['someInterface'];
+        "days": string;
+        /**
+          * Stringified Array to define the short form of weekdays. Format: `["Mo","Di","Mi", ...]` Length: the array must have the same length as the array of the property days.
+         */
+        "daysShort": string;
     }
     interface LyneImage {
         /**

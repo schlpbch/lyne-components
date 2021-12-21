@@ -4,13 +4,8 @@ import {
   Prop
 } from '@stencil/core';
 
-import { InterfaceLyneDatepickerDaysAttributes } from './lyne-datepicker-days.custom.d';
 import daysHelper from './lyne-datepicker-days.helper';
 import { guid } from '../../global/guid';
-
-/**
- * @slot unnamed - Use this to document a slot.
- */
 
 @Component({
   shadow: true,
@@ -23,11 +18,22 @@ import { guid } from '../../global/guid';
 
 export class LyneDatepickerDays {
 
-  /** Documentation for someProp */
-  @Prop() public someProp?: InterfaceLyneDatepickerDaysAttributes['someInterface'];
-
+  /**
+   * Stringified Array to define the written out weekdays.
+   * Format:
+   * `["Montag","Dienstag","Mittwoch", ...]`
+   * Length: the array must have the same length as the
+   * array of the propery daysShort.
+   */
   @Prop() public days!: string;
 
+  /**
+   * Stringified Array to define the short form of weekdays.
+   * Format:
+   * `["Mo","Di","Mi", ...]`
+   * Length: the array must have the same length as the
+   * array of the property days.
+   */
   @Prop() public daysShort!: string;
 
   private _guid: string;

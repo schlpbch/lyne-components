@@ -7,18 +7,10 @@
 
 ## Properties
 
-| Property                 | Attribute    | Description                | Type               | Default     |
-| ------------------------ | ------------ | -------------------------- | ------------------ | ----------- |
-| `days` _(required)_      | `days`       |                            | `string`           | `undefined` |
-| `daysShort` _(required)_ | `days-short` |                            | `string`           | `undefined` |
-| `someProp`               | `some-prop`  | Documentation for someProp | `"opt1" \| "opt2"` | `undefined` |
-
-
-## Slots
-
-| Slot        | Description                  |
-| ----------- | ---------------------------- |
-| `"unnamed"` | Use this to document a slot. |
+| Property                 | Attribute    | Description                                                                                                                                                                              | Type     | Default     |
+| ------------------------ | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `days` _(required)_      | `days`       | Stringified Array to define the written out weekdays. Format: `["Montag","Dienstag","Mittwoch", ...]` Length: the array must have the same length as the array of the propery daysShort. | `string` | `undefined` |
+| `daysShort` _(required)_ | `days-short` | Stringified Array to define the short form of weekdays. Format: `["Mo","Di","Mi", ...]` Length: the array must have the same length as the array of the property days.                   | `string` | `undefined` |
 
 
 ## Dependencies
