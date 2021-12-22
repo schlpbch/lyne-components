@@ -106,17 +106,24 @@ export namespace Components {
         "visualButtonOnly"?: boolean;
     }
     interface LyneDatepicker {
-        "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerDays {
         /**
-          * Stringified Array to define the written out weekdays. Format: `["Montag","Dienstag","Mittwoch", ...]` Length: the array must have the same length as the array of the propery daysShort.
+          * Stringified Array to define the written out weekdays. Format: `["Montag","Dienstag","Mittwoch", ...]` Length: the array must have the same length as the array of the property daysShort.
          */
         "days": string;
         /**
           * Stringified Array to define the short form of weekdays. Format: `["Mo","Di","Mi", ...]` Length: the array must have the same length as the array of the property days.
          */
         "daysShort": string;
+        /**
+          * Set the month to be displayed. e.g. "8" for august or "11" for november
+         */
+        "selectedMonth": string;
+        /**
+          * Set the year to be displayed. e.g. "1995" or "2023"
+         */
+        "selectedYear": string;
     }
     interface LyneImage {
         /**
@@ -688,17 +695,24 @@ declare namespace LocalJSX {
         "visualButtonOnly"?: boolean;
     }
     interface LyneDatepicker {
-        "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerDays {
         /**
-          * Stringified Array to define the written out weekdays. Format: `["Montag","Dienstag","Mittwoch", ...]` Length: the array must have the same length as the array of the propery daysShort.
+          * Stringified Array to define the written out weekdays. Format: `["Montag","Dienstag","Mittwoch", ...]` Length: the array must have the same length as the array of the property daysShort.
          */
         "days": string;
         /**
           * Stringified Array to define the short form of weekdays. Format: `["Mo","Di","Mi", ...]` Length: the array must have the same length as the array of the property days.
          */
         "daysShort": string;
+        /**
+          * Set the month to be displayed. e.g. "8" for august or "11" for november
+         */
+        "selectedMonth": string;
+        /**
+          * Set the year to be displayed. e.g. "1995" or "2023"
+         */
+        "selectedYear": string;
     }
     interface LyneImage {
         /**

@@ -22,8 +22,8 @@ export class LyneDatepickerDays {
    * Stringified Array to define the written out weekdays.
    * Format:
    * `["Montag","Dienstag","Mittwoch", ...]`
-   * Length: the array must have the same length as the
-   * array of the propery daysShort.
+   * Length: the array must have the same length as the array of the property
+   * daysShort.
    */
   @Prop() public days!: string;
 
@@ -31,8 +31,8 @@ export class LyneDatepickerDays {
    * Stringified Array to define the short form of weekdays.
    * Format:
    * `["Mo","Di","Mi", ...]`
-   * Length: the array must have the same length as the
-   * array of the property days.
+   * Length: the array must have the same length as the array of the property
+   * days.
    */
   @Prop() public daysShort!: string;
 
