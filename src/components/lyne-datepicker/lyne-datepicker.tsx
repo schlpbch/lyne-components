@@ -1,7 +1,6 @@
 import {
   Component,
-  h,
-  Prop
+  h
 } from '@stencil/core';
 
 import chevronIconRight from 'lyne-icons/dist/icons/chevron-small-right-small.svg';
@@ -17,9 +16,6 @@ import chevronIconLeft from 'lyne-icons/dist/icons/chevron-small-left-small.svg'
 })
 
 export class LyneDatepicker {
-
-  /** Documentation for someProp */
-  @Prop() public someProp?: InterfaceLyneDatepickerAttributes['someInterface'];
 
   public render(): JSX.Element {
     return (
@@ -64,6 +60,8 @@ export class LyneDatepicker {
             "Sa",
             "So"
           ]'
+          selectedMonth='12'
+          selectedYear='2021'
         ></lyne-datepicker-days>
       </div>
     );
