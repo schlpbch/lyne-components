@@ -98,6 +98,9 @@ export class LyneDatepickerDays {
     }
 
     if (this.selectedMonth && this.selectedYear) {
+      const dateObj = new Date();
+      const date = dateObj.getDate();
+
       // months are index-based
       const month = Number(this.selectedMonth) - 1;
       const year = Number(this.selectedYear);
@@ -115,7 +118,12 @@ export class LyneDatepickerDays {
 
       // insert the days of the month
       for (currentDay = 1; currentDay <= numberOfDays; currentDay++) {
-        cells.push(<td class='datepicker__day--past' role='gridcell'><span>{currentDay}</span></td>);
+
+        if (currentDay === date) {
+          cells.push(<td class='datepicker__day--today' role='gridcell'><span>{currentDay}</span></td>);
+        } else {
+          cells.push(<td role='gridcell'><span>{currentDay}</span></td>);
+        }
 
         // last day of the week
         if (weekday === 6 && currentDay < numberOfDays) {
