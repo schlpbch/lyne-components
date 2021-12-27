@@ -708,11 +708,11 @@ declare namespace LocalJSX {
         /**
           * Stringified Array to define the written out weekdays. Format: `["Montag","Dienstag","Mittwoch", ...]` Length: the array must have the same length as the array of the property daysShort.
          */
-        "days": string;
+        "days"?: string;
         /**
           * Stringified Array to define the short form of weekdays. Format: `["Mo","Di","Mi", ...]` Length: the array must have the same length as the array of the property days.
          */
-        "daysShort": string;
+        "daysShort"?: string;
         /**
           * Set the month to be displayed. e.g. "8" for august or "11" for november
          */
