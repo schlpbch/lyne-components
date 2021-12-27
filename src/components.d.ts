@@ -106,6 +106,10 @@ export namespace Components {
         "visualButtonOnly"?: boolean;
     }
     interface LyneDatepicker {
+        /**
+          * Stringified Array to define the months. Format: `["Januar", "Februar", "März", ...]`
+         */
+        "months": string;
     }
     interface LyneDatepickerDays {
         /**
@@ -695,6 +699,10 @@ declare namespace LocalJSX {
         "visualButtonOnly"?: boolean;
     }
     interface LyneDatepicker {
+        /**
+          * Stringified Array to define the months. Format: `["Januar", "Februar", "März", ...]`
+         */
+        "months"?: string;
     }
     interface LyneDatepickerDays {
         /**

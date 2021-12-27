@@ -1,6 +1,7 @@
 import {
   Component,
-  h
+  h,
+  Prop
 } from '@stencil/core';
 
 import chevronIconRight from 'lyne-icons/dist/icons/chevron-small-right-small.svg';
@@ -17,7 +18,21 @@ import chevronIconLeft from 'lyne-icons/dist/icons/chevron-small-left-small.svg'
 
 export class LyneDatepicker {
 
+  /**
+   * Stringified Array to define the months.
+   * Format:
+   * `["Januar", "Februar", "März", ...]`
+   */
+  @Prop() public months = '["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]';
+
   public render(): JSX.Element {
+    const monthsArray = JSON.parse(this.months);
+    const dateObj = new Date();
+    const currentMonthIndex = dateObj.getMonth();
+    const currentMonth = dateObj.getMonth() + 1;
+    const currentMonthName = monthsArray[currentMonthIndex];
+    const currentYear = dateObj.getFullYear();
+
     return (
       <div class='datepicker'>
         <div class='datepicker__header'>
@@ -30,7 +45,7 @@ export class LyneDatepicker {
             innerHTML={chevronIconLeft}
           ></lyne-button>
           <div class='datepicker__header-month-current'>
-            <span>December 2021</span>
+            <span>{currentMonthName} {currentYear}</span>
           </div>
           <lyne-button
             variant='secondary'
@@ -60,8 +75,8 @@ export class LyneDatepicker {
             "Sa",
             "So"
           ]'
-          selectedMonth='12'
-          selectedYear='2021'
+          selectedMonth={currentMonth.toString()}
+          selectedYear={currentYear.toString()}
         ></lyne-datepicker-days>
       </div>
     );
