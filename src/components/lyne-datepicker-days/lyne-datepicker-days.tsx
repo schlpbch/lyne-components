@@ -4,8 +4,8 @@ import {
   Prop
 } from '@stencil/core';
 
-import daysHelper from './lyne-datepicker-days.helper';
-import { guid } from '../../global/guid';
+import getDocumentLang from '../../global/helpers/get-document-lang';
+import { i18nWeekdays } from '../../global/i18n';
 
 @Component({
   shadow: true,
@@ -17,24 +17,6 @@ import { guid } from '../../global/guid';
 })
 
 export class LyneDatepickerDays {
-
-  /**
-   * Stringified Array to define the written out weekdays.
-   * Format:
-   * `["Montag","Dienstag","Mittwoch", ...]`
-   * Length: the array must have the same length as the array of the property
-   * daysShort.
-   */
-  @Prop() public days = '["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]';
-
-  /**
-   * Stringified Array to define the short form of weekdays.
-   * Format:
-   * `["Mo","Di","Mi", ...]`
-   * Length: the array must have the same length as the array of the property
-   * days.
-   */
-  @Prop() public daysShort = '["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]';
 
   /**
    * Set the month to be displayed.
@@ -52,7 +34,7 @@ export class LyneDatepickerDays {
     reflect: true
   }) public selectedYear!: string;
 
-  private _guid: string;
+  private _currentLanguage = getDocumentLang();
 
   /*
    * calculate the day of the week the first day of a month lands on
@@ -82,20 +64,17 @@ export class LyneDatepickerDays {
       .getDate();
   }
 
+  private _weekdays: any[];
+
   public componentWillLoad(): void {
-    this._guid = guid();
+    // insert weekdays
+    for (const weekday of i18nWeekdays[this._currentLanguage]) {
+      this._weekdays.push(<th id={weekday.long}>{weekday.short}</th>);
+    }
   }
 
   public render(): JSX.Element {
-    const objDays: any = daysHelper(this.daysShort, this.days);
-    let renderWeekdays = false;
     const rows = [];
-
-    if (objDays) {
-      if (objDays.long.length > 0 && objDays.short.length > 0) {
-        renderWeekdays = true;
-      }
-    }
 
     if (this.selectedMonth && this.selectedYear) {
       const dateObj = new Date();
@@ -152,14 +131,7 @@ export class LyneDatepickerDays {
       <table>
         <thead>
           <tr>
-            {renderWeekdays
-              ? (
-                objDays.short.map((item, index) => (
-                  <th id={`${this._guid}${objDays.long[index]}`}>{item}</th>
-                ))
-              )
-              : ''
-            }
+            {this._weekdays}
           </tr>
         </thead>
         <tbody>

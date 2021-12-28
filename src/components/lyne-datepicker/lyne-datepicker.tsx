@@ -57,26 +57,8 @@ export class LyneDatepicker {
           ></lyne-button>
         </div>
         <lyne-datepicker-days
-          days='[
-            "Montag",
-            "Dienstag",
-            "Mittwoch",
-            "Donnerstag",
-            "Freitag",
-            "Samstag",
-            "Sonntag"
-          ]'
-          daysShort='[
-            "Mo",
-            "Di",
-            "Mi",
-            "Do",
-            "Fr",
-            "Sa",
-            "So"
-          ]'
-          selectedMonth={currentMonth.toString()}
-          selectedYear={currentYear.toString()}
+          selectedMonth={(this.currentMonth + 1).toString()}
+          selectedYear={this._currentYear.toString()}
         ></lyne-datepicker-days>
       </div>
     );
