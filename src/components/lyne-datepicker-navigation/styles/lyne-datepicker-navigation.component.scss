@@ -1,0 +1,22 @@
+// Default component properties, defined for :host. Properties which can not
+// travel the shadow boundary are defined through this mixin, available for shared
+// and default mode
+@include host-component-properties;
+
+:host {
+  display: block;
+
+  --text-default-color: var(--color-charcoal-default);
+}
+
+.datepicker__navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-end: pxToRem(var(--spacing-fixed-4x));
+}
+
+.datepicker__navigation-month-current {
+  @include text-s--regular();
+  color: var(--text-default-color);
+}

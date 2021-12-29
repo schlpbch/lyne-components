@@ -1,4 +1,4 @@
-# lyne-datepicker-days
+# lyne-datepicker-navigation
 
 
 
@@ -19,11 +19,16 @@
 
  - [lyne-datepicker](../lyne-datepicker)
 
+### Depends on
+
+- [lyne-button](../lyne-button)
+
 ### Graph
 ```mermaid
 graph TD;
-  lyne-datepicker --> lyne-datepicker-days
-  style lyne-datepicker-days fill:#f9f,stroke:#333,stroke-width:4px
+  lyne-datepicker-navigation --> lyne-button
+  lyne-datepicker --> lyne-datepicker-navigation
+  style lyne-datepicker-navigation fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -6,7 +6,6 @@
 :host {
   display: block;
 
-  --text-default-color: var(--color-charcoal-default);
   --datepicker-width: 312;
 
   @include mq($from: micro) {
@@ -19,16 +18,4 @@
   width: pxToRem(var(--datepicker-width));
   padding: pxToRem(var(--spacing-fixed-4x));
   border-radius: pxToRem(var(--border-radius-8x));
-}
-
-.datepicker__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block-end: pxToRem(var(--spacing-fixed-4x));
-}
-
-.datepicker__header-month-current {
-  @include text-s--regular();
-  color: var(--text-default-color);
 }

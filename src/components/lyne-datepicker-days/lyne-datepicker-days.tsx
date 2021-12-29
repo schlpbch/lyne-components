@@ -20,7 +20,7 @@ import { i18nWeekdays } from '../../global/i18n';
 export class LyneDatepickerDays {
 
   /**
-   * Set the month to be displayed.
+   * Month to be displayed.
    * e.g. "8" for august or "11" for november
    */
   @Prop({
@@ -28,7 +28,7 @@ export class LyneDatepickerDays {
   }) public selectedMonth!: string;
 
   /**
-   * Set the year to be displayed.
+   * Year to be displayed.
    * e.g. "1995" or "2023"
    */
   @Prop({

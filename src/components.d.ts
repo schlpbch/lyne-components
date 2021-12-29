@@ -109,11 +109,21 @@ export namespace Components {
     }
     interface LyneDatepickerDays {
         /**
-          * Set the month to be displayed. e.g. "8" for august or "11" for november
+          * Month to be displayed. e.g. "8" for august or "11" for november
          */
         "selectedMonth": string;
         /**
-          * Set the year to be displayed. e.g. "1995" or "2023"
+          * Year to be displayed. e.g. "1995" or "2023"
+         */
+        "selectedYear": string;
+    }
+    interface LyneDatepickerNavigation {
+        /**
+          * Month to be displayed. e.g. "8" for august or "11" for november
+         */
+        "selectedMonth": string;
+        /**
+          * Year to be displayed. e.g. "1995" or "2023"
          */
         "selectedYear": string;
     }
@@ -493,6 +503,12 @@ declare global {
         prototype: HTMLLyneDatepickerDaysElement;
         new (): HTMLLyneDatepickerDaysElement;
     };
+    interface HTMLLyneDatepickerNavigationElement extends Components.LyneDatepickerNavigation, HTMLStencilElement {
+    }
+    var HTMLLyneDatepickerNavigationElement: {
+        prototype: HTMLLyneDatepickerNavigationElement;
+        new (): HTMLLyneDatepickerNavigationElement;
+    };
     interface HTMLLyneImageElement extends Components.LyneImage, HTMLStencilElement {
     }
     var HTMLLyneImageElement: {
@@ -583,6 +599,7 @@ declare global {
         "lyne-button": HTMLLyneButtonElement;
         "lyne-datepicker": HTMLLyneDatepickerElement;
         "lyne-datepicker-days": HTMLLyneDatepickerDaysElement;
+        "lyne-datepicker-navigation": HTMLLyneDatepickerNavigationElement;
         "lyne-image": HTMLLyneImageElement;
         "lyne-input-error": HTMLLyneInputErrorElement;
         "lyne-link": HTMLLyneLinkElement;
@@ -690,11 +707,21 @@ declare namespace LocalJSX {
     }
     interface LyneDatepickerDays {
         /**
-          * Set the month to be displayed. e.g. "8" for august or "11" for november
+          * Month to be displayed. e.g. "8" for august or "11" for november
          */
         "selectedMonth": string;
         /**
-          * Set the year to be displayed. e.g. "1995" or "2023"
+          * Year to be displayed. e.g. "1995" or "2023"
+         */
+        "selectedYear": string;
+    }
+    interface LyneDatepickerNavigation {
+        /**
+          * Month to be displayed. e.g. "8" for august or "11" for november
+         */
+        "selectedMonth": string;
+        /**
+          * Year to be displayed. e.g. "1995" or "2023"
          */
         "selectedYear": string;
     }
@@ -1048,6 +1075,7 @@ declare namespace LocalJSX {
         "lyne-button": LyneButton;
         "lyne-datepicker": LyneDatepicker;
         "lyne-datepicker-days": LyneDatepickerDays;
+        "lyne-datepicker-navigation": LyneDatepickerNavigation;
         "lyne-image": LyneImage;
         "lyne-input-error": LyneInputError;
         "lyne-link": LyneLink;
@@ -1073,6 +1101,7 @@ declare module "@stencil/core" {
             "lyne-button": LocalJSX.LyneButton & JSXBase.HTMLAttributes<HTMLLyneButtonElement>;
             "lyne-datepicker": LocalJSX.LyneDatepicker & JSXBase.HTMLAttributes<HTMLLyneDatepickerElement>;
             "lyne-datepicker-days": LocalJSX.LyneDatepickerDays & JSXBase.HTMLAttributes<HTMLLyneDatepickerDaysElement>;
+            "lyne-datepicker-navigation": LocalJSX.LyneDatepickerNavigation & JSXBase.HTMLAttributes<HTMLLyneDatepickerNavigationElement>;
             "lyne-image": LocalJSX.LyneImage & JSXBase.HTMLAttributes<HTMLLyneImageElement>;
             "lyne-input-error": LocalJSX.LyneInputError & JSXBase.HTMLAttributes<HTMLLyneInputErrorElement>;
             "lyne-link": LocalJSX.LyneLink & JSXBase.HTMLAttributes<HTMLLyneLinkElement>;
