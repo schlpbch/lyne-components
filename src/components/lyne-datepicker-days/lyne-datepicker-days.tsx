@@ -35,6 +35,9 @@ export class LyneDatepickerDays {
   }) public selectedYear!: string;
 
   private _currentLanguage = getDocumentLang();
+  private _weekdays = [];
+  private _dateObj = new Date();
+  private _date = this._dateObj.getDate();
 
   /*
    * calculate the day of the week the first day of a month lands on
@@ -77,9 +80,6 @@ export class LyneDatepickerDays {
     const rows = [];
 
     if (this.selectedMonth && this.selectedYear) {
-      const dateObj = new Date();
-      const date = dateObj.getDate();
-
       // months are index-based
       const month = Number(this.selectedMonth) - 1;
       const year = Number(this.selectedYear);
