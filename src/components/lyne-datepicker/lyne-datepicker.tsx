@@ -1,9 +1,11 @@
 import {
   Component,
   h,
-  Prop
+  State
 } from '@stencil/core';
 
+import getDocumentLang from '../../global/helpers/get-document-lang';
+import { i18nMonths } from '../../global/i18n';
 import chevronIconRight from 'lyne-icons/dist/icons/chevron-small-right-small.svg';
 import chevronIconLeft from 'lyne-icons/dist/icons/chevron-small-left-small.svg';
 
@@ -18,21 +20,24 @@ import chevronIconLeft from 'lyne-icons/dist/icons/chevron-small-left-small.svg'
 
 export class LyneDatepicker {
 
-  /**
-   * Stringified Array to define the months.
-   * Format:
-   * `["Januar", "Februar", "März", ...]`
-   */
-  @Prop() public months = '["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]';
+  private _dateObj = new Date();
+  @State() public currentMonth = this._dateObj.getMonth();
+
+  private _currentLanguage = getDocumentLang();
+  private _monthsArray = [];
+  private _currentYear = this._dateObj.getFullYear();
+
+  private _parseMonths = (): void => {
+    for (const month of i18nMonths[this._currentLanguage]) {
+      this._monthsArray.push(month.name);
+    }
+  };
+
+  public componentWillLoad(): void {
+    this._parseMonths();
+  }
 
   public render(): JSX.Element {
-    const monthsArray = JSON.parse(this.months);
-    const dateObj = new Date();
-    const currentMonthIndex = dateObj.getMonth();
-    const currentMonth = dateObj.getMonth() + 1;
-    const currentMonthName = monthsArray[currentMonthIndex];
-    const currentYear = dateObj.getFullYear();
-
     return (
       <div class='datepicker'>
         <div class='datepicker__header'>
@@ -45,7 +50,7 @@ export class LyneDatepicker {
             innerHTML={chevronIconLeft}
           ></lyne-button>
           <div class='datepicker__header-month-current'>
-            <span>{currentMonthName} {currentYear}</span>
+            <span>{this._monthsArray[this.currentMonth]} {this._currentYear}</span>
           </div>
           <lyne-button
             variant='secondary'

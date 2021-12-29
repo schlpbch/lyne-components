@@ -151,61 +151,157 @@ export const i18nWeekdays: any = {
 };
 
 export const i18nMonths: any = {
-  de: {
-    january: 'Januar',
-    february: 'Februar',
-    march: 'März',
-    april: 'April',
-    may: 'Mai',
-    june: 'Juni',
-    july: 'Juli',
-    august: 'August',
-    september: 'september',
-    october: 'Oktober',
-    november: 'November',
-    december: 'Dezember'
-  },
-  en: {
-    january: 'January',
-    february: 'February',
-    march: 'March',
-    april: 'April',
-    may: 'May',
-    june: 'June',
-    july: 'July',
-    august: 'August',
-    september: 'september',
-    october: 'October',
-    november: 'November',
-    december: 'December'
-  },
-  fr: {
-    january: 'Janvier',
-    february: 'Février',
-    march: 'Mars',
-    april: 'Avril',
-    may: 'Mai',
-    june: 'Juin',
-    july: 'Juillet',
-    august: 'Août',
-    september: 'Septembre',
-    october: 'Octobre',
-    november: 'Novembre',
-    december: 'Décembre'
-  },
-  it: {
-    january: 'Gennaio',
-    february: 'Febbraio',
-    march: 'Marzo',
-    april: 'Aprile',
-    may: 'Maggio',
-    june: 'Giugno',
-    july: 'Luglio',
-    august: 'Agosto',
-    september: 'Settembre',
-    october: 'Ottobre',
-    november: 'Novembre',
-    december: 'Dicembre'
-  }
+  de: [
+    {
+      name: 'Januar'
+    },
+    {
+      name: 'Februar'
+    },
+    {
+      name: 'März'
+    },
+    {
+      name: 'April'
+    },
+    {
+      name: 'Mai'
+    },
+    {
+      name: 'Juni'
+    },
+    {
+      name: 'Juli'
+    },
+    {
+      name: 'August'
+    },
+    {
+      name: 'September'
+    },
+    {
+      name: 'Oktober'
+    },
+    {
+      name: 'November'
+    },
+    {
+      name: 'Dezember'
+    }
+  ],
+  en: [
+    {
+      name: 'January'
+    },
+    {
+      name: 'February'
+    },
+    {
+      name: 'March'
+    },
+    {
+      name: 'April'
+    },
+    {
+      name: 'May'
+    },
+    {
+      name: 'June'
+    },
+    {
+      name: 'July'
+    },
+    {
+      name: 'August'
+    },
+    {
+      name: 'September'
+    },
+    {
+      name: 'October'
+    },
+    {
+      name: 'November'
+    },
+    {
+      name: 'December'
+    }
+  ],
+  fr: [
+    {
+      name: 'Janvier'
+    },
+    {
+      name: 'Février'
+    },
+    {
+      name: 'Mars'
+    },
+    {
+      name: 'Avril'
+    },
+    {
+      name: 'Mai'
+    },
+    {
+      name: 'Juin'
+    },
+    {
+      name: 'Juillet'
+    },
+    {
+      name: 'Août'
+    },
+    {
+      name: 'Septembre'
+    },
+    {
+      name: 'Octobre'
+    },
+    {
+      name: 'Novembre'
+    },
+    {
+      name: 'Décembre'
+    }
+  ],
+  it: [
+    {
+      name: 'Gennaio'
+    },
+    {
+      name: 'Febbraio'
+    },
+    {
+      name: 'Marzo'
+    },
+    {
+      name: 'Aprile'
+    },
+    {
+      name: 'Maggio'
+    },
+    {
+      name: 'Giugno'
+    },
+    {
+      name: 'Luglio'
+    },
+    {
+      name: 'Agosto'
+    },
+    {
+      name: 'Settembre'
+    },
+    {
+      name: 'Ottobre'
+    },
+    {
+      name: 'Novembre'
+    },
+    {
+      name: 'Dicembre'
+    }
+  ]
 };
 /* eslint-enable sort-keys */
