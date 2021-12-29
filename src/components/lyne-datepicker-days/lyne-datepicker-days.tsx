@@ -1,7 +1,8 @@
 import {
   Component,
   h,
-  Prop
+  Prop,
+  State
 } from '@stencil/core';
 
 import getDocumentLang from '../../global/helpers/get-document-lang';
@@ -33,6 +34,8 @@ export class LyneDatepickerDays {
   @Prop({
     reflect: true
   }) public selectedYear!: string;
+
+  @State() private _selectedDay: number;
 
   private _currentLanguage = getDocumentLang();
   private _weekdays = [];
@@ -67,7 +70,12 @@ export class LyneDatepickerDays {
       .getDate();
   }
 
-  private _weekdays: any[];
+  /*
+   * calculate the number of days in a given month and year
+   */
+  private _selectDay = (evt): void => {
+    this._selectedDay = Number(evt.currentTarget.getAttribute('data-day'));
+  };
 
   public componentWillLoad(): void {
     // insert weekdays
@@ -77,55 +85,64 @@ export class LyneDatepickerDays {
   }
 
   public render(): JSX.Element {
+    // months are index-based
+    const month = Number(this.selectedMonth) - 1;
+    const year = Number(this.selectedYear);
+    const startWeekday: number = this._calcStartWeekday(month, year);
+    const numberOfDays: number = this._calcNumberOfDays(month, year);
+    let weekday = 0;
+    let currentDay = 1;
+    let cells = [];
     const rows = [];
+    let cellClasses: string;
 
-    if (this.selectedMonth && this.selectedYear) {
-      // months are index-based
-      const month = Number(this.selectedMonth) - 1;
-      const year = Number(this.selectedYear);
-      const startWeekday: number = this._calcStartWeekday(month, year);
-      const numberOfDays: number = this._calcNumberOfDays(month, year);
-
-      let cells = [];
-      let weekday = 0;
-      let currentDay = 1;
-
-      // insert the leading empty cells
-      for (weekday = 0; weekday < startWeekday; weekday++) {
-        cells.push(<td class='datepicker__day--empty'>&nbsp;</td>);
-      }
-
-      // insert the days of the month
-      for (currentDay = 1; currentDay <= numberOfDays; currentDay++) {
-
-        if (currentDay === date) {
-          cells.push(<td class='datepicker__day--today' role='gridcell'><span>{currentDay}</span></td>);
-        } else {
-          cells.push(<td role='gridcell'><span>{currentDay}</span></td>);
-        }
-
-        // last day of the week
-        if (weekday === 6 && currentDay < numberOfDays) {
-          rows.push(<tr role='row'>{...cells}</tr>);
-
-          // clear array to populate the days of the next week
-          cells = [];
-
-          // set weekday to monday
-          weekday = 0;
-
-        } else {
-          weekday++;
-        }
-      }
-
-      // insert any trailing empty cells
-      for (weekday; weekday < 7; weekday++) {
-        cells.push(<td class='datepicker__day--empty'>&nbsp;</td>);
-      }
-
-      rows.push(<tr role='row'>{...cells}</tr>);
+    // insert the leading empty cells
+    for (weekday = 0; weekday < startWeekday; weekday++) {
+      cells.push(<td class='datepicker__day--empty'>&nbsp;</td>);
     }
+
+    // insert the days of the month
+    for (currentDay = 1; currentDay <= numberOfDays; currentDay++) {
+      cellClasses = '';
+
+      if (currentDay === this._date) {
+        cellClasses += 'datepicker__day--today';
+      }
+
+      if (currentDay === this._selectedDay) {
+        cellClasses += ' datepicker__day--selected';
+      }
+
+      cells.push(<td
+        class={cellClasses}
+        role='gridcell'
+        data-day={currentDay}
+        onClick={(evt): void => this._selectDay(evt)}
+      >
+        <span>{currentDay}</span>
+      </td>);
+
+      // last day of the week
+      if (weekday === 6 && currentDay < numberOfDays) {
+        rows.push(<tr role='row'>{...cells}</tr>);
+
+        // clear array to populate the days of the next week
+        cells = [];
+
+        // set weekday to monday
+        weekday = 0;
+
+      } else {
+        weekday++;
+      }
+    }
+
+    // insert any trailing empty cells
+    for (weekday; weekday < 7; weekday++) {
+      cells.push(<td class='datepicker__day--empty'>&nbsp;</td>);
+    }
+
+    rows.push(<tr role='row'>{...cells}</tr>);
 
     return (
       <table>
