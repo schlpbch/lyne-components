@@ -49,8 +49,17 @@ export class LyneDatepickerDays {
     reflect: true
   }) public currentMonth!: string;
 
-  @State() private _selectedDay: number;
+  /**
+   * The current year.
+   */
+  @Prop({
+    reflect: true
+  }) public currentYear!: string;
 
+  @State() private _clickedDay: number;
+
+  private _clickedMonth: number;
+  private _clickedYear: number;
   private _currentLanguage = getDocumentLang();
   private _weekdays = [];
   private _currentDay = Number(this.currentDay);
@@ -88,7 +97,9 @@ export class LyneDatepickerDays {
    * calculate the number of days in a given month and year
    */
   private _selectDay = (evt): void => {
-    this._selectedDay = Number(evt.currentTarget.getAttribute('data-day'));
+    this._clickedDay = Number(evt.currentTarget.getAttribute('data-day'));
+    this._clickedMonth = Number(this.selectedMonth) - 1;
+    this._clickedYear = Number(this.selectedYear);
   };
 
   public componentWillLoad(): void {
@@ -123,7 +134,7 @@ export class LyneDatepickerDays {
         cellClasses += 'datepicker__day--today';
       }
 
-      if (day === this._selectedDay) {
+      if (day === this._clickedDay && month === this._clickedMonth && year === this._clickedYear) {
         cellClasses += ' datepicker__day--selected';
       }
 

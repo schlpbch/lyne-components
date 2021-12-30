@@ -117,6 +117,10 @@ export namespace Components {
          */
         "currentMonth": string;
         /**
+          * The current year.
+         */
+        "currentYear": string;
+        /**
           * The selected month to be displayed. e.g. "8" for august or "11" for november
          */
         "selectedMonth": string;
@@ -722,6 +726,10 @@ declare namespace LocalJSX {
           * The current month.
          */
         "currentMonth": string;
+        /**
+          * The current year.
+         */
+        "currentYear": string;
         /**
           * The selected month to be displayed. e.g. "8" for august or "11" for november
          */

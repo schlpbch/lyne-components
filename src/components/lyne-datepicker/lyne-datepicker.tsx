@@ -21,11 +21,13 @@ export class LyneDatepicker {
   @Element() private _element: HTMLElement;
 
   private _dateObj = new Date();
-  private _currentDay = this._dateObj.getDate();
-  private _currentMonth = this._dateObj.getMonth();
 
   @State() public selectedMonth = this._dateObj.getMonth();
   @State() public selectedYear = this._dateObj.getFullYear();
+
+  private _currentDay = this._dateObj.getDate();
+  private _currentMonth = this._dateObj.getMonth();
+  private _currentYear = this._dateObj.getFullYear();
 
   private _handleSelectedDate = (evt): void => {
     this.selectedMonth = evt.detail.selectedMonth;
@@ -52,6 +54,7 @@ export class LyneDatepicker {
           selectedYear={this.selectedYear.toString()}
           currentDay={this._currentDay.toString()}
           currentMonth={(this._currentMonth + 1).toString()}
+          currentYear={(this._currentYear).toString()}
         ></lyne-datepicker-days>
       </div>
     );
