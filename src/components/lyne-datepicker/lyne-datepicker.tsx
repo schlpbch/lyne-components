@@ -22,16 +22,16 @@ export class LyneDatepicker {
 
   private _dateObj = new Date();
 
-  @State() public selectedMonth = this._dateObj.getMonth();
-  @State() public selectedYear = this._dateObj.getFullYear();
+  @State() public displayedMonth = this._dateObj.getMonth();
+  @State() public displayedYear = this._dateObj.getFullYear();
 
   private _currentDay = this._dateObj.getDate();
   private _currentMonth = this._dateObj.getMonth();
   private _currentYear = this._dateObj.getFullYear();
 
   private _handleSelectedDate = (evt): void => {
-    this.selectedMonth = evt.detail.selectedMonth;
-    this.selectedYear = evt.detail.selectedYear;
+    this.displayedMonth = evt.detail.displayedMonth;
+    this.displayedYear = evt.detail.displayedYear;
   };
 
   public componentDidLoad(): void {
@@ -46,12 +46,12 @@ export class LyneDatepicker {
     return (
       <div class='datepicker'>
         <lyne-datepicker-navigation
-          selectedMonth={(this.selectedMonth + 1).toString()}
-          selectedYear={this.selectedYear.toString()}
+          displayedMonth={(this.displayedMonth + 1).toString()}
+          displayedYear={this.displayedYear.toString()}
         ></lyne-datepicker-navigation>
         <lyne-datepicker-days
-          selectedMonth={(this.selectedMonth + 1).toString()}
-          selectedYear={this.selectedYear.toString()}
+          displayedMonth={(this.displayedMonth + 1).toString()}
+          displayedYear={this.displayedYear.toString()}
           currentDay={this._currentDay.toString()}
           currentMonth={(this._currentMonth + 1).toString()}
           currentYear={(this._currentYear).toString()}

@@ -20,20 +20,20 @@ import { i18nWeekdays } from '../../global/i18n';
 export class LyneDatepickerDays {
 
   /**
-   * The selected month to be displayed.
+   * The current displayed month.
    * e.g. "8" for august or "11" for november
    */
   @Prop({
     reflect: true
-  }) public selectedMonth!: string;
+  }) public displayedMonth!: string;
 
   /**
-   * The selected year to be displayed.
+   * The current displayed year.
    * e.g. "1995" or "2023"
    */
   @Prop({
     reflect: true
-  }) public selectedYear!: string;
+  }) public displayedYear!: string;
 
   /**
    * The current day.
@@ -56,10 +56,10 @@ export class LyneDatepickerDays {
     reflect: true
   }) public currentYear!: string;
 
-  @State() private _clickedDay: number;
+  @State() private _selectedDay: number;
 
-  private _clickedMonth: number;
-  private _clickedYear: number;
+  private _selectedMonth: number;
+  private _selectedYear: number;
   private _currentLanguage = getDocumentLang();
   private _weekdays = [];
   private _currentDay = Number(this.currentDay);
@@ -97,9 +97,9 @@ export class LyneDatepickerDays {
    * calculate the number of days in a given month and year
    */
   private _selectDay = (evt): void => {
-    this._clickedDay = Number(evt.currentTarget.getAttribute('data-day'));
-    this._clickedMonth = Number(this.selectedMonth) - 1;
-    this._clickedYear = Number(this.selectedYear);
+    this._selectedDay = Number(evt.currentTarget.getAttribute('data-day'));
+    this._selectedMonth = Number(this.displayedMonth) - 1;
+    this._selectedYear = Number(this.displayedYear);
   };
 
   public componentWillLoad(): void {
@@ -111,10 +111,10 @@ export class LyneDatepickerDays {
 
   public render(): JSX.Element {
     // months are index-based
-    const month = Number(this.selectedMonth) - 1;
-    const year = Number(this.selectedYear);
-    const startWeekday: number = this._calcStartWeekday(month, year);
-    const numberOfDays: number = this._calcNumberOfDays(month, year);
+    const displayedMonth = Number(this.displayedMonth) - 1;
+    const displayedYear = Number(this.displayedYear);
+    const startWeekday: number = this._calcStartWeekday(displayedMonth, displayedYear);
+    const numberOfDays: number = this._calcNumberOfDays(displayedMonth, displayedYear);
     let weekday = 0;
     let day = 1;
     let cells = [];
@@ -130,11 +130,11 @@ export class LyneDatepickerDays {
     for (day = 1; day <= numberOfDays; day++) {
       cellClasses = '';
 
-      if (day === this._currentDay && month === this._currentMonth) {
+      if (day === this._currentDay && displayedMonth === this._currentMonth) {
         cellClasses += 'datepicker__day--today';
       }
 
-      if (day === this._clickedDay && month === this._clickedMonth && year === this._clickedYear) {
+      if (day === this._selectedDay && displayedMonth === this._selectedMonth && displayedYear === this._selectedYear) {
         cellClasses += ' datepicker__day--selected';
       }
 

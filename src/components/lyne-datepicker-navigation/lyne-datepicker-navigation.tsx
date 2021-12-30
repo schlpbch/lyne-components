@@ -24,26 +24,26 @@ import chevronIconLeft from 'lyne-icons/dist/icons/chevron-small-left-small.svg'
 export class LyneDatepickerNavigation {
 
   /**
-   * The selected month to be displayed.
+   * The current displayed month.
    * e.g. "8" for august or "11" for november
    */
   @Prop({
     reflect: true
-  }) public selectedMonth!: string;
+  }) public displayedMonth!: string;
 
   /**
-   * The selected year to be displayed.
+   * The current displayed year.
    * e.g. "1995" or "2023"
    */
   @Prop({
     reflect: true
-  }) public selectedYear!: string;
+  }) public displayedYear!: string;
 
   @Element() private _element: HTMLElement;
 
   private _currentLanguage = getDocumentLang();
-  private _selectedMonth = Number(this.selectedMonth) - 1;
-  private _selectedYear = Number(this.selectedYear);
+  private _displayedMonth = Number(this.displayedMonth) - 1;
+  private _displayedYear = Number(this.displayedYear);
   private _monthsArray = [];
   private _prevButtonEventId = 'prevButtonClick';
   private _nextButtonEventId = 'nextButtonClick';
@@ -54,36 +54,36 @@ export class LyneDatepickerNavigation {
   private _handlePrevNextButtonClick = (evt): void => {
 
     if (evt.detail === this._prevButtonEventId) {
-      if (this._selectedMonth === 0) {
-        this._selectedMonth = 11;
-        this._selectedYear -= 1;
+      if (this._displayedMonth === 0) {
+        this._displayedMonth = 11;
+        this._displayedYear -= 1;
       } else {
-        this._selectedMonth -= 1;
+        this._displayedMonth -= 1;
       }
     }
 
     if (evt.detail === this._nextButtonEventId) {
-      if (this._selectedMonth === 11) {
-        this._selectedMonth = 0;
-        this._selectedYear += 1;
+      if (this._displayedMonth === 11) {
+        this._displayedMonth = 0;
+        this._displayedYear += 1;
       } else {
-        this._selectedMonth += 1;
+        this._displayedMonth += 1;
       }
     }
 
-    this._propagateSelection(this._selectedMonth, this._selectedYear);
+    this._propagateSelection(this._displayedMonth, this._displayedYear);
   };
 
   /*
-   * propagate event with the current selected month and year
+   * propagate event with the current displayed month and year
    */
-  private _propagateSelection = (selectedMonth: number, selectedYear: number): void => {
+  private _propagateSelection = (displayedMonth: number, displayedYear: number): void => {
     const event = new CustomEvent(events.selected, {
       bubbles: false,
       composed: true,
       detail: {
-        selectedMonth,
-        selectedYear
+        displayedMonth,
+        displayedYear
       }
     });
 
@@ -125,7 +125,7 @@ export class LyneDatepickerNavigation {
           eventId={this._prevButtonEventId}
         ></lyne-button>
         <div class='datepicker__navigation-month-current'>
-          <span>{this._monthsArray[this._selectedMonth]} {this._selectedYear}</span>
+          <span>{this._monthsArray[this._displayedMonth]} {this._displayedYear}</span>
         </div>
         <lyne-button
           variant='secondary'

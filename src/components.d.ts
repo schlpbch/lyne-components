@@ -121,23 +121,23 @@ export namespace Components {
          */
         "currentYear": string;
         /**
-          * The selected month to be displayed. e.g. "8" for august or "11" for november
+          * The current displayed month. e.g. "8" for august or "11" for november
          */
-        "selectedMonth": string;
+        "displayedMonth": string;
         /**
-          * The selected year to be displayed. e.g. "1995" or "2023"
+          * The current displayed year. e.g. "1995" or "2023"
          */
-        "selectedYear": string;
+        "displayedYear": string;
     }
     interface LyneDatepickerNavigation {
         /**
-          * The selected month to be displayed. e.g. "8" for august or "11" for november
+          * The current displayed month. e.g. "8" for august or "11" for november
          */
-        "selectedMonth": string;
+        "displayedMonth": string;
         /**
-          * The selected year to be displayed. e.g. "1995" or "2023"
+          * The current displayed year. e.g. "1995" or "2023"
          */
-        "selectedYear": string;
+        "displayedYear": string;
     }
     interface LyneImage {
         /**
@@ -731,23 +731,23 @@ declare namespace LocalJSX {
          */
         "currentYear": string;
         /**
-          * The selected month to be displayed. e.g. "8" for august or "11" for november
+          * The current displayed month. e.g. "8" for august or "11" for november
          */
-        "selectedMonth": string;
+        "displayedMonth": string;
         /**
-          * The selected year to be displayed. e.g. "1995" or "2023"
+          * The current displayed year. e.g. "1995" or "2023"
          */
-        "selectedYear": string;
+        "displayedYear": string;
     }
     interface LyneDatepickerNavigation {
         /**
-          * The selected month to be displayed. e.g. "8" for august or "11" for november
+          * The current displayed month. e.g. "8" for august or "11" for november
          */
-        "selectedMonth": string;
+        "displayedMonth": string;
         /**
-          * The selected year to be displayed. e.g. "1995" or "2023"
+          * The current displayed year. e.g. "1995" or "2023"
          */
-        "selectedYear": string;
+        "displayedYear": string;
     }
     interface LyneImage {
         /**
