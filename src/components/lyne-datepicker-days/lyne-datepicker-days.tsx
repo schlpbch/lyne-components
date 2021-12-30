@@ -20,7 +20,7 @@ import { i18nWeekdays } from '../../global/i18n';
 export class LyneDatepickerDays {
 
   /**
-   * Month to be displayed.
+   * The selected month to be displayed.
    * e.g. "8" for august or "11" for november
    */
   @Prop({
@@ -28,19 +28,33 @@ export class LyneDatepickerDays {
   }) public selectedMonth!: string;
 
   /**
-   * Year to be displayed.
+   * The selected year to be displayed.
    * e.g. "1995" or "2023"
    */
   @Prop({
     reflect: true
   }) public selectedYear!: string;
 
+  /**
+   * The current day.
+   */
+  @Prop({
+    reflect: true
+  }) public currentDay!: string;
+
+  /**
+   * The current month.
+   */
+  @Prop({
+    reflect: true
+  }) public currentMonth!: string;
+
   @State() private _selectedDay: number;
 
   private _currentLanguage = getDocumentLang();
   private _weekdays = [];
-  private _dateObj = new Date();
-  private _date = this._dateObj.getDate();
+  private _currentDay = Number(this.currentDay);
+  private _currentMonth = Number(this.currentMonth) - 1;
 
   /*
    * calculate the day of the week the first day of a month lands on
@@ -91,7 +105,7 @@ export class LyneDatepickerDays {
     const startWeekday: number = this._calcStartWeekday(month, year);
     const numberOfDays: number = this._calcNumberOfDays(month, year);
     let weekday = 0;
-    let currentDay = 1;
+    let day = 1;
     let cells = [];
     const rows = [];
     let cellClasses: string;
@@ -102,28 +116,28 @@ export class LyneDatepickerDays {
     }
 
     // insert the days of the month
-    for (currentDay = 1; currentDay <= numberOfDays; currentDay++) {
+    for (day = 1; day <= numberOfDays; day++) {
       cellClasses = '';
 
-      if (currentDay === this._date) {
+      if (day === this._currentDay && month === this._currentMonth) {
         cellClasses += 'datepicker__day--today';
       }
 
-      if (currentDay === this._selectedDay) {
+      if (day === this._selectedDay) {
         cellClasses += ' datepicker__day--selected';
       }
 
       cells.push(<td
         class={cellClasses}
         role='gridcell'
-        data-day={currentDay}
+        data-day={day}
         onClick={(evt): void => this._selectDay(evt)}
       >
-        <span>{currentDay}</span>
+        <span>{day}</span>
       </td>);
 
       // last day of the week
-      if (weekday === 6 && currentDay < numberOfDays) {
+      if (weekday === 6 && day < numberOfDays) {
         rows.push(<tr role='row'>{...cells}</tr>);
 
         // clear array to populate the days of the next week

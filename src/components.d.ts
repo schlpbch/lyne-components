@@ -109,21 +109,29 @@ export namespace Components {
     }
     interface LyneDatepickerDays {
         /**
-          * Month to be displayed. e.g. "8" for august or "11" for november
+          * The current day.
+         */
+        "currentDay": string;
+        /**
+          * The current month.
+         */
+        "currentMonth": string;
+        /**
+          * The selected month to be displayed. e.g. "8" for august or "11" for november
          */
         "selectedMonth": string;
         /**
-          * Year to be displayed. e.g. "1995" or "2023"
+          * The selected year to be displayed. e.g. "1995" or "2023"
          */
         "selectedYear": string;
     }
     interface LyneDatepickerNavigation {
         /**
-          * Month to be displayed. e.g. "8" for august or "11" for november
+          * The selected month to be displayed. e.g. "8" for august or "11" for november
          */
         "selectedMonth": string;
         /**
-          * Year to be displayed. e.g. "1995" or "2023"
+          * The selected year to be displayed. e.g. "1995" or "2023"
          */
         "selectedYear": string;
     }
@@ -707,21 +715,29 @@ declare namespace LocalJSX {
     }
     interface LyneDatepickerDays {
         /**
-          * Month to be displayed. e.g. "8" for august or "11" for november
+          * The current day.
+         */
+        "currentDay": string;
+        /**
+          * The current month.
+         */
+        "currentMonth": string;
+        /**
+          * The selected month to be displayed. e.g. "8" for august or "11" for november
          */
         "selectedMonth": string;
         /**
-          * Year to be displayed. e.g. "1995" or "2023"
+          * The selected year to be displayed. e.g. "1995" or "2023"
          */
         "selectedYear": string;
     }
     interface LyneDatepickerNavigation {
         /**
-          * Month to be displayed. e.g. "8" for august or "11" for november
+          * The selected month to be displayed. e.g. "8" for august or "11" for november
          */
         "selectedMonth": string;
         /**
-          * Year to be displayed. e.g. "1995" or "2023"
+          * The selected year to be displayed. e.g. "1995" or "2023"
          */
         "selectedYear": string;
     }
