@@ -2,8 +2,7 @@ import {
   Component,
   Element,
   h,
-  Prop,
-  State
+  Prop
 } from '@stencil/core';
 
 import events from './lyne-datepicker-navigation.events';
@@ -42,48 +41,42 @@ export class LyneDatepickerNavigation {
 
   @Element() private _element: HTMLElement;
 
-  private _dateObj = new Date();
-  @State() public currentMonth = this._dateObj.getMonth();
-
   private _currentLanguage = getDocumentLang();
+  private _currentMonth = Number(this.selectedMonth) - 1;
+  private _currentYear = Number(this.selectedYear);
   private _monthsArray = [];
-  private _currentYear = this._dateObj.getFullYear();
-
   private _prevButtonEventId = 'prevButtonClick';
   private _nextButtonEventId = 'nextButtonClick';
 
+  /*
+   * add and subtract month and year on click
+   */
   private _handlePrevNextButtonClick = (evt): void => {
 
     if (evt.detail === this._prevButtonEventId) {
-      if (this.currentMonth === 0) {
-        this.currentMonth = 11;
+      if (this._currentMonth === 0) {
+        this._currentMonth = 11;
         this._currentYear -= 1;
       } else {
-        this.currentMonth -= 1;
+        this._currentMonth -= 1;
       }
     }
 
     if (evt.detail === this._nextButtonEventId) {
-      if (this.currentMonth === 11) {
-        this.currentMonth = 0;
+      if (this._currentMonth === 11) {
+        this._currentMonth = 0;
         this._currentYear += 1;
       } else {
-        this.currentMonth += 1;
+        this._currentMonth += 1;
       }
     }
 
-    this._propagateSelection(this.currentMonth, this._currentYear);
+    this._propagateSelection(this._currentMonth, this._currentYear);
   };
 
   /*
-   * parse months from the i18n file
+   * propagate event with the current selected month and year
    */
-  private _parseMonths = (): void => {
-    for (const month of i18nMonths[this._currentLanguage]) {
-      this._monthsArray.push(month.name);
-    }
-  };
-
   private _propagateSelection = (selectedMonth: number, selectedYear: number): void => {
     const event = new CustomEvent(events.selected, {
       bubbles: false,
@@ -94,10 +87,17 @@ export class LyneDatepickerNavigation {
       }
     });
 
-    /**
-     * lyne-autocomplete listens to this event
-     */
+    // lyne-datepicker listens to this event
     this._element.dispatchEvent(event);
+  };
+
+  /*
+   * parse months from the i18n file
+   */
+  private _parseMonths = (): void => {
+    for (const month of i18nMonths[this._currentLanguage]) {
+      this._monthsArray.push(month.name);
+    }
   };
 
   public componentWillLoad(): void {
@@ -125,7 +125,7 @@ export class LyneDatepickerNavigation {
           eventId={this._prevButtonEventId}
         ></lyne-button>
         <div class='datepicker__navigation-month-current'>
-          <span>{this._monthsArray[this.currentMonth]} {this._currentYear}</span>
+          <span>{this._monthsArray[this._currentMonth]} {this._currentYear}</span>
         </div>
         <lyne-button
           variant='secondary'
