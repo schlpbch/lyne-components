@@ -42,7 +42,7 @@ export class LyneDatepickerNavigation {
   @Element() private _element: HTMLElement;
 
   private _currentLanguage = getDocumentLang();
-  private _displayedMonth = Number(this.displayedMonth) - 1;
+  private _displayedMonth = Number(this.displayedMonth);
   private _displayedYear = Number(this.displayedYear);
   private _monthsArray = [];
   private _prevButtonEventId = 'prevButtonClick';

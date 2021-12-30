@@ -46,14 +46,14 @@ export class LyneDatepicker {
     return (
       <div class='datepicker'>
         <lyne-datepicker-navigation
-          displayedMonth={(this.displayedMonth + 1).toString()}
+          displayedMonth={(this.displayedMonth).toString()}
           displayedYear={this.displayedYear.toString()}
         ></lyne-datepicker-navigation>
         <lyne-datepicker-days
-          displayedMonth={(this.displayedMonth + 1).toString()}
+          displayedMonth={(this.displayedMonth).toString()}
           displayedYear={this.displayedYear.toString()}
           currentDay={this._currentDay.toString()}
-          currentMonth={(this._currentMonth + 1).toString()}
+          currentMonth={(this._currentMonth).toString()}
           currentYear={(this._currentYear).toString()}
         ></lyne-datepicker-days>
       </div>

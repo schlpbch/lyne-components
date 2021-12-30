@@ -58,12 +58,14 @@ export class LyneDatepickerDays {
 
   @State() private _selectedDay: number;
 
+  private _currentLanguage = getDocumentLang();
+  private _currentDay = Number(this.currentDay);
+  private _currentMonth = Number(this.currentMonth);
+  private _displayedMonth: number;
+  private _displayedYear: number;
   private _selectedMonth: number;
   private _selectedYear: number;
-  private _currentLanguage = getDocumentLang();
   private _weekdays = [];
-  private _currentDay = Number(this.currentDay);
-  private _currentMonth = Number(this.currentMonth) - 1;
 
   /*
    * calculate the day of the week the first day of a month lands on
@@ -98,8 +100,8 @@ export class LyneDatepickerDays {
    */
   private _selectDay = (evt): void => {
     this._selectedDay = Number(evt.currentTarget.getAttribute('data-day'));
-    this._selectedMonth = Number(this.displayedMonth) - 1;
-    this._selectedYear = Number(this.displayedYear);
+    this._selectedMonth = this._displayedMonth;
+    this._selectedYear = this._displayedYear;
   };
 
   public componentWillLoad(): void {
@@ -110,9 +112,13 @@ export class LyneDatepickerDays {
   }
 
   public render(): JSX.Element {
+
+    this._displayedMonth = Number(this.displayedMonth);
+    this._displayedYear = Number(this.displayedYear);
+
     // months are index-based
-    const displayedMonth = Number(this.displayedMonth) - 1;
-    const displayedYear = Number(this.displayedYear);
+    const displayedMonth = this._displayedMonth;
+    const displayedYear = this._displayedYear;
     const startWeekday: number = this._calcStartWeekday(displayedMonth, displayedYear);
     const numberOfDays: number = this._calcNumberOfDays(displayedMonth, displayedYear);
     let weekday = 0;
