@@ -5,6 +5,14 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property           | Attribute            | Description                            | Type      | Default |
+| ------------------ | -------------------- | -------------------------------------- | --------- | ------- |
+| `disablePastDates` | `disable-past-dates` | Set to true to disable the past dates. | `boolean` | `false` |
+| `presetTodaysDate` | `preset-todays-date` | Set to true to preset todays date.     | `boolean` | `false` |
+
+
 ## Dependencies
 
 ### Depends on

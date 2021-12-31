@@ -106,6 +106,14 @@ export namespace Components {
         "visualButtonOnly"?: boolean;
     }
     interface LyneDatepicker {
+        /**
+          * Set to true to disable the past dates.
+         */
+        "disablePastDates"?: boolean;
+        /**
+          * Set to true to preset todays date.
+         */
+        "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerDays {
         /**
@@ -121,6 +129,10 @@ export namespace Components {
          */
         "currentYear": string;
         /**
+          * If true the past dates are disabled.
+         */
+        "disablePastDates"?: boolean;
+        /**
           * The current displayed month. e.g. "8" for august or "11" for november
          */
         "displayedMonth": string;
@@ -128,6 +140,10 @@ export namespace Components {
           * The current displayed year. e.g. "1995" or "2023"
          */
         "displayedYear": string;
+        /**
+          * If true the todays date is displayed.
+         */
+        "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerNavigation {
         /**
@@ -716,6 +732,14 @@ declare namespace LocalJSX {
         "visualButtonOnly"?: boolean;
     }
     interface LyneDatepicker {
+        /**
+          * Set to true to disable the past dates.
+         */
+        "disablePastDates"?: boolean;
+        /**
+          * Set to true to preset todays date.
+         */
+        "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerDays {
         /**
@@ -731,6 +755,10 @@ declare namespace LocalJSX {
          */
         "currentYear": string;
         /**
+          * If true the past dates are disabled.
+         */
+        "disablePastDates"?: boolean;
+        /**
           * The current displayed month. e.g. "8" for august or "11" for november
          */
         "displayedMonth": string;
@@ -738,6 +766,10 @@ declare namespace LocalJSX {
           * The current displayed year. e.g. "1995" or "2023"
          */
         "displayedYear": string;
+        /**
+          * If true the todays date is displayed.
+         */
+        "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerNavigation {
         /**

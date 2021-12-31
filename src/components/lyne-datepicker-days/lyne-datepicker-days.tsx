@@ -56,15 +56,26 @@ export class LyneDatepickerDays {
     reflect: true
   }) public currentYear!: string;
 
+  /**
+   * If true the todays date is displayed.
+   */
+  @Prop() public presetTodaysDate? = false;
+
+  /**
+   * If true the past dates are disabled.
+   */
+  @Prop() public disablePastDates? = false;
+
   @State() private _selectedDay: number;
 
   private _currentLanguage = getDocumentLang();
   private _currentDay = Number(this.currentDay);
   private _currentMonth = Number(this.currentMonth);
+  private _currentYear= Number(this.currentYear);
   private _displayedMonth: number;
   private _displayedYear: number;
-  private _selectedMonth: number;
-  private _selectedYear: number;
+  private _selectedMonth = Number(this.currentMonth);
+  private _selectedYear = Number(this.currentYear);
   private _weekdays = [];
 
   /*
@@ -96,9 +107,9 @@ export class LyneDatepickerDays {
   }
 
   /*
-   * calculate the number of days in a given month and year
+   * save selected day, month and year to variables
    */
-  private _selectDay = (evt): void => {
+  private _handleDayClick = (evt): void => {
     this._selectedDay = Number(evt.currentTarget.getAttribute('data-day'));
     this._selectedMonth = this._displayedMonth;
     this._selectedYear = this._displayedYear;
@@ -108,6 +119,10 @@ export class LyneDatepickerDays {
     // insert weekdays
     for (const weekday of i18nWeekdays[this._currentLanguage]) {
       this._weekdays.push(<th id={weekday.long}>{weekday.short}</th>);
+    }
+
+    if (this.presetTodaysDate) {
+      this._selectedDay = this._currentDay;
     }
   }
 
@@ -126,6 +141,7 @@ export class LyneDatepickerDays {
     let cells = [];
     const rows = [];
     let cellClasses: string;
+    let dayClick: any;
 
     // insert the leading empty cells
     for (weekday = 0; weekday < startWeekday; weekday++) {
@@ -136,19 +152,35 @@ export class LyneDatepickerDays {
     for (day = 1; day <= numberOfDays; day++) {
       cellClasses = '';
 
-      if (day === this._currentDay && displayedMonth === this._currentMonth) {
+      // mark today
+      if (day === this._currentDay && displayedMonth === this._currentMonth && displayedYear === this._currentYear) {
         cellClasses += 'datepicker__day--today';
+        dayClick = (evt): void => this._handleDayClick(evt);
       }
 
+      // mark selected day
       if (day === this._selectedDay && displayedMonth === this._selectedMonth && displayedYear === this._selectedYear) {
         cellClasses += ' datepicker__day--selected';
+        dayClick = (evt): void => this._handleDayClick(evt);
+      }
+
+      // mark past dates as disabled
+      if (this.disablePastDates) {
+
+        // selected month/year is in same month/year as currently displayed
+        if ((displayedMonth === this._selectedMonth && displayedYear === this._selectedYear) && day < this._currentDay) {
+          cellClasses += ' datepicker__day--disabled';
+
+        } else if (displayedMonth < this._selectedMonth && displayedYear <= this._selectedYear) {
+          cellClasses += ' datepicker__day--disabled';
+        }
       }
 
       cells.push(<td
         class={cellClasses}
         role='gridcell'
         data-day={day}
-        onClick={(evt): void => this._selectDay(evt)}
+        onClick={dayClick}
       >
         <span>{day}</span>
       </td>);

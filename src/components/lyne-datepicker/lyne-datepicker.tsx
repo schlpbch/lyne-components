@@ -2,6 +2,7 @@ import {
   Component,
   Element,
   h,
+  Prop,
   State
 } from '@stencil/core';
 
@@ -17,6 +18,16 @@ import datepickerNavigationEvents from '../lyne-datepicker-navigation/lyne-datep
 })
 
 export class LyneDatepicker {
+
+  /**
+   * Set to true to preset todays date.
+   */
+  @Prop() public presetTodaysDate? = false;
+
+  /**
+   * Set to true to disable the past dates.
+   */
+  @Prop() public disablePastDates? = false;
 
   @Element() private _element: HTMLElement;
 
@@ -55,6 +66,8 @@ export class LyneDatepicker {
           currentDay={this._currentDay.toString()}
           currentMonth={(this._currentMonth).toString()}
           currentYear={(this._currentYear).toString()}
+          presetTodaysDate={(this.presetTodaysDate)}
+          disablePastDates={(this.disablePastDates)}
         ></lyne-datepicker-days>
       </div>
     );
