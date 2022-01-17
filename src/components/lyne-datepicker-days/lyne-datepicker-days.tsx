@@ -171,7 +171,7 @@ export class LyneDatepickerDays {
         if ((displayedMonth === this._selectedMonth && displayedYear === this._selectedYear) && day < this._currentDay) {
           cellClasses += ' datepicker__day--disabled';
 
-        } else if (displayedMonth < this._selectedMonth && displayedYear <= this._selectedYear) {
+        } else if ((displayedMonth < this._selectedMonth && displayedYear <= this._selectedYear) || (displayedYear < this._selectedYear)) {
           cellClasses += ' datepicker__day--disabled';
         }
       }
