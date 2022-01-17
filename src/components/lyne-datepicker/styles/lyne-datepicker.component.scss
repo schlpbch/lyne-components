@@ -14,7 +14,7 @@
 }
 
 .datepicker {
-  @include shadowElevationLevel5;
+  @include shadow-level-5-hard;
   width: pxToRem(var(--datepicker-width));
   padding: pxToRem(var(--spacing-fixed-4x));
   border-radius: pxToRem(var(--border-radius-8x));
