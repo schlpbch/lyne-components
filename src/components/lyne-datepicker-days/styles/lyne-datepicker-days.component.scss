@@ -24,20 +24,21 @@
   --day-selected-cricle-size: 40;
   --day-selected-cricle-border-width: 2;
   --day-disabled-line-width: 22;
+  --day-disabled-line-height: 1;
 }
 
-table {
+.datepicker__days {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-th {
+.datepicker__days-weekday {
   @include text-xs--regular();
   color: var(--text-gray-color);
   padding-block-end: pxToRem(var(--spacing-fixed-4x));
 }
 
-td {
+.datepicker__days-day {
   @include text-s--regular();
   color: var(--text-default-color);
   text-align: center;
@@ -46,7 +47,7 @@ td {
   height: pxToRem(var(--day-cell-size));
   width: pxToRem(var(--day-cell-size));
 
-  &:not(.datepicker__day--disabled):not(.datepicker__day--empty):not(.datepicker__day--selected):hover {
+  &:not(.datepicker__days-day--disabled):not(.datepicker__days-day--empty):not(.datepicker__days-day--selected):hover {
     color: var(--text-color-hover-focus);
 
     &:after {
@@ -55,15 +56,15 @@ td {
     }
   }
 
-  &.datepicker__day--past {
+  &.datepicker__days-day--past {
     color: var(--text-gray-color);
   }
 
-  &.datepicker__day--today {
+  &.datepicker__days-day--today {
     @include text--bold();
   }
 
-  &.datepicker__day--selected {
+  &.datepicker__days-day--selected {
     color: var(--text-default-color);
 
     &:after {
@@ -71,17 +72,17 @@ td {
     }
   }
 
-  &.datepicker__day--disabled {
+  &.datepicker__days-day--disabled {
     color: var(--text-gray-color);
 
     &:after {
       content: "";
       position: absolute;
       left: calc((#{pxToRem(var(--day-cell-size))} - #{pxToRem(var(--day-disabled-line-width))}) / 2);
-      top: calc(#{pxToRem(var(--day-selected-cricle-size))} / 2);
+      top: calc((#{pxToRem(var(--day-selected-cricle-size))} / 2) + pxToRem(var(--day-disabled-line-height)));
       display: block;
       width: pxToRem(var(--day-disabled-line-width));
-      border-top: pxToRem(1) solid var(--text-gray-color);
+      border-top: pxToRem(var(--day-disabled-line-height)) solid var(--text-gray-color);
     }
   }
 }

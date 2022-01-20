@@ -118,7 +118,7 @@ export class LyneDatepickerDays {
   public componentWillLoad(): void {
     // insert weekdays
     for (const weekday of i18nWeekdays[this._currentLanguage]) {
-      this._weekdays.push(<th id={weekday.long}>{weekday.short}</th>);
+      this._weekdays.push(<th class='datepicker__days-weekday' id={weekday.long}>{weekday.short}</th>);
     }
 
     if (this.presetTodaysDate) {
@@ -145,22 +145,22 @@ export class LyneDatepickerDays {
 
     // insert the leading empty cells
     for (weekday = 0; weekday < startWeekday; weekday++) {
-      cells.push(<td class='datepicker__day--empty'>&nbsp;</td>);
+      cells.push(<td class='datepicker__days-day datepicker__days-day--empty'>&nbsp;</td>);
     }
 
     // insert the days of the month
     for (day = 1; day <= numberOfDays; day++) {
-      cellClasses = '';
+      cellClasses = 'datepicker__days-day';
 
       // mark today
       if (day === this._currentDay && displayedMonth === this._currentMonth && displayedYear === this._currentYear) {
-        cellClasses += 'datepicker__day--today';
+        cellClasses += ' datepicker__days-day--today';
         dayClick = (evt): void => this._handleDayClick(evt);
       }
 
       // mark selected day
       if (day === this._selectedDay && displayedMonth === this._selectedMonth && displayedYear === this._selectedYear) {
-        cellClasses += ' datepicker__day--selected';
+        cellClasses += ' datepicker__days-day--selected';
         dayClick = (evt): void => this._handleDayClick(evt);
       }
 
@@ -169,10 +169,10 @@ export class LyneDatepickerDays {
 
         // selected month/year is in same month/year as currently displayed
         if ((displayedMonth === this._selectedMonth && displayedYear === this._selectedYear) && day < this._currentDay) {
-          cellClasses += ' datepicker__day--disabled';
+          cellClasses += ' datepicker__days-day--disabled';
 
         } else if ((displayedMonth < this._selectedMonth && displayedYear <= this._selectedYear) || (displayedYear < this._selectedYear)) {
-          cellClasses += ' datepicker__day--disabled';
+          cellClasses += ' datepicker__days-day--disabled';
         }
       }
 
@@ -202,13 +202,13 @@ export class LyneDatepickerDays {
 
     // insert any trailing empty cells
     for (weekday; weekday < 7; weekday++) {
-      cells.push(<td class='datepicker__day--empty'>&nbsp;</td>);
+      cells.push(<td class='datepicker__days-day datepicker__days-day--empty'>&nbsp;</td>);
     }
 
     rows.push(<tr role='row'>{...cells}</tr>);
 
     return (
-      <table>
+      <table class='datepicker__days'>
         <thead>
           <tr>
             {this._weekdays}
