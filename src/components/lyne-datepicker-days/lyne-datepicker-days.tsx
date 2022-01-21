@@ -123,7 +123,7 @@ export class LyneDatepickerDays {
   public componentWillLoad(): void {
     // insert weekdays
     for (const weekday of i18nWeekdays[this._currentLanguage]) {
-      this._weekdays.push(<th class='datepicker__days-weekday' id={weekday.long}>{weekday.short}</th>);
+      this._weekdays.push(<th class='datepicker__days-weekday' id={`${weekday.short}-${this.datepickerId}`}>{weekday.short}</th>);
     }
 
     if (this.presetTodaysDate) {
@@ -143,6 +143,7 @@ export class LyneDatepickerDays {
     const numberOfDays: number = this._calcNumberOfDays(displayedMonth, displayedYear);
     let weekday = 0;
     let day = 1;
+    let rowCount = 1;
     let cells = [];
     const rows = [];
     let cellClasses: string;
@@ -182,7 +183,9 @@ export class LyneDatepickerDays {
       }
 
       cells.push(<td
+        id={`day${day}-${this.datepickerId}`}
         class={cellClasses}
+        headers={`row${rowCount}-${this.datepickerId} ${i18nWeekdays[this._currentLanguage][weekday].short}-${this.datepickerId}`}
         role='gridcell'
         data-day={day}
         onClick={dayClick}
@@ -192,13 +195,15 @@ export class LyneDatepickerDays {
 
       // last day of the week
       if (weekday === 6 && day < numberOfDays) {
-        rows.push(<tr role='row'>{...cells}</tr>);
+        rows.push(<tr id={`row${rowCount}-${this.datepickerId}`} role='row'>{...cells}</tr>);
 
         // clear array to populate the days of the next week
         cells = [];
 
         // set weekday to monday
         weekday = 0;
+
+        rowCount += 1;
 
       } else {
         weekday++;
@@ -210,10 +215,13 @@ export class LyneDatepickerDays {
       cells.push(<td class='datepicker__days-day datepicker__days-day--empty'>&nbsp;</td>);
     }
 
-    rows.push(<tr role='row'>{...cells}</tr>);
+    rows.push(<tr id={`row${rowCount}-${this.datepickerId}`} role='row'>{...cells}</tr>);
 
     return (
-      <table class='datepicker__days'>
+      <table
+        class='datepicker__days'
+        aria-labelledby={`month-${this.datepickerId}`}
+      >
         <thead>
           <tr>
             {this._weekdays}

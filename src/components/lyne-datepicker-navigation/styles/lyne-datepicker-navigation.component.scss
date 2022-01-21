@@ -16,7 +16,11 @@
   padding-block-end: pxToRem(var(--spacing-fixed-4x));
 }
 
-.datepicker__navigation-month-current {
+.datepicker__navigation-current-selection {
   @include text-s--regular();
   color: var(--text-default-color);
+}
+
+.datepicker__navigation-current-selection-desc--visually-hidden {
+  @include screenReaderOnly();
 }
