@@ -293,7 +293,34 @@ export const i18nTargetOpensInNewWindow: any = {
   it: 'L\'obiettivo del link si apre in una nuova finestra.'
 };
 
-/* eslint-disable sort-keys */
+export const i18nWalk: any = {
+  de: 'Fussweg',
+  en: 'Walk',
+  fr: 'Parcours à pied',
+  it: 'Percorso a piedi'
+};
+
+export const i18nWalkingDistanceArrival: any = {
+  de: 'Minuten Fussweg nach Ankunft.',
+  en: 'minutes of walking time after arrival.',
+  fr: 'minutes trajet à pied après l’arrivée.',
+  it: 'minuti a piedi all’arrivo.'
+};
+
+export const i18nWalkingDistanceDeparture: any = {
+  de: 'Minuten Fussweg vor Abfahrt.',
+  en: 'minutes of walking time before departure.',
+  fr: 'minutes trajet à pied avant le départ.',
+  it: 'minuti a piedi prima della partenza.'
+};
+
+export const i18nWalkingDistanceToDepartureStation: any = {
+  de: 'Fussweg zum Abfahrtsbahnhof.',
+  en: 'of walking distance to departing station.',
+  fr: 'de distance à pied de la gare de départ.',
+  it: 'di distanza a piedi dalla stazione di partenza.'
+};
+
 export const i18nWeekdays: any = {
   de: [
     {
@@ -572,32 +599,25 @@ export const i18nMonths: any = {
   ]
 };
 
-export const i18nWalk: any = {
-  de: 'Fussweg',
-  en: 'Walk',
-  fr: 'Parcours à pied',
-  it: 'Percorso a piedi'
-};
-
-export const i18nWalkingDistanceArrival: any = {
-  de: 'Minuten Fussweg nach Ankunft.',
-  en: 'minutes of walking time after arrival.',
-  fr: 'minutes trajet à pied après l’arrivée.',
-  it: 'minuti a piedi all’arrivo.'
-};
-
-export const i18nWalkingDistanceDeparture: any = {
-  de: 'Minuten Fussweg vor Abfahrt.',
-  en: 'minutes of walking time before departure.',
-  fr: 'minutes trajet à pied avant le départ.',
-  it: 'minuti a piedi prima della partenza.'
-};
-
-export const i18nWalkingDistanceToDepartureStation: any = {
-  de: 'Fussweg zum Abfahrtsbahnhof.',
-  en: 'of walking distance to departing station.',
-  fr: 'de distance à pied de la gare de départ.',
-  it: 'di distanza a piedi dalla stazione di partenza.'
+export const i18nDatepicker: any = {
+  prevMonth: {
+    de: 'Zum vorherigen Monat wechseln',
+    en: 'Change to the previous month',
+    fr: 'Passer au mois précédent',
+    it: 'Passare al mese precedente'
+  },
+  nextMonth: {
+    de: 'Zum nächsten Monat wechseln',
+    en: 'Change to the next month',
+    fr: 'Passer au mois suivant',
+    it: 'Passare al mese successivo'
+  },
+  displayChangedTo: {
+    de: 'Kalender zeigt',
+    en: 'Calendar displays',
+    fr: 'Le calendrier affiche',
+    it: 'Il calendario mostra'
+  }
 };
 
 /* eslint-enable sort-keys */

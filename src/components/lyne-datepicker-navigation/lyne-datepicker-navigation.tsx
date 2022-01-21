@@ -8,7 +8,10 @@ import {
 import events from './lyne-datepicker-navigation.events';
 import buttonEvents from '../lyne-button/lyne-button.events';
 import getDocumentLang from '../../global/helpers/get-document-lang';
-import { i18nMonths } from '../../global/i18n';
+import {
+  i18nDatepicker,
+  i18nMonths
+} from '../../global/i18n';
 import chevronIconRight from 'lyne-icons/dist/icons/chevron-small-right-small.svg';
 import chevronIconLeft from 'lyne-icons/dist/icons/chevron-small-left-small.svg';
 
@@ -125,11 +128,23 @@ export class LyneDatepickerNavigation {
           size='small'
           label=''
           icon={true}
-          iconDescription='Zum vorherigen Monat wechseln'
+          iconDescription={i18nDatepicker.prevMonth[this._currentLanguage]}
           innerHTML={chevronIconLeft}
           eventId={this._prevButtonEventId}
         ></lyne-button>
-        <div class='datepicker__navigation-month-current'>
+        <div
+          id={`month-${this.datepickerId}`}
+          role='heading'
+          aria-level='3'
+          aria-live='polite'
+          class='datepicker__navigation-current-selection'
+        >
+          <span
+            class='datepicker__navigation-current-selection-desc--visually-hidden'
+            tabindex='-1'
+          >
+            {i18nDatepicker.displayChangedTo[this._currentLanguage]}
+          </span>
           <span>{this._monthsArray[this._displayedMonth]} {this._displayedYear}</span>
         </div>
         <lyne-button
@@ -137,7 +152,7 @@ export class LyneDatepickerNavigation {
           size='small'
           label=''
           icon={true}
-          iconDescription='Zum nächsten Monat wechseln'
+          iconDescription={i18nDatepicker.nextMonth[this._currentLanguage]}
           innerHTML={chevronIconRight}
           eventId={this._nextButtonEventId}
         ></lyne-button>
