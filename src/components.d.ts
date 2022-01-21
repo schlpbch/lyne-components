@@ -645,6 +645,12 @@ export namespace Components {
     interface LyneTimetableRowHeader {
         "config": string;
     }
+    interface LyneTimetableSegment {
+        /**
+          * Stringified JSON which defines most of the content of the component. Please check the individual stories to get an idea of the structure.
+         */
+        "config": string;
+    }
     interface LyneTimetableTransportationDetails {
         /**
           * Stringified JSON which defines most of the content of the component. Please check the individual stories to get an idea of the structure.
@@ -905,6 +911,12 @@ declare global {
         prototype: HTMLLyneTimetableRowHeaderElement;
         new (): HTMLLyneTimetableRowHeaderElement;
     };
+    interface HTMLLyneTimetableSegmentElement extends Components.LyneTimetableSegment, HTMLStencilElement {
+    }
+    var HTMLLyneTimetableSegmentElement: {
+        prototype: HTMLLyneTimetableSegmentElement;
+        new (): HTMLLyneTimetableSegmentElement;
+    };
     interface HTMLLyneTimetableTransportationDetailsElement extends Components.LyneTimetableTransportationDetails, HTMLStencilElement {
     }
     var HTMLLyneTimetableTransportationDetailsElement: {
@@ -973,6 +985,7 @@ declare global {
         "lyne-timetable-row-column-headers": HTMLLyneTimetableRowColumnHeadersElement;
         "lyne-timetable-row-day-change": HTMLLyneTimetableRowDayChangeElement;
         "lyne-timetable-row-header": HTMLLyneTimetableRowHeaderElement;
+        "lyne-timetable-segment": HTMLLyneTimetableSegmentElement;
         "lyne-timetable-transportation-details": HTMLLyneTimetableTransportationDetailsElement;
         "lyne-timetable-transportation-number": HTMLLyneTimetableTransportationNumberElement;
         "lyne-timetable-transportation-time": HTMLLyneTimetableTransportationTimeElement;
@@ -1597,6 +1610,12 @@ declare namespace LocalJSX {
     interface LyneTimetableRowHeader {
         "config": string;
     }
+    interface LyneTimetableSegment {
+        /**
+          * Stringified JSON which defines most of the content of the component. Please check the individual stories to get an idea of the structure.
+         */
+        "config": string;
+    }
     interface LyneTimetableTransportationDetails {
         /**
           * Stringified JSON which defines most of the content of the component. Please check the individual stories to get an idea of the structure.
@@ -1701,6 +1720,7 @@ declare namespace LocalJSX {
         "lyne-timetable-row-column-headers": LyneTimetableRowColumnHeaders;
         "lyne-timetable-row-day-change": LyneTimetableRowDayChange;
         "lyne-timetable-row-header": LyneTimetableRowHeader;
+        "lyne-timetable-segment": LyneTimetableSegment;
         "lyne-timetable-transportation-details": LyneTimetableTransportationDetails;
         "lyne-timetable-transportation-number": LyneTimetableTransportationNumber;
         "lyne-timetable-transportation-time": LyneTimetableTransportationTime;
@@ -1744,6 +1764,7 @@ declare module "@stencil/core" {
             "lyne-timetable-row-column-headers": LocalJSX.LyneTimetableRowColumnHeaders & JSXBase.HTMLAttributes<HTMLLyneTimetableRowColumnHeadersElement>;
             "lyne-timetable-row-day-change": LocalJSX.LyneTimetableRowDayChange & JSXBase.HTMLAttributes<HTMLLyneTimetableRowDayChangeElement>;
             "lyne-timetable-row-header": LocalJSX.LyneTimetableRowHeader & JSXBase.HTMLAttributes<HTMLLyneTimetableRowHeaderElement>;
+            "lyne-timetable-segment": LocalJSX.LyneTimetableSegment & JSXBase.HTMLAttributes<HTMLLyneTimetableSegmentElement>;
             "lyne-timetable-transportation-details": LocalJSX.LyneTimetableTransportationDetails & JSXBase.HTMLAttributes<HTMLLyneTimetableTransportationDetailsElement>;
             "lyne-timetable-transportation-number": LocalJSX.LyneTimetableTransportationNumber & JSXBase.HTMLAttributes<HTMLLyneTimetableTransportationNumberElement>;
             "lyne-timetable-transportation-time": LocalJSX.LyneTimetableTransportationTime & JSXBase.HTMLAttributes<HTMLLyneTimetableTransportationTimeElement>;

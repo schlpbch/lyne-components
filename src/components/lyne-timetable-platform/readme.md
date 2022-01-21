@@ -19,11 +19,13 @@ here to show the various configuration options to component developers. !!
 ### Used by
 
  - [lyne-timetable-row](../lyne-timetable-row)
+ - [lyne-timetable-segment](../lyne-timetable-segment)
 
 ### Graph
 ```mermaid
 graph TD;
   lyne-timetable-row --> lyne-timetable-platform
+  lyne-timetable-segment --> lyne-timetable-platform
   style lyne-timetable-platform fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

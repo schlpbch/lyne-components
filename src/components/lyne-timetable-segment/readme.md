@@ -1,7 +1,6 @@
-# lyne-timetable-occupancy
+# lyne-timetable-segment
 
-!! Please note that this component is not intended for direct use. It will get used within lyne-timetable. It is listed
-here to show the various configuration options to component developers. !!
+
 
 <!-- Auto Generated Below -->
 
@@ -15,17 +14,23 @@ here to show the various configuration options to component developers. !!
 
 ## Dependencies
 
-### Used by
+### Depends on
 
- - [lyne-timetable-row](../lyne-timetable-row)
- - [lyne-timetable-segment](../lyne-timetable-segment)
+- [lyne-timetable-transportation-time](../lyne-timetable-transportation-time)
+- [lyne-timetable-platform](../lyne-timetable-platform)
+- [lyne-timetable-transportation-number](../lyne-timetable-transportation-number)
+- [lyne-timetable-travel-hints](../lyne-timetable-travel-hints)
+- [lyne-timetable-occupancy](../lyne-timetable-occupancy)
 
 ### Graph
 ```mermaid
 graph TD;
-  lyne-timetable-row --> lyne-timetable-occupancy
+  lyne-timetable-segment --> lyne-timetable-transportation-time
+  lyne-timetable-segment --> lyne-timetable-platform
+  lyne-timetable-segment --> lyne-timetable-transportation-number
+  lyne-timetable-segment --> lyne-timetable-travel-hints
   lyne-timetable-segment --> lyne-timetable-occupancy
-  style lyne-timetable-occupancy fill:#f9f,stroke:#333,stroke-width:4px
+  style lyne-timetable-segment fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

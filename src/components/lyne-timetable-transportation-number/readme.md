@@ -18,11 +18,13 @@ here to show the various configuration options to component developers. !!
 
 ### Used by
 
+ - [lyne-timetable-segment](../lyne-timetable-segment)
  - [lyne-timetable-transportation-details](../lyne-timetable-transportation-details)
 
 ### Graph
 ```mermaid
 graph TD;
+  lyne-timetable-segment --> lyne-timetable-transportation-number
   lyne-timetable-transportation-details --> lyne-timetable-transportation-number
   style lyne-timetable-transportation-number fill:#f9f,stroke:#333,stroke-width:4px
 ```
