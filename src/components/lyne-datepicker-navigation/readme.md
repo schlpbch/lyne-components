@@ -9,6 +9,7 @@
 
 | Property                      | Attribute         | Description                                                           | Type     | Default     |
 | ----------------------------- | ----------------- | --------------------------------------------------------------------- | -------- | ----------- |
+| `datepickerId` _(required)_   | `datepicker-id`   | The id of the datepicker.                                             | `string` | `undefined` |
 | `displayedMonth` _(required)_ | `displayed-month` | The current displayed month. e.g. "8" for august or "11" for november | `string` | `undefined` |
 | `displayedYear` _(required)_  | `displayed-year`  | The current displayed year. e.g. "1995" or "2023"                     | `string` | `undefined` |
 

@@ -216,6 +216,10 @@ export namespace Components {
          */
         "currentYear": string;
         /**
+          * The id of the datepicker.
+         */
+        "datepickerId": string;
+        /**
           * If true the past dates are disabled.
          */
         "disablePastDates"?: boolean;
@@ -233,6 +237,10 @@ export namespace Components {
         "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerNavigation {
+        /**
+          * The id of the datepicker.
+         */
+        "datepickerId": string;
         /**
           * The current displayed month. e.g. "8" for august or "11" for november
          */
@@ -1239,6 +1247,10 @@ declare namespace LocalJSX {
          */
         "currentYear": string;
         /**
+          * The id of the datepicker.
+         */
+        "datepickerId": string;
+        /**
           * If true the past dates are disabled.
          */
         "disablePastDates"?: boolean;
@@ -1256,6 +1268,10 @@ declare namespace LocalJSX {
         "presetTodaysDate"?: boolean;
     }
     interface LyneDatepickerNavigation {
+        /**
+          * The id of the datepicker.
+         */
+        "datepickerId": string;
         /**
           * The current displayed month. e.g. "8" for august or "11" for november
          */

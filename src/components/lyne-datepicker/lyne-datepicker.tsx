@@ -7,6 +7,7 @@ import {
 } from '@stencil/core';
 
 import datepickerNavigationEvents from '../lyne-datepicker-navigation/lyne-datepicker-navigation.events';
+import { guid } from '../../global/guid';
 
 @Component({
   shadow: true,
@@ -39,11 +40,16 @@ export class LyneDatepicker {
   private _currentDay = this._dateObj.getDate();
   private _currentMonth = this._dateObj.getMonth();
   private _currentYear = this._dateObj.getFullYear();
+  private _id = '';
 
   private _handleSelectedDate = (evt): void => {
     this.displayedMonth = evt.detail.displayedMonth;
     this.displayedYear = evt.detail.displayedYear;
   };
+
+  public componentWillLoad(): void {
+    this._id = `${guid()}`;
+  }
 
   public componentDidLoad(): void {
     this._element.addEventListener(datepickerNavigationEvents.selected, this._handleSelectedDate);
@@ -55,12 +61,17 @@ export class LyneDatepicker {
 
   public render(): JSX.Element {
     return (
-      <div class='datepicker'>
+      <div
+        id={this._id}
+        class='datepicker'
+      >
         <lyne-datepicker-navigation
+          datepickerId={this._id}
           displayedMonth={(this.displayedMonth).toString()}
           displayedYear={this.displayedYear.toString()}
         ></lyne-datepicker-navigation>
         <lyne-datepicker-days
+          datepickerId={this._id}
           displayedMonth={(this.displayedMonth).toString()}
           displayedYear={this.displayedYear.toString()}
           currentDay={this._currentDay.toString()}

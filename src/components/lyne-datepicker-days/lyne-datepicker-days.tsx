@@ -20,6 +20,11 @@ import { i18nWeekdays } from '../../global/i18n';
 export class LyneDatepickerDays {
 
   /**
+   * The id of the datepicker.
+   */
+  @Prop() public datepickerId!: string;
+
+  /**
    * The current displayed month.
    * e.g. "8" for august or "11" for november
    */

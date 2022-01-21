@@ -24,6 +24,11 @@ import chevronIconLeft from 'lyne-icons/dist/icons/chevron-small-left-small.svg'
 export class LyneDatepickerNavigation {
 
   /**
+   * The id of the datepicker.
+   */
+  @Prop() public datepickerId!: string;
+
+  /**
    * The current displayed month.
    * e.g. "8" for august or "11" for november
    */
