@@ -7,14 +7,32 @@
   --some-color-var: var(--color-black-default);
 }
 
-.segment {
+.cols {
+  display: flex;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.col--times {
+  flex-basis: pxToRem(48);
   background: lime;
 }
 
-.segment__departure {
-  background: orange;
+.col--pearlchain {
+  flex-basis: pxToRem(200);
+  background: mediumseagreen;
 }
 
-.segment__arrival {
+.col--details {
   background: pink;
 }
+
+.col--platforms {
+  background: deeppink;
+}
+
+
+

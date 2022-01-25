@@ -17,18 +17,20 @@
 ### Depends on
 
 - [lyne-timetable-transportation-time](../lyne-timetable-transportation-time)
-- [lyne-timetable-platform](../lyne-timetable-platform)
+- [lyne-pearl-chain](../lyne-pearl-chain)
 - [lyne-timetable-transportation-number](../lyne-timetable-transportation-number)
 - [lyne-timetable-travel-hints](../lyne-timetable-travel-hints)
+- [lyne-timetable-platform](../lyne-timetable-platform)
 - [lyne-timetable-occupancy](../lyne-timetable-occupancy)
 
 ### Graph
 ```mermaid
 graph TD;
   lyne-timetable-segment --> lyne-timetable-transportation-time
-  lyne-timetable-segment --> lyne-timetable-platform
+  lyne-timetable-segment --> lyne-pearl-chain
   lyne-timetable-segment --> lyne-timetable-transportation-number
   lyne-timetable-segment --> lyne-timetable-travel-hints
+  lyne-timetable-segment --> lyne-timetable-platform
   lyne-timetable-segment --> lyne-timetable-occupancy
   style lyne-timetable-segment fill:#f9f,stroke:#333,stroke-width:4px
 ```

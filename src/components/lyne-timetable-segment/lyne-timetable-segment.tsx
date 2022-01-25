@@ -34,44 +34,55 @@ export class LyneTimetableSegment {
       >
         <div
           aria-hidden='true'
+          class='cols'
           role='presentation'
         >
-          <div class='segment__departure'>
+          <div class='col col--times'>
             <lyne-timetable-transportation-time
               appearance='second-level'
               config={JSON.stringify(config.departureTime)}
             >
             </lyne-timetable-transportation-time>
-            Zürich HB
-            <lyne-timetable-platform
-              appearance='second-level-departure'
-              config={JSON.stringify(config.departurePlatform)}
-            >
-            </lyne-timetable-platform>
-          </div>
-          <div class='segment__transportation-details'>
-            <lyne-timetable-transportation-number
-              appearance='second-level'
-              config={JSON.stringify(config.transportationNumber)}
-            >
-            </lyne-timetable-transportation-number>
-            <lyne-timetable-travel-hints
-              appearance='second-level-list'
-              config={JSON.stringify(config.travelHints)}
-            >
-            </lyne-timetable-travel-hints>
-          </div>
-          <lyne-timetable-occupancy
-            config={JSON.stringify(config.occupancy)}
-          >
-          </lyne-timetable-occupancy>
-          <div class='segment__arrival'>
             <lyne-timetable-transportation-time
               appearance='second-level'
               config={JSON.stringify(config.arrivalTime)}
             >
             </lyne-timetable-transportation-time>
-            Altstetten
+          </div>
+
+          <div class='col col--pearlchain'>
+            <lyne-pearl-chain
+              legs={JSON.stringify(config.pearlChain.legs)}
+              status={config.pearlChain.status}
+              open-end='true'
+            ></lyne-pearl-chain>
+          </div>
+
+          <div class='col col--details'>
+            <div class='segment__transportation-details'>
+              <lyne-timetable-transportation-number
+                appearance='second-level'
+                config={JSON.stringify(config.transportationNumber)}
+              >
+              </lyne-timetable-transportation-number>
+              <lyne-timetable-travel-hints
+                appearance='second-level-list'
+                config={JSON.stringify(config.travelHints)}
+              >
+              </lyne-timetable-travel-hints>
+            </div>
+          </div>
+
+          <div class='col col--platforms'>
+            <lyne-timetable-platform
+              appearance='second-level-departure'
+              config={JSON.stringify(config.departurePlatform)}
+            >
+            </lyne-timetable-platform>
+            <lyne-timetable-occupancy
+              config={JSON.stringify(config.occupancy)}
+            >
+            </lyne-timetable-occupancy>
             <lyne-timetable-platform
               appearance='second-level-arrival'
               config={JSON.stringify(config.arrivalPlatform)}

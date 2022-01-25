@@ -15,7 +15,7 @@ export default [
     travelHints: transportationTravelHintsData[0],
     transportationNumber: transportationNumberData['train'],
     pearlChain: {
-      legs: pearlChainData.stop1,
+      legs: pearlChainData.stop0,
       status: 'future'
     },
   }

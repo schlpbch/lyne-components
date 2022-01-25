@@ -29,6 +29,7 @@ const Template = ({
 };
 
 export const NoStops = Template.bind({});
+export const NoStopsOpenEnd = Template.bind({});
 export const Stop1 = Template.bind({});
 export const Stops2 = Template.bind({});
 export const Stops3 = Template.bind({});
@@ -37,6 +38,10 @@ export const Stops9 = Template.bind({});
 
 NoStops.documentation = {
   title: 'No stops'
+};
+
+NoStopsOpenEnd.documentation = {
+  title: 'No stop, open end'
 };
 
 Stop1.documentation = {
@@ -82,6 +87,12 @@ const legs = {
   }
 };
 
+const openEnd = {
+  control: {
+    type: 'boolean'
+  }
+};
+
 NoStops.argTypes = {
   cancelPart: {
     control: {
@@ -90,11 +101,30 @@ NoStops.argTypes = {
     options: [1]
   },
   legs,
+  openEnd,
   status
 };
 
 NoStops.args = {
   legs: sampleData.stop0,
+  status: 'future'
+};
+
+NoStopsOpenEnd.argTypes = {
+  cancelPart: {
+    control: {
+      type: 'inline-check'
+    },
+    options: [1]
+  },
+  legs,
+  openEnd,
+  status
+};
+
+NoStopsOpenEnd.args = {
+  legs: sampleData.stop0,
+  openEnd: true,
   status: 'future'
 };
 
@@ -109,6 +139,7 @@ Stop1.argTypes = {
     ]
   },
   legs,
+  openEnd,
   status
 };
 
@@ -129,6 +160,7 @@ Stops2.argTypes = {
     ]
   },
   legs,
+  openEnd,
   status
 };
 
@@ -150,6 +182,7 @@ Stops3.argTypes = {
     ]
   },
   legs,
+  openEnd,
   status
 };
 
@@ -172,6 +205,7 @@ Stops4.argTypes = {
     ]
   },
   legs,
+  openEnd,
   status
 };
 
@@ -199,11 +233,13 @@ Stops9.argTypes = {
     ]
   },
   legs,
+  openEnd,
   status
 };
 
 Stops9.args = {
   legs: sampleData.stop9,
+  openEnd,
   status: '66'
 };
 

@@ -87,6 +87,12 @@
   }
 }
 
+// On level two of the timetable, we want to have an open end.
+// We therefore hide the :after element in this case.
+.pearl-chain--open-end:after {
+  display: none;
+}
+
 .pearl-chain--past {
   color: var(--color-past);
 

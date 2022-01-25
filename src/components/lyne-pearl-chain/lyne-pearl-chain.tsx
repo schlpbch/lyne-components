@@ -38,6 +38,12 @@ export class LynePearlChain {
   @Prop() public legs!: string;
 
   /**
+   * If set to true, we will not show a closing
+   * dot at the end of the line
+   */
+  @Prop() public openEnd?: boolean;
+
+  /**
    * Per default, the current location has a pulsating animation. You can
    * disable the animation with this property.
    */
@@ -52,6 +58,7 @@ export class LynePearlChain {
 
     let departureCancelClass = '';
     let arrivalCancelClass = '';
+    let openEndClass = '';
 
     if (legs.length > 0) {
       departureCancelClass = legs[0].cancellation
@@ -71,7 +78,13 @@ export class LynePearlChain {
       }
     }
 
-    const classes = `pearl-chain${statusClass}${departureCancelClass}${arrivalCancelClass}`;
+    console.log(this.openEnd);
+
+    if (this.openEnd) {
+      openEndClass = ' pearl-chain--open-end'
+    }
+
+    const classes = `pearl-chain${statusClass}${departureCancelClass}${arrivalCancelClass}${openEndClass}`;
     const statusIsRunning = this.status && this.status !== 'past' && this.status !== 'future';
 
     if (statusIsRunning) {
