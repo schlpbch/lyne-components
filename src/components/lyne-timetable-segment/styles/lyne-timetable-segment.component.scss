@@ -4,7 +4,17 @@
 @include host-component-properties;
 
 :host {
-  --some-color-var: var(--color-black-default);
+  --dot-size-large: 10; // TODO missing Design Token?
+}
+
+.segment {
+  @include card();
+  @include card--primary-negative();
+  @include card--s();
+}
+
+.segment lyne-pearl-chain {
+  height: 100%;
 }
 
 .cols {
@@ -22,7 +32,7 @@
 }
 
 .col--pearlchain {
-  flex-basis: pxToRem(200);
+  flex-basis: pxToRem(var(--dot-size-large));
   background: mediumseagreen;
 }
 

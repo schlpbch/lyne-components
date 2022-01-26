@@ -32,8 +32,8 @@
 
   transition: var(--card-hover-animation);
 
-  &:focus,
-  &:hover {
+  &:is(a, button):focus,
+  &:is(a, button):hover {
     &:not(:disabled) {
 
       @include shadow-level-9-hard;

@@ -37,7 +37,9 @@ LyneTimetableSegment.documentation = {
 export default {
   decorators: [
     (Story) => (
-      <Story/>
+      <div style='background: #f6f6f6; padding: 1rem;'>
+        <Story/>
+      </div>
     )
   ],
   parameters: {

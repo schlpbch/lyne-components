@@ -53,6 +53,7 @@ export class LyneTimetableSegment {
 
           <div class='col col--pearlchain'>
             <lyne-pearl-chain
+              appearance="vertical"
               legs={JSON.stringify(config.pearlChain.legs)}
               status={config.pearlChain.status}
               open-end='true'

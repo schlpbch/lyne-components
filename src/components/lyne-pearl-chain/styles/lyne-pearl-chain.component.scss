@@ -87,6 +87,11 @@
   }
 }
 
+
+.pearl-chain--open-end {
+  padding-inline-end: 0;
+}
+
 // On level two of the timetable, we want to have an open end.
 // We therefore hide the :after element in this case.
 .pearl-chain--open-end:after {
@@ -250,6 +255,10 @@
 
 .pearl-chain--vertical:after {
   inset-block-end: 0;
+}
+
+.pearl-chain--vertical.pearl-chain--open-end {
+  padding-block-end: 0;
 }
 
 // dot on leg
