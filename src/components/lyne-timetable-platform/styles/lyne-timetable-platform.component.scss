@@ -6,6 +6,17 @@
 
 .platform--second-level-departure {
   @include text-s--bold();
+  margin-block-end: pxToRem(var(--spacing-fixed-3x));
+}
+
+.platform--second-level-arrival {
+  margin-block-start: pxToRem(var(--spacing-fixed-3x));
+}
+
+.platform--second-level-departure,
+.platform--second-level-arrival {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .platform__text--visually-hidden {

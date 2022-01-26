@@ -14,7 +14,8 @@
 }
 
 .segment lyne-pearl-chain {
-  height: 100%;
+  margin-block-start: pxToRem(var(--spacing-fixed-2x));
+  height: calc(100% - #{pxToRem(var(--spacing-fixed-4x))});
 }
 
 .cols {
@@ -27,22 +28,61 @@
 }
 
 .col--times {
-  flex-basis: pxToRem(48);
-  background: lime;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 pxToRem(48);
+  // background: lime;
+}
+
+.segment__cus-him-information {
+  flex: 1 1 auto;
 }
 
 .col--pearlchain {
   flex-basis: pxToRem(var(--dot-size-large));
-  background: mediumseagreen;
+  margin-inline-start: pxToRem(var(--spacing-fixed-1x));
+  margin-inline-end: pxToRem(var(--spacing-fixed-3x));
+  // background: mediumseagreen;
 }
 
 .col--details {
-  background: pink;
+  flex: 1 1 auto;
+  // background: pink;
+}
+
+.col--details p {
+  display: block;
+  margin: 0;
+}
+
+.col--details .inner {
+  position: relative;
+}
+
+.col--details lyne-timetable-occupancy {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: pxToRem(-73);
+
+  @include mq($from: medium) {
+    inset-inline-end: pxToRem(-84);
+  }
+
+}
+
+.col--details .departing-from {
+  @include text-s--bold();
+  margin-block-end: pxToRem(var(--spacing-fixed-3x));
+}
+
+.col--details .arriving-at {
+  @include text-s--regular();
+  margin-block-start: pxToRem(var(--spacing-fixed-3x));
 }
 
 .col--platforms {
-  background: deeppink;
+  padding-inline-start: pxToRem(var(--spacing-fixed-2x));
+  justify-content: space-between;
 }
-
 
 

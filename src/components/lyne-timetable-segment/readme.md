@@ -20,8 +20,8 @@
 - [lyne-pearl-chain](../lyne-pearl-chain)
 - [lyne-timetable-transportation-number](../lyne-timetable-transportation-number)
 - [lyne-timetable-travel-hints](../lyne-timetable-travel-hints)
-- [lyne-timetable-platform](../lyne-timetable-platform)
 - [lyne-timetable-occupancy](../lyne-timetable-occupancy)
+- [lyne-timetable-platform](../lyne-timetable-platform)
 
 ### Graph
 ```mermaid
@@ -30,8 +30,8 @@ graph TD;
   lyne-timetable-segment --> lyne-pearl-chain
   lyne-timetable-segment --> lyne-timetable-transportation-number
   lyne-timetable-segment --> lyne-timetable-travel-hints
-  lyne-timetable-segment --> lyne-timetable-platform
   lyne-timetable-segment --> lyne-timetable-occupancy
+  lyne-timetable-segment --> lyne-timetable-platform
   style lyne-timetable-segment fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

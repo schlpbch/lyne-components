@@ -44,6 +44,8 @@ export class LyneTimetableSegment {
               config={JSON.stringify(config.departureTime)}
             >
             </lyne-timetable-transportation-time>
+            <div class='segment__cus-him-information'>
+            </div>
             <lyne-timetable-transportation-time
               appearance='second-level'
               config={JSON.stringify(config.arrivalTime)}
@@ -62,16 +64,24 @@ export class LyneTimetableSegment {
 
           <div class='col col--details'>
             <div class='segment__transportation-details'>
-              <lyne-timetable-transportation-number
-                appearance='second-level'
-                config={JSON.stringify(config.transportationNumber)}
-              >
-              </lyne-timetable-transportation-number>
-              <lyne-timetable-travel-hints
-                appearance='second-level-list'
-                config={JSON.stringify(config.travelHints)}
-              >
-              </lyne-timetable-travel-hints>
+              <p class='departing-from'>La Chaux-de-Fonds</p>
+              <div class='inner'>
+                <lyne-timetable-transportation-number
+                  appearance='second-level'
+                  config={JSON.stringify(config.transportationNumber)}
+                >
+                </lyne-timetable-transportation-number>
+                <lyne-timetable-travel-hints
+                  appearance='second-level-list'
+                  config={JSON.stringify(config.travelHints)}
+                >
+                </lyne-timetable-travel-hints>
+                <lyne-timetable-occupancy
+                  config={JSON.stringify(config.occupancy)}
+                >
+                </lyne-timetable-occupancy>
+                <p class='arriving-at'>St. Gallen, Mühlegg Talstation</p>
+              </div>
             </div>
           </div>
 
@@ -81,10 +91,6 @@ export class LyneTimetableSegment {
               config={JSON.stringify(config.departurePlatform)}
             >
             </lyne-timetable-platform>
-            <lyne-timetable-occupancy
-              config={JSON.stringify(config.occupancy)}
-            >
-            </lyne-timetable-occupancy>
             <lyne-timetable-platform
               appearance='second-level-arrival'
               config={JSON.stringify(config.arrivalPlatform)}
