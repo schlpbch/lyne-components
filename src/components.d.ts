@@ -408,6 +408,10 @@ export namespace Components {
     }
     interface LynePearlChain {
         /**
+          * Set the desired appearance of the component.
+         */
+        "appearance"?: InterfacePearlChainAttributes['appearance'];
+        /**
           * Per default, the current location has a pulsating animation. You can disable the animation with this property.
          */
         "disableAnimation"?: boolean;
@@ -1376,6 +1380,10 @@ declare namespace LocalJSX {
         "text": string;
     }
     interface LynePearlChain {
+        /**
+          * Set the desired appearance of the component.
+         */
+        "appearance"?: InterfacePearlChainAttributes['appearance'];
         /**
           * Per default, the current location has a pulsating animation. You can disable the animation with this property.
          */

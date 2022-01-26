@@ -44,7 +44,7 @@
   --dot-size: var(--dot-size-large);
   @include dot;
   background-color: currentColor;
-  top: 0;
+  inset-block-start: 0;
   z-index: 2;
 
   @include ifForcedColors {
@@ -54,11 +54,11 @@
 }
 
 .pearl-chain:before {
-  left: 0;
+  inset-inline-start: 0;
 }
 
 .pearl-chain:after {
-  right: 0;
+  inset-inline-end: 0;
 }
 
 .pearl-chain.pearl-chain--past:before,
@@ -120,8 +120,8 @@
   @include dot;
 
   box-sizing: border-box;
-  top: calc(#{pxToRem(var(--dot-size))} / -2 + #{pxToRem(var(--border-width))} / 2);
-  left: 0;
+  inset-block-start: calc(#{pxToRem(var(--dot-size))} / -2 + #{pxToRem(var(--border-width))} / 2);
+  inset-inline-start: 0;
   background-color: var(--color-white);
   border: pxToRem(var(--border-width)) solid currentColor;
   z-index: 2;
@@ -138,10 +138,10 @@
 .pearl-chain__leg:after {
   content: '';
   position: absolute;
-  top: 0;
-  right: pxToRem(var(--spacing-small));
-  bottom: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-end: pxToRem(var(--spacing-small));
+  inset-block-end: 0;
+  inset-inline-start: 0;
   background-color: currentColor;
   border-radius: pxToRem(var(--border-width));
   z-index: 1;
@@ -199,14 +199,14 @@
   --dot-size: var(--dot-size-large);
   @include dot;
 
-  top: 0;
+  inset-block-start: 0;
   background-color: var(--color-current-location);
   z-index: 3;
 
   // --status-position: defined in .tsx file
   $realChainLength: calc(100% - #{pxToRem(var(--dot-size-large))});
   $realPosition: calc(#{var(--status-position)} / 100 * #{$realChainLength});
-  left: $realPosition;
+  inset-inline-start: $realPosition;
 
   animation: pulse 3s infinite;
 
@@ -227,4 +227,45 @@
   40% {
     box-shadow: 0 0 0 pxToRem(6) transparent;
   }
+}
+
+// Vertical appearance overwrites
+// ----------------------------------------------
+.pearl-chain--vertical {
+  flex-direction: column;
+  height: 100%;
+  width: pxToRem(var(--dot-size-large));
+}
+
+.pearl-chain--vertical:before {
+  inset-block-start: 0;
+}
+
+.pearl-chain--vertical:after {
+  inset-block-end: 0;
+}
+
+// dot on leg
+.pearl-chain--vertical .pearl-chain__leg:not(:first-child):before {
+  inset-block-start: 0;
+  inset-inline-start: calc((#{pxToRem(var(--dot-size-large))} - #{pxToRem(var(--dot-size-small))}) / 2);
+}
+
+// line on leg
+.pearl-chain--vertical .pearl-chain__leg:after {
+  inset-block-start: 0;
+  inset-block-end: pxToRem(var(--spacing-small));
+  inset-inline-start: calc((#{pxToRem(var(--dot-size-large))} - #{pxToRem(var(--border-width))}) / 2);
+  width: pxToRem(var(--border-width));
+}
+
+.pearl-chain--vertical .pearl-chain__leg:last-of-type:after {
+  inset-block-end: 0;
+}
+
+.pearl-chain--vertical .pearl-chain__status {
+  // --status-position: defined in .tsx file
+  $realChainLength: calc(100% - #{pxToRem(var(--dot-size-large))});
+  $realPosition: calc(#{var(--status-position)} / 100 * #{$realChainLength});
+  inset-block-start: $realPosition;
 }

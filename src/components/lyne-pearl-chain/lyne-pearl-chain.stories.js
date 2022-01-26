@@ -64,6 +64,16 @@ Stops9.documentation = {
   title: '9 Stops'
 };
 
+const appearance = {
+  control: {
+    type: 'select'
+  },
+  options: [
+    'horizontal',
+    'vertical'
+  ]
+};
+
 const status = {
   control: {
     type: 'inline-radio'
@@ -94,6 +104,7 @@ const openEnd = {
 };
 
 NoStops.argTypes = {
+  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -106,11 +117,13 @@ NoStops.argTypes = {
 };
 
 NoStops.args = {
+  appearance: 'horizontal',
   legs: sampleData.stop0,
   status: 'future'
 };
 
 NoStopsOpenEnd.argTypes = {
+  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -123,12 +136,14 @@ NoStopsOpenEnd.argTypes = {
 };
 
 NoStopsOpenEnd.args = {
+  appearance: 'vertical',
   legs: sampleData.stop0,
   openEnd: true,
   status: 'future'
 };
 
 Stop1.argTypes = {
+  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -144,11 +159,13 @@ Stop1.argTypes = {
 };
 
 Stop1.args = {
+  appearance: 'horizontal',
   legs: sampleData.stop1,
   status: 'past'
 };
 
 Stops2.argTypes = {
+  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -165,11 +182,13 @@ Stops2.argTypes = {
 };
 
 Stops2.args = {
+  appearance: 'horizontal',
   legs: sampleData.stop2,
   status: '50'
 };
 
 Stops3.argTypes = {
+  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -187,11 +206,13 @@ Stops3.argTypes = {
 };
 
 Stops3.args = {
+  appearance: 'horizontal',
   legs: sampleData.stop3,
   status: 'future'
 };
 
 Stops4.argTypes = {
+  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -210,11 +231,13 @@ Stops4.argTypes = {
 };
 
 Stops4.args = {
+  appearance: 'horizontal',
   legs: sampleData.stop4,
   status: 'past'
 };
 
 Stops9.argTypes = {
+  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -238,6 +261,7 @@ Stops9.argTypes = {
 };
 
 Stops9.args = {
+  appearance: 'horizontal',
   legs: sampleData.stop9,
   openEnd,
   status: '66'
@@ -246,7 +270,7 @@ Stops9.args = {
 export default {
   decorators: [
     (Story) => (
-      <div style={'max-width: 20rem;'}>
+      <div style={'max-width: 20rem; height: 20rem;'}>
         <Story/>
       </div>
     )

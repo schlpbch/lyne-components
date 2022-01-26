@@ -18,6 +18,12 @@ import legsData from './lyne-pearl-chain.helper';
 export class LynePearlChain {
 
   /**
+   * Set the desired appearance of
+   * the component.
+   */
+  @Prop() public appearance?: InterfacePearlChainAttributes['appearance'] = 'horizontal';
+
+  /**
    * Define, if the pearl-chain represents a connection in the past,
    * in the future or if it is a currently running connection.
    * If it is currently running, provide a number between 0 and 100,
@@ -56,6 +62,8 @@ export class LynePearlChain {
       ? ' pearl-chain--past'
       : '';
 
+    const appearanceClass = ` pearl-chain--${this.appearance}`;
+
     let departureCancelClass = '';
     let arrivalCancelClass = '';
     let openEndClass = '';
@@ -78,13 +86,11 @@ export class LynePearlChain {
       }
     }
 
-    console.log(this.openEnd);
-
     if (this.openEnd) {
       openEndClass = ' pearl-chain--open-end'
     }
 
-    const classes = `pearl-chain${statusClass}${departureCancelClass}${arrivalCancelClass}${openEndClass}`;
+    const classes = `pearl-chain${statusClass}${departureCancelClass}${arrivalCancelClass}${openEndClass}${appearanceClass}`;
     const statusIsRunning = this.status && this.status !== 'past' && this.status !== 'future';
 
     if (statusIsRunning) {
