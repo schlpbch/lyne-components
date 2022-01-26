@@ -103,15 +103,18 @@
 }
 
 .pearl-chain__leg {
+  position: relative;
   flex-shrink: 0;
   flex-grow: 0;
-  position: relative;
-  height: pxToRem(var(--border-width));
 
   @include ifForcedColors {
     color: CanvasText;
   }
 
+}
+
+.pearl-chain--horizontal .pearl-chain__leg {
+  height: pxToRem(var(--border-width));
 }
 
 // dot on leg
@@ -231,6 +234,10 @@
 
 // Vertical appearance overwrites
 // ----------------------------------------------
+:host([appearance=vertical]) {
+  height: 100%;
+}
+
 .pearl-chain--vertical {
   flex-direction: column;
   height: 100%;
