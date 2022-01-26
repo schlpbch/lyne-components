@@ -14,6 +14,7 @@ import {
 })
 
 export class LyneTimetableSegment {
+
   /**
    * Stringified JSON which defines most of the
    * content of the component. Please check the

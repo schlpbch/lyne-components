@@ -23,7 +23,7 @@ describe('lyne-pearl-chain', () => {
       .toEqualHtml(`
         <lyne-pearl-chain legs="{&quot;legs&quot;:[{&quot;cancellation&quot;:false,&quot;duration&quot;:100}]}">
           <mock:shadow-root>
-            <div class="pearl-chain">
+            <div class="pearl-chain pearl-chain--horizontal">
               <div class="pearl-chain__leg" style="flex-basis: 100%;"></div>
             </div>
           </mock:shadow-root>

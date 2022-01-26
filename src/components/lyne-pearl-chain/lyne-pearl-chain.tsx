@@ -87,7 +87,7 @@ export class LynePearlChain {
     }
 
     if (this.openEnd) {
-      openEndClass = ' pearl-chain--open-end'
+      openEndClass = ' pearl-chain--open-end';
     }
 
     const classes = `pearl-chain${statusClass}${departureCancelClass}${arrivalCancelClass}${openEndClass}${appearanceClass}`;
