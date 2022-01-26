@@ -31,6 +31,10 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 pxToRem(48);
+
+  @include mq($from: medium) {
+    flex: 0 0 pxToRem(56);
+  }
   // background: lime;
 }
 
@@ -43,6 +47,11 @@
   margin-inline-start: pxToRem(var(--spacing-fixed-1x));
   margin-inline-end: pxToRem(var(--spacing-fixed-3x));
   // background: mediumseagreen;
+
+  @include mq($from: medium) {
+    margin-inline-end: pxToRem(var(--spacing-fixed-4x));
+  }
+
 }
 
 .col--details {
@@ -61,10 +70,11 @@
 
 .col--details lyne-timetable-occupancy {
   position: absolute;
-  inset-block-start: 0;
+  inset-block-start: pxToRem(-3);
   inset-inline-end: pxToRem(-73);
 
   @include mq($from: medium) {
+    inset-block-start: pxToRem(var(--spacing-fixed-1x), true);
     inset-inline-end: pxToRem(-84);
   }
 
