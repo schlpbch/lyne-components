@@ -5,7 +5,11 @@ import {
 } from '@stencil/core';
 
 import getDocumentLang from '../../global/helpers/get-document-lang';
-import { i18nFromPlatform } from '../../global/i18n';
+import {
+  i18nPlatform,
+  i18nPlatformArrivingOn,
+  i18nPlatformLeavingFrom
+} from '../../global/i18n';
 import { InterfaceLyneTimetablePlatformAttributes } from './lyne-timetable-platform.custom.d';
 
 @Component({
@@ -39,8 +43,13 @@ export class LyneTimetablePlatform {
 
     const config = JSON.parse(this.config);
 
-    const text = `${i18nFromPlatform.short[this._currentLanguage]} `;
-    const a11yLabel = `${i18nFromPlatform.long[this._currentLanguage]} ${config.platform}.`;
+    let a11yLabel = `${i18nPlatformLeavingFrom[this._currentLanguage]} ${config.platform}.`;
+
+    if (this.appearance === 'second-level-arrival') {
+      a11yLabel = `${i18nPlatformArrivingOn[this._currentLanguage]} ${config.platform}.`;
+    }
+
+    const text = `${i18nPlatform.short[this._currentLanguage]} `;
 
     const appearanceClasses = ` platform--${this.appearance}`;
 

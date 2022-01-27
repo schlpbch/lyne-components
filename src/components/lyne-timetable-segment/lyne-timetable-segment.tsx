@@ -4,6 +4,17 @@ import {
   Prop
 } from '@stencil/core';
 
+import getDocumentLang from '../../global/helpers/get-document-lang';
+
+import {
+  i18nArrival,
+  i18nClass,
+  i18nDeparture,
+  i18nOccupancy,
+  i18nPlatformArrivingOn,
+  i18nPlatformLeavingFrom
+} from '../../global/i18n';
+
 @Component({
   shadow: true,
   styleUrls: {
@@ -15,6 +26,8 @@ import {
 
 export class LyneTimetableSegment {
 
+  private _currentLanguage = getDocumentLang();
+
   /**
    * Stringified JSON which defines most of the
    * content of the component. Please check the
@@ -23,16 +36,97 @@ export class LyneTimetableSegment {
    */
   @Prop() public config!: string;
 
+  private _createA11yOccupancySummary(occupancyItems): string {
+
+    let occupancySummary = '';
+
+    {occupancyItems.map((occupancyItem) => {
+
+        const occupancyText = i18nOccupancy[occupancyItem.occupancy][this._currentLanguage];
+
+        const classText = occupancyItem.class === '1'
+          ? 'first'
+          : 'second';
+        occupancySummary += `${i18nClass[classText][this._currentLanguage]}. ${occupancyText} `;
+    })}
+
+    return occupancySummary;
+
+  }
+
+  private _createA11yTravelHintsSummary(travelHintsItems): string {
+
+    let travelHintsSummary = '';
+
+    if (travelHintsItems.length > 0) {
+      {travelHintsItems.map((travelHintItem) => (
+        travelHintsSummary += `${travelHintItem.text} `
+      ))};
+    }
+
+    return travelHintsSummary;
+
+  }
+
+  /**
+   * This is actually not a very good solution
+   * but in this case feasible because the markup
+   * can not follow the logical visual order if we
+   * want to be able to display all potential
+   * information while keeping the layout intact
+   * even in case of weird line breaks.
+   * @param config
+   * @private
+   */
+  private _createA11ySummary(config): string {
+    const transportationNumber = config.transportationNumber;
+
+    let a11ySummary = '';
+
+    // Transportation information
+    a11ySummary += `${transportationNumber.meansOfTransport.text} `;
+    a11ySummary += `${transportationNumber.product.text} `;
+    a11ySummary += `${transportationNumber.direction}`;
+
+    // Departure information
+    a11ySummary += `. ${i18nDeparture[this._currentLanguage]}: `;
+    a11ySummary += `${config.departureStation} `;
+    a11ySummary += `${config.departureTime.time} `;
+    a11ySummary += `${i18nPlatformLeavingFrom[this._currentLanguage]} `;
+    a11ySummary += `${config.departurePlatform.platform}`;
+
+    // Arrival information
+    a11ySummary += `. ${i18nArrival[this._currentLanguage]}: `;
+    a11ySummary += `${config.arrivalStation} `;
+    a11ySummary += `${config.arrivalTime.time} `;
+    a11ySummary += `${i18nPlatformArrivingOn[this._currentLanguage]} `;
+    a11ySummary += `${config.arrivalPlatform.platform}`;
+
+    // Occupancy information
+    a11ySummary += `. ${this._createA11yOccupancySummary(config.occupancy.occupancyItems)}`;
+
+    // Travel Hints information
+    a11ySummary += `${this._createA11yTravelHintsSummary(config.travelHints.travelHintsItems)}`;
+
+    return a11ySummary;
+
+  }
+
   public render(): JSX.Element {
 
     const config = JSON.parse(this.config);
 
+    const a11ySummary = this._createA11ySummary(config);
+
     return (
       <p
-        aria-label='Train xyz leaving from ...'
+        aria-describedby='test'
         class='segment'
         role='text'
       >
+        <div id='test'>
+          {a11ySummary}
+        </div>
         <div
           aria-hidden='true'
           class='cols'
@@ -64,7 +158,7 @@ export class LyneTimetableSegment {
 
           <div class='col col--details'>
             <div class='segment__transportation-details'>
-              <p class='departing-from'>La Chaux-de-Fonds</p>
+              <p class='departing-from'>{config.departureStation}</p>
               <div class='inner'>
                 <lyne-timetable-transportation-number
                   appearance='second-level'
@@ -80,7 +174,7 @@ export class LyneTimetableSegment {
                   config={JSON.stringify(config.occupancy)}
                 >
                 </lyne-timetable-occupancy>
-                <p class='arriving-at'>St. Gallen, Mühlegg Talstation</p>
+                <p class='arriving-at'>{config.arrivalStation}</p>
               </div>
             </div>
           </div>

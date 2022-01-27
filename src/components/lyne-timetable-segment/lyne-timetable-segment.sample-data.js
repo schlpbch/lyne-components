@@ -8,8 +8,10 @@ import transportationTimeData from '../lyne-timetable-transportation-time/lyne-t
 export default [
   {
     arrivalPlatform: transportationPlatformData[1],
+    arrivalStation: 'St. Gallen, Mühlegg Talstation',
     arrivalTime: transportationTimeData[1],
     departurePlatform: transportationPlatformData[0],
+    departureStation: 'La Chaux-de-Fonds',
     departureTime: transportationTimeData[0],
     occupancy: transportationOccupancyData[5],
     pearlChain: {

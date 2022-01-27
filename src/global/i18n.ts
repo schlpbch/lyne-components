@@ -209,21 +209,6 @@ export const i18nEarlierConnections: any = {
   it: 'Collegamenti precedenti'
 };
 
-export const i18nFromPlatform: any = {
-  long: {
-    de: 'Von Gleis',
-    en: 'from platform',
-    fr: 'à partir de la voie',
-    it: 'Dalla piattaforma'
-  },
-  short: {
-    de: 'Gl.',
-    en: 'Pl.',
-    fr: 'Voie',
-    it: 'Bin.'
-  }
-};
-
 export const i18nLaterConnections: any = {
   de: 'Spätere Verbindungen',
   en: 'Later connections',
@@ -277,6 +262,35 @@ export const i18nOptional: any = {
   en: '(optional)',
   fr: '(facultatif)',
   it: '(facoltativo)'
+};
+
+export const i18nPlatform: any = {
+  long: {
+    de: 'Gleis',
+    en: 'Platform',
+    fr: 'Voie',
+    it: 'Binario'
+  },
+  short: {
+    de: 'Gl.',
+    en: 'Pl.',
+    fr: 'Voie',
+    it: 'Bin.'
+  }
+};
+
+export const i18nPlatformArrivingOn: any = {
+  de: 'Ankunft auf Gleis',
+  en: 'Arrival on platform',
+  fr: 'Arrivée sur la voie',
+  it: 'Arrivo sulla piattaforma'
+};
+
+export const i18nPlatformLeavingFrom: any = {
+  de: 'Von Gleis',
+  en: 'from platform',
+  fr: 'à partir de la voie',
+  it: 'Dalla piattaforma'
 };
 
 export const i18nShowOnMap: any = {
