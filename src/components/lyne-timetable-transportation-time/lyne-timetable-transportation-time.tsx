@@ -8,6 +8,8 @@ import getDocumentLang from '../../global/helpers/get-document-lang';
 import { InterfaceLyneTimetableTransportationTimeAttributes } from './lyne-timetable-transportation-time.custom.d';
 
 import {
+  i18nApproximately,
+  i18nApproximatelyDelayedBy,
   i18nArrival,
   i18nDeparture
 } from '../../global/i18n';
@@ -41,6 +43,9 @@ export class LyneTimetableTransportationTime {
 
   public render(): JSX.Element {
     const config = JSON.parse(this.config);
+    const delay = config.delay;
+
+    let delayedClass = '';
 
     let a11yLabel = `${i18nArrival[this._currentLanguage]} ${config.time}.`;
 
@@ -48,7 +53,19 @@ export class LyneTimetableTransportationTime {
       a11yLabel = `${i18nDeparture[this._currentLanguage]} ${config.time}.`;
     }
 
-    const appearanceClasses = ` time--${this.appearance} time--${config.type}`;
+    if (delay > 0) {
+      let additionalA11yLabelText = ` ${i18nApproximatelyDelayedBy.multiple[this._currentLanguage]}`;
+
+      if (delay === 1) {
+        additionalA11yLabelText = ` ${i18nApproximatelyDelayedBy.single[this._currentLanguage]}`;
+      }
+
+      delayedClass = ` time--delayed`;
+
+      a11yLabel += additionalA11yLabelText.replace(/({mins})/, delay);
+    }
+
+    const appearanceClasses = ` time--${this.appearance} time--${config.type}${delayedClass}`;
 
     return (
       <p
@@ -63,6 +80,17 @@ export class LyneTimetableTransportationTime {
         >
           {config.time}
         </span>
+        {
+          delay > 0
+            ? <span
+                aria-hidden='true'
+                class='time__delay'
+                role='presentation'
+            >
+               {i18nApproximately.short[this._currentLanguage]} {config.delay}’
+            </span>
+            : ''
+        }
         <span class='time__text--visually-hidden'>
           {a11yLabel}
         </span>

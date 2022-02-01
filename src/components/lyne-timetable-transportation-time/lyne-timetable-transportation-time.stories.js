@@ -88,6 +88,32 @@ LyneTimetableArrivalTimeSecondLevel.documentation = {
   title: 'Lyne Timetable Arrival Time - Second Level'
 };
 
+export const LyneTimetableDepartureTimeSecondLevelDelayed = Template.bind({});
+
+LyneTimetableDepartureTimeSecondLevelDelayed.argTypes = defaultArgTypes;
+LyneTimetableDepartureTimeSecondLevelDelayed.args = {
+  ...defaultArgs,
+  appearance: appearance.options[1],
+  config: sampleData[4]
+};
+
+LyneTimetableDepartureTimeSecondLevelDelayed.documentation = {
+  title: 'Lyne Timetable Departure Time - Second Level - Delayed'
+};
+
+export const LyneTimetableArrivalTimeSecondLevelDelayed = Template.bind({});
+
+LyneTimetableArrivalTimeSecondLevelDelayed.argTypes = defaultArgTypes;
+LyneTimetableArrivalTimeSecondLevelDelayed.args = {
+  ...defaultArgs,
+  appearance: appearance.options[1],
+  config: sampleData[5]
+};
+
+LyneTimetableArrivalTimeSecondLevelDelayed.documentation = {
+  title: 'Lyne Timetable Arrival Time - Second Level - Delayed'
+};
+
 export default {
   decorators: [
     (Story) => (

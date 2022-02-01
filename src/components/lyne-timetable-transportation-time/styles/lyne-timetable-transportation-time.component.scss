@@ -20,6 +20,10 @@
   font-appearance-numeric: tabular-nums;
 }
 
+.delay {
+  color: currentColor;
+}
+
 .time--departure {
   @include text-s--bold();
 }
@@ -33,12 +37,40 @@
   margin-inline-start: pxToRem(var(--spacing-fixed-3x));
 }
 
+.time-second-level {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.time__text,
+.time__delay {
+  display: flex;
+  flex-basis: 100%;
+}
+
+.time__delay {
+  color: var(--color-red-default);
+}
+
 .time-second-level.time--departure {
   @include text-s--bold();
 }
 
+.time--second-level.time--departure .time__delay {
+  @include text-xs--bold();
+}
+
 .time--second-level.time--arrival {
   @include text-s--regular();
+}
+
+.time--second-level.time--arrival .time__delay {
+  @include text-xs--regular();
+}
+
+.time--second-level.time--arrival.time--delayed {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .time__text--visually-hidden {

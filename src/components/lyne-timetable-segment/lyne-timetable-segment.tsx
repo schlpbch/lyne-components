@@ -152,7 +152,7 @@ export class LyneTimetableSegment {
               appearance="vertical"
               legs={JSON.stringify(config.pearlChain.legs)}
               status={config.pearlChain.status}
-              open-end='true'
+              open-end={config.pearlChain.openEnd}
             ></lyne-pearl-chain>
           </div>
 

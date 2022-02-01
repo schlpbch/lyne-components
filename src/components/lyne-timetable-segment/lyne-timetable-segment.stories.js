@@ -23,15 +23,26 @@ const defaultArgTypes = {
 /* ************************************************* */
 /* The Stories                                       */
 /* ************************************************* */
-export const LyneTimetableSegment = Template.bind({});
+export const segment = Template.bind({});
 
-LyneTimetableSegment.argTypes = defaultArgTypes;
-LyneTimetableSegment.args = {
+segment.argTypes = defaultArgTypes;
+segment.args = {
   config: sampleData[0]
 };
 
-LyneTimetableSegment.documentation = {
+segment.documentation = {
   title: 'Segment'
+};
+
+export const lastSegment = Template.bind({});
+
+lastSegment.argTypes = defaultArgTypes;
+lastSegment.args = {
+  config: sampleData[1]
+};
+
+lastSegment.documentation = {
+  title: 'Last Segment'
 };
 
 export default {

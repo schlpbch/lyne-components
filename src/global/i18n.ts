@@ -14,6 +14,36 @@ export const i18nAttention: any = {
   it: 'Attenzione'
 };
 
+export const i18nApproximately: any = {
+  long: {
+    de: 'Zirka',
+    en: 'Approximately',
+    fr: 'Environ',
+    it: 'Circa'
+  },
+  short: {
+    de: 'ca.',
+    en: 'ca.',
+    fr: 'env',
+    it: 'ca.'
+  }
+};
+
+export const i18nApproximatelyDelayedBy: any = {
+  single: {
+    de: 'mit ungefähr {mins} Minute Verspätung.',
+    en: 'delayed by approximately {mins} minute.',
+    fr: 'avec environ {mins} minute de retard.',
+    it: 'con {mins} minuto di ritardo.'
+  },
+  multiple: {
+    de: 'mit ungefähr {mins} Minuten Verspätung.',
+    en: 'delayed by approximately {mins} minutes.',
+    fr: 'avec environ {mins} minutes de retard.',
+    it: 'con {mins} minuti di ritardo.'
+  }
+};
+
 export const i18nAvailableAtDepartingStation: any = {
   de: 'am Abfahrtsbahnhof verfügbar.',
   en: 'available at departure station.',

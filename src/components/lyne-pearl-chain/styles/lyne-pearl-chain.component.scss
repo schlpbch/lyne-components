@@ -44,13 +44,17 @@
   --dot-size: var(--dot-size-large);
   @include dot;
   background-color: currentColor;
-  inset-block-start: 0;
   z-index: 2;
 
   @include ifForcedColors {
     background-color: CanvasText;
   }
 
+}
+
+.pearl-chain--horizontal:before,
+.pearl-chain--horizontal:after {
+  inset-block-start: 0;
 }
 
 .pearl-chain:before {
