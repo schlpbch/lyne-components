@@ -24,7 +24,7 @@ export class LyneTeaserItem {
       {
         image: {
           height: '72',
-          width: '90'
+          width: '96'
         },
         mediaQueries: [
           {
@@ -207,7 +207,7 @@ export class LyneTeaserItem {
   /**
    * Image loading property. See lyne-image for additional info
    */
-  @Prop() public imageLoading?: InterfaceImageAttributes['loading'] = 'eager';
+  @Prop() public imageLoading?: InterfaceImageAttributes['loading'] = 'lazy';
 
   /**
    * Link to open if the teaser is clicked/pressed.
@@ -232,14 +232,14 @@ export class LyneTeaserItem {
   public render(): JSX.Element {
 
     const id = `title-${this._guid}`;
-    const personalisedClass = this.personalised
-      ? 'personalised'
+    const appearanceClass = this.personalised
+      ? 'teaser-item--personalised'
       : '';
 
     return (
-      <div class={`teaser-item__container ${personalisedClass}`}>
+      <li class={`teaser-item ${appearanceClass}`}>
         <a
-          class='teaser-item-link'
+          class='teaser-item__link'
           href={this.link}
         >
           <div class='teaser-item__container-image'>
@@ -257,21 +257,23 @@ export class LyneTeaserItem {
               performanceMark='teaser-item'
             />
           </div>
-          {
-            this.titleText
-              ? <lyne-title
-                id={id}
-                level={this.titleLevel}
-                text={this.titleText}
-                visual-level='5'
-              />
-              : ''
-          }
-          <p class='teaser-item__paragraph'>
-            {this.text}
-          </p>
+          <div class='teaser-item__text'>
+            {
+              this.titleText
+                ? <lyne-title
+                  id={id}
+                  level={this.titleLevel}
+                  text={this.titleText}
+                  visual-level='5'
+                />
+                : ''
+            }
+            <p class='teaser-item__paragraph'>
+              {this.text}
+            </p>
+          </div>
         </a>
-      </div>
+      </li>
     );
   }
 }

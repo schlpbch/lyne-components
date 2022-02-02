@@ -3,12 +3,32 @@
 // and default mode
 @include host-component-properties;
 
-.personalised ::slotted(lyne-teaser-item) {}
+:host {
 
-.teaserlist.personalised {
+  --cols: 1;
+
+}
+
+
+//.personalised ::slotted(lyne-teaser-item) {}
+
+.teaser-list {
+  @include listReset();
+  display: flex;
+  background: orange;
+}
+
+.teaser-list--non-personalised {
+  flex-direction: column;
+  gap: pxToRem(var(--lyne-spacing-responsive-s));
+}
+
+
+
+/* .teaserlist.personalised {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
   gap: 10px 20px;
-}
+} */

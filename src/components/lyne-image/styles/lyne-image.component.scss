@@ -99,7 +99,10 @@
 };
 
 // Variant: Teaser Item
-.image__figure--teaser-item .image__wrapper {
-  @include image-aspect-ratio-1-1;
+.image__figure--teaser-item .image__wrapper,
+.image__figure--teaser-item .image__blur-hash,
+.image__figure--teaser-item .image__img {
+  @include image-aspect-ratio-4-3;
+  margin: 0;
 };
 

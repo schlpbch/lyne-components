@@ -9,7 +9,7 @@
 
 | Property                 | Attribute       | Description                                                              | Type                                     | Default     |
 | ------------------------ | --------------- | ------------------------------------------------------------------------ | ---------------------------------------- | ----------- |
-| `imageLoading`           | `image-loading` | Image loading property. See lyne-image for additional info               | `"eager" \| "lazy"`                      | `'eager'`   |
+| `imageLoading`           | `image-loading` | Image loading property. See lyne-image for additional info               | `"eager" \| "lazy"`                      | `'lazy'`    |
 | `imageSrc` _(required)_  | `image-src`     | Image source property for lyne-image. See lyne-image for additional info | `string`                                 | `undefined` |
 | `link` _(required)_      | `link`          | Link to open if the teaser is clicked/pressed.                           | `string`                                 | `undefined` |
 | `personalised`           | `personalised`  | is teaser item personalised                                              | `boolean`                                | `undefined` |

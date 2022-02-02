@@ -24,18 +24,16 @@ export class LyneTeaserList {
 
   public render(): JSX.Element {
 
-    const direction = this.personalised
-      ? 'personalised'
-      : 'non-personalised';
-
-    const attrs = {
-      class: `teaserlist ${direction}`
-    };
+    const appearanceClasses = this.personalised
+      ? ' teaser-list--personalised'
+      : ' teaser-list--non-personalised';
 
     return (
-      <div {...attrs} role='list'>
+      <ul
+        class={`teaser-list${appearanceClasses}`}
+      >
         <slot/>
-      </div>
+      </ul>
     );
   }
 }

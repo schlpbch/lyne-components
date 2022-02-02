@@ -6,24 +6,35 @@
 :host {
   display: block;
 
-  --some-color-var: black;
-  --text-color-normal: var(--color-metal-default);
+  --image-size: 80;
 }
 
-.teaser-item__image {
+.teaser-item {
+  display: flex;
+  background: lime;
+}
+
+/* .teaser-item__image {
   padding-right: pxToRem(16);
-}
+} */
 
-
-a.teaser-item-link {
+.teaser-item__link {
+  display: flex;
   text-decoration: none;
+  gap: pxToRem(var(--spacing-fixed-4x));
 }
 
-p.teaser-item__paragraph {
+.teaser-item__paragraph {
   @include text-s--regular();
-  color: var(--text-color-normal);
+  margin: 0;
 }
 
+.teaser-item__container-image {
+  display: flex;
+  flex-basis: pxToRem(var(--image-size));
+}
+
+/*
 .teaser-item__container-image {
   width: 80px;
   height: 60px;
@@ -106,4 +117,4 @@ p.teaser-item__paragraph {
       height: 205.51px;
     }
   }
-}
+} */
