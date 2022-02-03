@@ -76,7 +76,7 @@ export class LyneDatepickerDays {
   private _currentLanguage = getDocumentLang();
   private _currentDay = Number(this.currentDay);
   private _currentMonth = Number(this.currentMonth);
-  private _currentYear= Number(this.currentYear);
+  private _currentYear = Number(this.currentYear);
   private _displayedMonth: number;
   private _displayedYear: number;
   private _selectedMonth = Number(this.currentMonth);
@@ -157,6 +157,7 @@ export class LyneDatepickerDays {
     // insert the days of the month
     for (day = 1; day <= numberOfDays; day++) {
       cellClasses = 'datepicker__days-day';
+      dayClick = (evt): void => this._handleDayClick(evt);
 
       // mark today
       if (day === this._currentDay && displayedMonth === this._currentMonth && displayedYear === this._currentYear) {
@@ -174,11 +175,13 @@ export class LyneDatepickerDays {
       if (this.disablePastDates) {
 
         // selected month/year is in same month/year as currently displayed
-        if ((displayedMonth === this._selectedMonth && displayedYear === this._selectedYear) && day < this._currentDay) {
+        if ((displayedMonth === this._currentMonth && displayedYear === this._currentYear) && day < this._currentDay) {
           cellClasses += ' datepicker__days-day--disabled';
+          dayClick = false;
 
-        } else if ((displayedMonth < this._selectedMonth && displayedYear <= this._selectedYear) || (displayedYear < this._selectedYear)) {
+        } else if ((displayedMonth < this._currentMonth && displayedYear <= this._currentYear) || (displayedYear < this._currentYear)) {
           cellClasses += ' datepicker__days-day--disabled';
+          dayClick = false;
         }
       }
 
