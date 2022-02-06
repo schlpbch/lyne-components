@@ -4,25 +4,45 @@
 @include host-component-properties;
 
 :host {
-
-  --cols: 1;
-
+  width: 100%;
 }
-
 
 //.personalised ::slotted(lyne-teaser-item) {}
 
 .teaser-list {
   @include listReset();
   display: flex;
-  background: orange;
+  gap: pxToRem(var(--lyne-spacing-responsive-s));
+}
+
+.teaser-list--personalised {
+  flex-direction: row;
+  flex-wrap: wrap;
+  --cols: 2;
+
+  @include mq($from: medium) {
+    --cols: 4;
+  }
+
 }
 
 .teaser-list--non-personalised {
   flex-direction: column;
   gap: pxToRem(var(--lyne-spacing-responsive-s));
+  --cols: 1;
+
+  @include mq($from: medium) {
+    --cols: 3;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
 }
 
+::slotted(.teaser-list__item) {
+  --gap-compensation: var(--lyne-spacing-responsive-s) * (var(--cols) - 1);
+  flex: 0 1 calc((100% - #{pxToRem(var(--gap-compensation))}) / var(--cols));
+}
 
 
 /* .teaserlist.personalised {

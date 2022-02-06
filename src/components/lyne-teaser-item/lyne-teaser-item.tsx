@@ -1,7 +1,6 @@
 import {
   Component, h, Prop
 } from '@stencil/core';
-import { guid } from '../../global/guid';
 import { InterfaceImageAttributes } from '../lyne-image/lyne-image.custom.d';
 // import tokens from 'lyne-design-tokens/dist/js/tokens.json';
 import { InterfaceTitleAttributes } from '../lyne-title/lyne-title.custom';
@@ -16,8 +15,6 @@ import { InterfaceTitleAttributes } from '../lyne-title/lyne-title.custom';
 })
 
 export class LyneTeaserItem {
-
-  private _guid: string;
 
   private _nonPersonalisedPictureSizesConfig = {
     breakpoints: [
@@ -60,23 +57,7 @@ export class LyneTeaserItem {
     breakpoints: [
       {
         image: {
-          height: '205.51',
-          width: '274'
-        },
-        mediaQueries: [
-          {
-            conditionFeature: 'min-width',
-            conditionFeatureValue: {
-              lyneDesignToken: true,
-              value: 'breakpoint-ultra-min'
-            },
-            conditionOperator: false
-          }
-        ]
-      },
-      {
-        image: {
-          height: '196.51',
+          height: '196',
           width: '262'
         },
         mediaQueries: [
@@ -92,24 +73,8 @@ export class LyneTeaserItem {
       },
       {
         image: {
-          height: '150.01',
+          height: '150',
           width: '200'
-        },
-        mediaQueries: [
-          {
-            conditionFeature: 'min-width',
-            conditionFeatureValue: {
-              lyneDesignToken: true,
-              value: 'breakpoint-large-min'
-            },
-            conditionOperator: false
-          }
-        ]
-      },
-      {
-        image: {
-          height: '123',
-          width: '164'
         },
         mediaQueries: [
           {
@@ -124,7 +89,7 @@ export class LyneTeaserItem {
       },
       {
         image: {
-          height: '180.01',
+          height: '180',
           width: '240'
         },
         mediaQueries: [
@@ -140,40 +105,8 @@ export class LyneTeaserItem {
       },
       {
         image: {
-          height: '180.01',
-          width: '240'
-        },
-        mediaQueries: [
-          {
-            conditionFeature: 'min-width',
-            conditionFeatureValue: {
-              lyneDesignToken: true,
-              value: 'breakpoint-medium-min'
-            },
-            conditionOperator: false
-          }
-        ]
-      },
-      {
-        image: {
-          height: '116.63',
-          width: '155.5'
-        },
-        mediaQueries: [
-          {
-            conditionFeature: 'min-width',
-            conditionFeatureValue: {
-              lyneDesignToken: true,
-              value: 'breakpoint-micro-min'
-            },
-            conditionOperator: false
-          }
-        ]
-      },
-      {
-        image: {
-          height: '99',
-          width: '132'
+          height: '116',
+          width: '155'
         },
         mediaQueries: [
           {
@@ -225,13 +158,8 @@ export class LyneTeaserItem {
    */
   @Prop() public personalised?: boolean;
 
-  public componentWillLoad(): void {
-    this._guid = guid();
-  }
-
   public render(): JSX.Element {
 
-    const id = `title-${this._guid}`;
     const appearanceClass = this.personalised
       ? 'teaser-item--personalised'
       : '';
@@ -261,7 +189,6 @@ export class LyneTeaserItem {
             {
               this.titleText
                 ? <lyne-title
-                  id={id}
                   level={this.titleLevel}
                   text={this.titleText}
                   visual-level='5'

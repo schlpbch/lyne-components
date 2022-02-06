@@ -3,20 +3,21 @@ import readme from './readme.md';
 import images from '../../global/images';
 
 const ItemTemplate = (args) => (
-  <lyne-teaser-item class='lyne-teaser-item' {...args}>
-  </lyne-teaser-item>
+  <li className='teaser-list__item' slot='teaser-list__item'>
+    <lyne-teaser-item
+      {...args}
+    >
+    </lyne-teaser-item>
+  </li>
 );
 
 const Template = (args) => (
-  <lyne-teaser-list class='lyne-teaser-list ' {...args}>
+  <lyne-teaser-list {...args} >
     {args.items.map((item) => (
       <ItemTemplate {...item} />
     ))}
   </lyne-teaser-list>
 );
-
-export const personalisedTeaserList = Template.bind({});
-export const nonPersonalisedTeaserList = Template.bind({});
 
 const imageLoading = {
   control: {
@@ -114,18 +115,49 @@ const itemsPersonalised = [
   }
 ];
 
+const ariaLabelledBy = {
+  control: {
+    type: 'text'
+  }
+};
+
+const defaultArgTypes = {
+  'aria-labelledby': ariaLabelledBy,
+  imageLoading
+};
+
+const defaultArgs = {
+  'aria-labelledby': '',
+  imageLoading
+};
+
 /* ************************************************* */
 /* The Stories                                       */
 /* ************************************************* */
+export const nonPersonalisedTeaserList = Template.bind({});
 
+nonPersonalisedTeaserList.argTypes = defaultArgTypes;
 nonPersonalisedTeaserList.args = {
+  ...defaultArgs,
   items,
   personalised: false
 };
 
+nonPersonalisedTeaserList.documentation = {
+  title: 'Non Personalised Teaser List'
+};
+
+export const personalisedTeaserList = Template.bind({});
+
+personalisedTeaserList.argTypes = defaultArgTypes;
 personalisedTeaserList.args = {
+  ...defaultArgs,
   items: itemsPersonalised,
   personalised: true
+};
+
+personalisedTeaserList.documentation = {
+  title: 'Personalised Teaser List'
 };
 
 /* ************************************************* */

@@ -583,6 +583,10 @@ export namespace Components {
     }
     interface LyneTeaserList {
         /**
+          * aria-labelledby should contain the id of the title component associated with the teaser list.
+         */
+        "ariaLabelledBy"?: string;
+        /**
           * Property for lyne-panel. See lyne-panel for additional info
          */
         "personalised": boolean;
@@ -1698,6 +1702,10 @@ declare namespace LocalJSX {
         "titleText": string;
     }
     interface LyneTeaserList {
+        /**
+          * aria-labelledby should contain the id of the title component associated with the teaser list.
+         */
+        "ariaLabelledBy"?: string;
         /**
           * Property for lyne-panel. See lyne-panel for additional info
          */

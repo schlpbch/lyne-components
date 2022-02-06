@@ -3,7 +3,8 @@ import {
 } from '@stencil/core';
 
 /**
- * @slot unnamed - Place lyne-teaser-item elements in the slot
+ * @slot teaser-list__item - Use this to render the
+ * teaser items with the links inside
  */
 
 @Component({
@@ -18,11 +19,26 @@ import {
 export class LyneTeaserList {
 
   /**
+   * aria-labelledby should contain
+   * the id of the title component
+   * associated with the teaser list.
+   */
+  @Prop() public ariaLabelledBy?: string;
+
+  /**
    * Property for lyne-panel. See lyne-panel for additional info
    */
   @Prop() public personalised: boolean;
 
   public render(): JSX.Element {
+
+    let additionalAttributes = {};
+
+    if (this.ariaLabelledBy) {
+      additionalAttributes = {
+        'aria-labelledby': this.ariaLabelledBy
+      };
+    }
 
     const appearanceClasses = this.personalised
       ? ' teaser-list--personalised'
@@ -30,9 +46,11 @@ export class LyneTeaserList {
 
     return (
       <ul
+        {...additionalAttributes}
         class={`teaser-list${appearanceClasses}`}
+        role='list'
       >
-        <slot/>
+        <slot name="teaser-list__item" />
       </ul>
     );
   }
