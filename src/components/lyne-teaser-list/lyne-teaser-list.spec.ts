@@ -14,9 +14,12 @@ describe('lyne-teaser-list', () => {
       .toEqualHtml(`
         <lyne-teaser-list>
           <mock:shadow-root>
-            <div class="teaser-list" role="list">
-              <slot></slot>
-            </div>
+            <ul
+                class="teaser-list teaser-list--non-personalised"
+                role="list"
+            >
+                <slot name="teaser-list__item"></slot>
+            </ul>
           </mock:shadow-root>
         </lyne-teaser-list>
       `);

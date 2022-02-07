@@ -18,6 +18,10 @@
   height: 100%;
 }
 
+.teaser-item p {
+  margin: 0;
+}
+
 .teaser-item--personalised {
   --image-size: 100%;
 }
@@ -50,7 +54,6 @@
 .teaser-item__paragraph {
   @include text-s--regular();
   color: var(--color-metal-default);
-  margin: 0;
 }
 
 .teaser-item__link:active .teaser-item__paragraph {
@@ -75,7 +78,7 @@
   aspect-ratio: 4 / 3;
 }
 
-.teaser-item__link lyne-image:after {
+/* .teaser-item__link lyne-image:after {
   position: absolute;
   inset: 0;
   inset-block-end: pxToRem(1);
@@ -88,4 +91,4 @@
 .teaser-item__link:focus lyne-image:after,
 .teaser-item__link:hover lyne-image:after {
   opacity: .999999;
-}
+} */

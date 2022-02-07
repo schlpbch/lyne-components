@@ -1,9 +1,10 @@
 import {
   Component, h, Prop
 } from '@stencil/core';
+import getDocumentLang from '../../global/helpers/get-document-lang';
 import { InterfaceImageAttributes } from '../lyne-image/lyne-image.custom.d';
-// import tokens from 'lyne-design-tokens/dist/js/tokens.json';
-import { InterfaceTitleAttributes } from '../lyne-title/lyne-title.custom';
+import { InterfaceTitleAttributes } from '../lyne-title/lyne-title.custom.d';
+import { i18nTargetOpensInNewWindow } from '../../global/i18n';
 
 @Component({
   shadow: true,
@@ -142,10 +143,8 @@ export class LyneTeaserItem {
    */
   @Prop() public imageLoading?: InterfaceImageAttributes['loading'] = 'lazy';
 
-  /**
-   * Link to open if the teaser is clicked/pressed.
-   */
-  @Prop() public link!: string;
+  /** The href value you want to link to */
+  @Prop() public hrefValue!: string;
 
   /**
    * The semantic level of the title,
@@ -160,15 +159,39 @@ export class LyneTeaserItem {
 
   public render(): JSX.Element {
 
+    const currentLanguage = getDocumentLang();
+
+    let openInNewWindow = false;
+
+    if (!window.location.href.includes(this.hrefValue)) {
+      openInNewWindow = true;
+    }
+
     const appearanceClass = this.personalised
       ? 'teaser-item--personalised'
       : 'teaser-item--non-personalised';
+
+    /**
+     * Add additional attributes
+     * ----------------------------------------------------------------
+     */
+    let addtitionalLinkAttributes = {};
+    let ariaLabel = `${this.titleText}. ${this.text}`;
+
+    if (openInNewWindow) {
+      addtitionalLinkAttributes = {
+        rel: 'external noopener nofollow',
+        target: '_blank'
+      };
+      ariaLabel += `. ${i18nTargetOpensInNewWindow[currentLanguage]}`;
+    }
 
     return (
       <li class={`teaser-item ${appearanceClass}`}>
         <a
           class='teaser-item__link'
-          href={this.link}
+          href={this.hrefValue}
+          {...addtitionalLinkAttributes}
         >
           <div class='teaser-item__container-image'>
             <lyne-image
@@ -187,20 +210,26 @@ export class LyneTeaserItem {
               performanceMark='teaser-item'
             />
           </div>
-          <div class='teaser-item__text'>
-            {
-              this.titleText
-                ? <lyne-title
-                  level={this.titleLevel}
-                  text={this.titleText}
-                  visual-level='5'
-                />
-                : ''
-            }
-            <p class='teaser-item__paragraph'>
-              {this.text}
-            </p>
-          </div>
+          <p
+            class='teaser-item__aria-label'
+            aria-label={ariaLabel}
+            role='text'
+          >
+            <span class='teaser-item__text'>
+              {
+                this.titleText
+                  ? <lyne-title
+                    level={this.titleLevel}
+                    text={this.titleText}
+                    visual-level='5'
+                  />
+                  : ''
+              }
+              <span class='teaser-item__paragraph'>
+                {this.text}
+              </span>
+            </span>
+          </p>
         </a>
       </li>
     );

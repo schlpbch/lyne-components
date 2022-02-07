@@ -31,50 +31,49 @@ const imageLoading = {
 
 const items = [
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[0],
-    'link': 'https://www.sbb.ch',
     'personalised': false,
     'text': 'Mit dem Velo unterwegs',
     'title-text': 'Velo'
   },
-  ,
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[5],
-    'link': 'https://www.sbb.ch',
     'personalised': false,
     'text': 'Spezialangebot',
     'title-text': 'Eidgenössischen Schwingfest'
   },
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[1],
-    'link': 'https://www.sbb.ch',
     'personalised': false,
     'text': 'Skierlebnisse entdecken',
     'title-text': 'Snow`n`Rail'
   },
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[2],
-    'link': 'https://www.sbb.ch',
     'personalised': false,
     'text': 'Alles für Ihren Ausflug',
     'title-text': 'Gruppenreisen'
   },
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[3],
-    'link': 'https://www.sbb.ch',
     'personalised': false,
     'text': 'Services im Bahnhof',
     'title-text': 'Bahnhof finden'
   },
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[4],
-    'link': 'https://www.sbb.ch',
     'personalised': false,
     'text': 'Bequem in die Ferien',
     'title-text': 'Fluggepäck'
@@ -83,33 +82,33 @@ const items = [
 
 const itemsPersonalised = [
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[0],
-    'link': 'https://www.sbb.ch',
     'personalised': true,
     'text': 'Spannende Bücher kaufen',
     'title-text': 'Lesen im Zug'
   },
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[1],
-    'link': 'https://www.sbb.ch',
     'personalised': true,
     'text': 'Entspannt reisen',
     'title-text': 'Reisetipps'
   },
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[2],
-    'link': 'https://www.sbb.ch',
     'personalised': true,
     'text': 'Rücksichtsvoll unterwegs',
     'title-text': 'SBB Green Class'
   },
   {
+    'href-value': 'https://www.sbb.ch',
     'image-loading': imageLoading.options[1],
     'image-src': images[3],
-    'link': 'https://www.sbb.ch',
     'personalised': true,
     'text': 'Alles für den täglichen Bedarf',
     'title-text': 'Coop Pronto'
@@ -124,12 +123,12 @@ const ariaLabelledBy = {
 
 const defaultArgTypes = {
   'aria-labelledby': ariaLabelledBy,
-  imageLoading
+  'image-loading': imageLoading
 };
 
 const defaultArgs = {
   'aria-labelledby': '',
-  imageLoading
+  'image-loading': imageLoading.options[1]
 };
 
 /* ************************************************* */

@@ -20,7 +20,6 @@ import { InterfacePearlChainAttributes } from "./components/lyne-pearl-chain/lyn
 import { Time } from "./components/lyne-sbb-clock/lyne-sbb-clock.custom.d";
 import { InterfaceLogoAttributes } from "./components/lyne-sbb-logo/lyne-sbb-logo.custom.d";
 import { InterfaceSignetAttributes } from "./components/lyne-sbb-signet/lyne-sbb-signet.custom.d";
-import { InterfaceTitleAttributes as InterfaceTitleAttributes1 } from "./components/lyne-title/lyne-title.custom";
 import { InterfaceLyneTextInputAttributes } from "./components/lyne-text-input/lyne-text-input.custom.d";
 import { InterfaceLyneTimetableButtonAttributes } from "./components/lyne-timetable-button/lyne-timetable-button.custom.d";
 import { InterfaceLyneTimetableCusHimAttributes } from "./components/lyne-timetable-cus-him/lyne-timetable-cus-him.custom.d";
@@ -561,6 +560,10 @@ export namespace Components {
     }
     interface LyneTeaserItem {
         /**
+          * The href value you want to link to
+         */
+        "hrefValue": string;
+        /**
           * Image loading property. See lyne-image for additional info
          */
         "imageLoading"?: InterfaceImageAttributes['loading'];
@@ -568,10 +571,6 @@ export namespace Components {
           * Image source property for lyne-image. See lyne-image for additional info
          */
         "imageSrc": string;
-        /**
-          * Link to open if the teaser is clicked/pressed.
-         */
-        "link": string;
         /**
           * is teaser item personalised
          */
@@ -1689,6 +1688,10 @@ declare namespace LocalJSX {
     }
     interface LyneTeaserItem {
         /**
+          * The href value you want to link to
+         */
+        "hrefValue": string;
+        /**
           * Image loading property. See lyne-image for additional info
          */
         "imageLoading"?: InterfaceImageAttributes['loading'];
@@ -1696,10 +1699,6 @@ declare namespace LocalJSX {
           * Image source property for lyne-image. See lyne-image for additional info
          */
         "imageSrc": string;
-        /**
-          * Link to open if the teaser is clicked/pressed.
-         */
-        "link": string;
         /**
           * is teaser item personalised
          */

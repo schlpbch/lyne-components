@@ -27,9 +27,9 @@ const defaultTeaserArgTypes = {
 };
 
 const defaultTeaserArgs = {
+  'href-value': 'https://www.sbb.ch',
   'image-loading': imageLoading.options[1],
   'image-src': images[0],
-  'link': 'https://www.sbb.ch',
   'text': 'Spannende Bücher kaufen',
   'title-text': 'Lesen im Zug'
 };

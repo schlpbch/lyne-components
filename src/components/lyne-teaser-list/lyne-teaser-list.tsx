@@ -50,7 +50,7 @@ export class LyneTeaserList {
         class={`teaser-list${appearanceClasses}`}
         role='list'
       >
-        <slot name="teaser-list__item" />
+        <slot name='teaser-list__item' />
       </ul>
     );
   }
