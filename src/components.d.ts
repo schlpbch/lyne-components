@@ -299,6 +299,10 @@ export namespace Components {
          */
         "focalPointY": number;
         /**
+          * Height of the image element. Will be overwritten by CSS in most cases. Required for lazyloaded images
+         */
+        "height": string;
+        /**
           * In cases when the image is just serving a decorative purpose, we can hide it from assistive technologies (e.g. an image in a teaser card)
          */
         "hideFromScreenreader": boolean;
@@ -334,6 +338,10 @@ export namespace Components {
           * Based on the variant, we apply specific aspect ratios to the image accross all viewports.
          */
         "variant"?: InterfaceImageAttributes['variant'];
+        /**
+          * Width of the image element. Will be overwritten by CSS in most cases. Required for lazyloaded images
+         */
+        "width": string;
     }
     interface LyneInputError {
         /**
@@ -1419,6 +1427,10 @@ declare namespace LocalJSX {
          */
         "focalPointY"?: number;
         /**
+          * Height of the image element. Will be overwritten by CSS in most cases. Required for lazyloaded images
+         */
+        "height"?: string;
+        /**
           * In cases when the image is just serving a decorative purpose, we can hide it from assistive technologies (e.g. an image in a teaser card)
          */
         "hideFromScreenreader"?: boolean;
@@ -1454,6 +1466,10 @@ declare namespace LocalJSX {
           * Based on the variant, we apply specific aspect ratios to the image accross all viewports.
          */
         "variant"?: InterfaceImageAttributes['variant'];
+        /**
+          * Width of the image element. Will be overwritten by CSS in most cases. Required for lazyloaded images
+         */
+        "width"?: string;
     }
     interface LyneInputError {
         /**

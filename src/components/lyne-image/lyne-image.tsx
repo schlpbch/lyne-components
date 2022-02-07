@@ -103,6 +103,12 @@ export class LyneImage {
   @Prop() public focalPointY = 1;
 
   /**
+   * Height of the image element. Will be overwritten by CSS
+   * in most cases. Required for lazyloaded images
+   */
+  @Prop() public height = '1000';
+
+  /**
    * In cases when the image is just serving a decorative purpose,
    * we can hide it from assistive technologies (e.g. an image
    * in a teaser card)
@@ -239,6 +245,12 @@ export class LyneImage {
    * to the image accross all viewports.
    */
   @Prop() public variant?: InterfaceImageAttributes['variant'];
+
+  /**
+   * Width of the image element. Will be overwritten by CSS
+   * in most cases. Required for lazyloaded images
+   */
+  @Prop() public width = '562';
 
   private _addLoadedClass(): void {
     this._loadedClass = ' image__figure--loaded';
@@ -415,10 +427,10 @@ export class LyneImage {
               ? (
                 <img
                   alt=''
-                  class='image__blur-hash'
+                  class='image__lqip'
                   src={imageUrlLQIP}
-                  width='1000'
-                  height='562'
+                  width={this.width}
+                  height={this.height}
                   loading={this.loading}
                   decoding={this.decoding}
                 />
@@ -472,8 +484,8 @@ export class LyneImage {
               alt={this.alt}
               class='image__img'
               src={imageSrc}
-              width='1000'
-              height='562'
+              width={this.width}
+              height={this.height}
               loading={this.loading}
               decoding={this.decoding}
               importance={this.importance}

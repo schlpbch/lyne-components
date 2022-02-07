@@ -7,8 +7,6 @@
   width: 100%;
 }
 
-//.personalised ::slotted(lyne-teaser-item) {}
-
 .teaser-list {
   @include listReset();
   display: flex;
@@ -43,12 +41,3 @@
   --gap-compensation: var(--lyne-spacing-responsive-s) * (var(--cols) - 1);
   flex: 0 1 calc((100% - #{pxToRem(var(--gap-compensation))}) / var(--cols));
 }
-
-
-/* .teaserlist.personalised {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  gap: 10px 20px;
-} */

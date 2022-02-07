@@ -5,15 +5,29 @@
 
 :host {
   display: block;
-  --image-size: 80;
+  height: 100%;
+
+  --image-border-radius: var(--border-radius-4x);
+
+  --text-color-hover-focus: var(--color-red125-default);
+  --text-color-active: var(--color-red150-default);
 }
 
 .teaser-item {
   display: flex;
+  height: 100%;
 }
 
 .teaser-item--personalised {
   --image-size: 100%;
+}
+
+.teaser-item--non-personalised {
+  --image-size: 80;
+
+  @include mq($from: medium) {
+    --image-size: 96;
+  }
 }
 
 .teaser-item__link {
@@ -30,7 +44,7 @@
 
 .teaser-item--personalised .teaser-item__link {
   flex-direction: column;
-  row-gap: pxToRem(var(--spacing-fixed-3x));;
+  row-gap: pxToRem(var(--spacing-fixed-3x));
 }
 
 .teaser-item__paragraph {
@@ -39,18 +53,39 @@
   margin: 0;
 }
 
+.teaser-item__link:active .teaser-item__paragraph {
+  color: var(--text-color-active);
+}
+
+.teaser-item__link:focus .teaser-item__paragraph,
+.teaser-item__link:hover .teaser-item__paragraph {
+  color: var(--text-color-hover-focus);
+}
+
 .teaser-item__container-image {
   display: flex;
-  flex-basis: pxToRem(var(--image-size));
+  position: relative;
+  flex: 0 0 pxToRem(var(--image-size));
 }
 
-.teaser-item--personalised .teaser-item__container-image {
-  flex-basis: 100%;
-}
-
-.teaser-item--personalised lyne-image {
-  contain: content;
+.teaser-item__link lyne-image {
   display: block;
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
+}
+
+.teaser-item__link lyne-image:after {
+  position: absolute;
+  inset: 0;
+  inset-block-end: pxToRem(1);
+  content: '';
+  background: var(--color-black-alpha-10);
+  opacity: .000001;
+  transition: opacity .2s ease-in; // TODO define Design Token
+}
+
+.teaser-item__link:focus lyne-image:after,
+.teaser-item__link:hover lyne-image:after {
+  opacity: .999999;
 }

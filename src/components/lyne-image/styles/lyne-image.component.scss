@@ -81,6 +81,7 @@
   max-width: 100%;
   margin-bottom: pxToRem(var(--spacing-fixed-4x));
   border-radius: pxToRem(var(--image-border-radius));
+  background-color: var(--color-cloud-default);
   @include image-aspect-ratio-16-9;
 }
 
@@ -100,7 +101,7 @@
 
 // Variant: Teaser Item
 .image__figure--teaser-item .image__wrapper,
-.image__figure--teaser-item .image__blur-hash,
+.image__figure--teaser-item .image__lqip,
 .image__figure--teaser-item .image__img {
   @include image-aspect-ratio-4-3;
   margin: 0;

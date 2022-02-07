@@ -7,7 +7,10 @@ const imageLoading = {
   control: {
     type: 'inline-radio'
   },
-  options: ['eager'],
+  options: [
+    'eager',
+    'lazy'
+  ],
   table: {
     category: 'Performance'
   }
@@ -24,7 +27,7 @@ const defaultTeaserArgTypes = {
 };
 
 const defaultTeaserArgs = {
-  'image-loading': imageLoading.options[0],
+  'image-loading': imageLoading.options[1],
   'image-src': images[0],
   'link': 'https://www.sbb.ch',
   'text': 'Spannende Bücher kaufen',
@@ -44,31 +47,11 @@ TeaserPersonalisedFalse.args = {
   personalised: false
 };
 
-/*
- * TeaserPersonalisedFalse.decorators = [
- *   (Story) => (
- *     <div style={'max-width: 380px;border:1px solid green;'}>
- *       <Story/>
- *     </div>
- *   )
- * ];
- */
-
 TeaserPersonalisedTrue.argTypes = defaultTeaserArgTypes;
 TeaserPersonalisedTrue.args = {
   ...defaultTeaserArgs,
   personalised: true
 };
-
-/*
- * TeaserPersonalisedTrue.decorators = [
- *   (Story) => (
- *     <div style={'max-width: 380px;border:1px solid black;'}>
- *       <Story/>
- *     </div>
- *   )
- * ];
- */
 
 /* ************************************************* */
 /* export default                                    */

@@ -23,23 +23,32 @@ const imageLoading = {
   control: {
     type: 'inline-radio'
   },
-  options: ['eager'],
-  table: {
-    category: 'Performance'
-  }
+  options: [
+    'eager',
+    'lazy'
+  ]
 };
 
 const items = [
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
     'image-src': images[0],
     'link': 'https://www.sbb.ch',
     'personalised': false,
     'text': 'Mit dem Velo unterwegs',
     'title-text': 'Velo'
   },
+  ,
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
+    'image-src': images[5],
+    'link': 'https://www.sbb.ch',
+    'personalised': false,
+    'text': 'Spezialangebot',
+    'title-text': 'Eidgenössischen Schwingfest'
+  },
+  {
+    'image-loading': imageLoading.options[1],
     'image-src': images[1],
     'link': 'https://www.sbb.ch',
     'personalised': false,
@@ -47,7 +56,7 @@ const items = [
     'title-text': 'Snow`n`Rail'
   },
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
     'image-src': images[2],
     'link': 'https://www.sbb.ch',
     'personalised': false,
@@ -55,7 +64,7 @@ const items = [
     'title-text': 'Gruppenreisen'
   },
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
     'image-src': images[3],
     'link': 'https://www.sbb.ch',
     'personalised': false,
@@ -63,26 +72,18 @@ const items = [
     'title-text': 'Bahnhof finden'
   },
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
     'image-src': images[4],
     'link': 'https://www.sbb.ch',
     'personalised': false,
     'text': 'Bequem in die Ferien',
     'title-text': 'Fluggepäck'
-  },
-  {
-    'image-loading': imageLoading.options[0],
-    'image-src': images[5],
-    'link': 'https://www.sbb.ch',
-    'personalised': false,
-    'text': 'Spezialangebot',
-    'title-text': 'Eidgenössischen Schwingfest'
   }
 ];
 
 const itemsPersonalised = [
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
     'image-src': images[0],
     'link': 'https://www.sbb.ch',
     'personalised': true,
@@ -90,7 +91,7 @@ const itemsPersonalised = [
     'title-text': 'Lesen im Zug'
   },
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
     'image-src': images[1],
     'link': 'https://www.sbb.ch',
     'personalised': true,
@@ -98,7 +99,7 @@ const itemsPersonalised = [
     'title-text': 'Reisetipps'
   },
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
     'image-src': images[2],
     'link': 'https://www.sbb.ch',
     'personalised': true,
@@ -106,7 +107,7 @@ const itemsPersonalised = [
     'title-text': 'SBB Green Class'
   },
   {
-    'image-loading': imageLoading.options[0],
+    'image-loading': imageLoading.options[1],
     'image-src': images[3],
     'link': 'https://www.sbb.ch',
     'personalised': true,

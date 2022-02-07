@@ -162,7 +162,7 @@ export class LyneTeaserItem {
 
     const appearanceClass = this.personalised
       ? 'teaser-item--personalised'
-      : '';
+      : 'teaser-item--non-personalised';
 
     return (
       <li class={`teaser-item ${appearanceClass}`}>
@@ -177,11 +177,13 @@ export class LyneTeaserItem {
                 ? this._personalisedPictureSizesConfig
                 : this._nonPersonalisedPictureSizesConfig)}
               customFocalPoint={true}
+              height='300'
               hideFromScreenreader={true}
               imageSrc={this.imageSrc}
               loading={this.imageLoading}
               lqip
               variant='teaser-item'
+              width='400'
               performanceMark='teaser-item'
             />
           </div>
