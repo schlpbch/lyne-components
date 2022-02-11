@@ -1,4 +1,5 @@
 import pearlChainData from '../lyne-pearl-chain/lyne-pearl-chain.sample-data';
+import transportationCusHimData from '../lyne-timetable-cus-him/lyne-timetable-cus-him.sample-data';
 import transportationOccupancyData from '../lyne-timetable-occupancy/lyne-timetable-occupancy.sample-data';
 import transportationPlatformData from '../lyne-timetable-platform/lyne-timetable-platform.sample-data';
 import transportationNumberData from '../lyne-timetable-transportation-number/lyne-timetable-transportation-number.sample-data';
@@ -26,6 +27,7 @@ export default [
     arrivalPlatform: transportationPlatformData[1],
     arrivalStation: 'St. Gallen, Mühlegg Talstation',
     arrivalTime: transportationTimeData[1],
+    departureCusHim: transportationCusHimData[3],
     departurePlatform: transportationPlatformData[0],
     departureStation: 'La Chaux-de-Fonds',
     departureTime: transportationTimeData[4],
@@ -39,6 +41,7 @@ export default [
     travelHints: transportationTravelHintsData[0]
   },
   {
+    arrivalCusHim: transportationCusHimData[4],
     arrivalPlatform: transportationPlatformData[1],
     arrivalStation: 'St. Gallen, Mühlegg Talstation',
     arrivalTime: transportationTimeData[5],

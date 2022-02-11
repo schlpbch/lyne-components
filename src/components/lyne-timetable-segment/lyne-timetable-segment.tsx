@@ -7,6 +7,7 @@ import {
 import getDocumentLang from '../../global/helpers/get-document-lang';
 
 import {
+  i18nApproximatelyDelayedBy,
   i18nArrival,
   i18nClass,
   i18nDeparture,
@@ -35,6 +36,56 @@ export class LyneTimetableSegment {
    * structure.
    */
   @Prop() public config!: string;
+
+  private _createA11yArrivalSummary(config): string {
+
+    let arrivalSummary = '',
+        delay = config.arrivalTime.delay;
+
+    arrivalSummary += `. ${i18nArrival[this._currentLanguage]}: `;
+    arrivalSummary += `${config.arrivalStation} `;
+    arrivalSummary += `${config.arrivalTime.time} `;
+    arrivalSummary += `${i18nPlatformArrivingOn[this._currentLanguage]} `;
+    arrivalSummary += `${config.arrivalPlatform.platform}`;
+
+    if (delay > 0) {
+      let delayText = ` ${i18nApproximatelyDelayedBy.multiple[this._currentLanguage]}`;
+
+      if (delay === 1) {
+        delayText = ` ${i18nApproximatelyDelayedBy.single[this._currentLanguage]}`;
+      }
+
+      arrivalSummary += delayText.replace(/({mins})/, delay);
+    }
+
+    return arrivalSummary;
+
+  }
+
+  private _createA11yDepartureSummary(config): string {
+
+    let departureSummary = '',
+        delay = config.departureTime.delay;
+
+    departureSummary += `. ${i18nDeparture[this._currentLanguage]}: `;
+    departureSummary += `${config.departureStation} `;
+    departureSummary += `${config.departureTime.time} `;
+    departureSummary += `${i18nPlatformLeavingFrom[this._currentLanguage]} `;
+    departureSummary += `${config.departurePlatform.platform}`;
+
+    if (delay > 0) {
+      let delayText = ` ${i18nApproximatelyDelayedBy.multiple[this._currentLanguage]}`;
+
+      if (delay === 1) {
+        delayText = ` ${i18nApproximatelyDelayedBy.single[this._currentLanguage]}`;
+      }
+
+      departureSummary += delayText.replace(/({mins})/, delay);
+    }
+
+    return departureSummary;
+
+  }
 
   private _createA11yOccupancySummary(occupancyItems): string {
 
@@ -89,18 +140,10 @@ export class LyneTimetableSegment {
     a11ySummary += `${transportationNumber.direction}`;
 
     // Departure information
-    a11ySummary += `. ${i18nDeparture[this._currentLanguage]}: `;
-    a11ySummary += `${config.departureStation} `;
-    a11ySummary += `${config.departureTime.time} `;
-    a11ySummary += `${i18nPlatformLeavingFrom[this._currentLanguage]} `;
-    a11ySummary += `${config.departurePlatform.platform}`;
+    a11ySummary += `. ${this._createA11yDepartureSummary(config)}`;
 
     // Arrival information
-    a11ySummary += `. ${i18nArrival[this._currentLanguage]}: `;
-    a11ySummary += `${config.arrivalStation} `;
-    a11ySummary += `${config.arrivalTime.time} `;
-    a11ySummary += `${i18nPlatformArrivingOn[this._currentLanguage]} `;
-    a11ySummary += `${config.arrivalPlatform.platform}`;
+    a11ySummary += `. ${this._createA11yArrivalSummary(config)}`;
 
     // Occupancy information
     a11ySummary += `. ${this._createA11yOccupancySummary(config.occupancy.occupancyItems)}`;
@@ -149,7 +192,7 @@ export class LyneTimetableSegment {
 
           <div class='col col--pearlchain'>
             <lyne-pearl-chain
-              appearance="vertical"
+              appearance='vertical'
               legs={JSON.stringify(config.pearlChain.legs)}
               status={config.pearlChain.status}
               open-end={config.pearlChain.openEnd}
@@ -159,6 +202,16 @@ export class LyneTimetableSegment {
           <div class='col col--details'>
             <div class='segment__transportation-details'>
               <p class='departing-from'>{config.departureStation}</p>
+              {
+                config.departureCusHim
+                  ?
+                    <lyne-timetable-cus-him
+                      appearance='second-level-message'
+                      config={JSON.stringify(config.departureCusHim)}
+                    >
+                    </lyne-timetable-cus-him>
+                  : ''
+              }
               <div class='inner'>
                 <lyne-timetable-transportation-number
                   appearance='second-level'
@@ -174,8 +227,18 @@ export class LyneTimetableSegment {
                   config={JSON.stringify(config.occupancy)}
                 >
                 </lyne-timetable-occupancy>
-                <p class='arriving-at'>{config.arrivalStation}</p>
               </div>
+              {
+                config.arrivalCusHim
+                  ?
+                  <lyne-timetable-cus-him
+                    appearance='second-level-message'
+                    config={JSON.stringify(config.arrivalCusHim)}
+                  >
+                  </lyne-timetable-cus-him>
+                  : ''
+              }
+              <p class='arriving-at'>{config.arrivalStation}</p>
             </div>
           </div>
 

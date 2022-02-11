@@ -66,6 +66,8 @@
 
 .col--details .inner {
   position: relative;
+  margin-block-start: pxToRem(var(--spacing-fixed-3x));
+  margin-block-end: pxToRem(var(--spacing-fixed-3x));
 }
 
 .col--details lyne-timetable-occupancy {
@@ -82,12 +84,10 @@
 
 .col--details .departing-from {
   @include text-s--bold();
-  margin-block-end: pxToRem(var(--spacing-fixed-3x));
 }
 
 .col--details .arriving-at {
   @include text-s--regular();
-  margin-block-start: pxToRem(var(--spacing-fixed-3x));
 }
 
 .col--platforms {

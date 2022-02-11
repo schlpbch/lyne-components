@@ -20,12 +20,14 @@ here to show the various configuration options to component developers. !!
 
  - [lyne-timetable-button](../lyne-timetable-button)
  - [lyne-timetable-row](../lyne-timetable-row)
+ - [lyne-timetable-segment](../lyne-timetable-segment)
 
 ### Graph
 ```mermaid
 graph TD;
   lyne-timetable-button --> lyne-timetable-cus-him
   lyne-timetable-row --> lyne-timetable-cus-him
+  lyne-timetable-segment --> lyne-timetable-cus-him
   style lyne-timetable-cus-him fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

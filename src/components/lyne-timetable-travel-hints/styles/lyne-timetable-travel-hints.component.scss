@@ -6,17 +6,23 @@
 :host {
   --travel-hint-icon-height: 12;
   --travel-hint-icon-scaling-factor: 0.75;
-
-  @include mq($from: medium) {
-    --travel-hint-icon-height: 16;
-    --travel-hint-icon-scaling-factor: 1;
-  }
 }
 
 .travel-hints__list {
   @include listReset();
   display: flex;
   gap: pxToRem(var(--spacing-fixed-1x));
+}
+
+.travel-hints--first-level-list {
+  @include mq($from: medium) {
+    --travel-hint-icon-height: 16;
+    --travel-hint-icon-scaling-factor: 1;
+  }
+}
+
+.travel-hints--second-level-list svg {
+  fill: var(--color-anthracite-default);
 }
 
 .travel-hints--first-level-list .travel-hints__list {

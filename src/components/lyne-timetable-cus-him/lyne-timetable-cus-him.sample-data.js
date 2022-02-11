@@ -34,5 +34,21 @@ export default [
         text: 'Alternative connection due to the current service situation. Please check again for any changes shortly before starting your journey.'
       }
     ]
+  },
+  {
+    cusHimItems: [
+      {
+        icon: 'delay',
+        text: 'Delayed departure'
+      }
+    ]
+  },
+  {
+    cusHimItems: [
+      {
+        icon: 'delay',
+        text: 'Delayed arrival'
+      }
+    ]
   }
 ];
