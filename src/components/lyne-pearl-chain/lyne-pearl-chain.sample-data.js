@@ -125,5 +125,11 @@ export default {
       false,
       25
     ]
-  ])
+  ]),
+  stop0Delayed: generateLegsData([
+    [
+      true,
+      100
+    ]
+  ]),
 };

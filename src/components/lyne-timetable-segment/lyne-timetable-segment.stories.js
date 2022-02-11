@@ -34,11 +34,33 @@ segment.documentation = {
   title: 'Segment'
 };
 
+export const segmentDelayedDeparture = Template.bind({});
+
+segmentDelayedDeparture.argTypes = defaultArgTypes;
+segmentDelayedDeparture.args = {
+  config: sampleData[1]
+};
+
+segmentDelayedDeparture.documentation = {
+  title: 'Segment Delayed Departure'
+};
+
+export const segmentDelayedArrival = Template.bind({});
+
+segmentDelayedArrival.argTypes = defaultArgTypes;
+segmentDelayedArrival.args = {
+  config: sampleData[2]
+};
+
+segmentDelayedArrival.documentation = {
+  title: 'Segment Delayed Arrival'
+};
+
 export const lastSegment = Template.bind({});
 
 lastSegment.argTypes = defaultArgTypes;
 lastSegment.args = {
-  config: sampleData[1]
+  config: sampleData[3]
 };
 
 lastSegment.documentation = {
