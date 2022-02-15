@@ -6,6 +6,7 @@ import sampleData from './lyne-pearl-chain.sample-data';
 const Template = ({
   legs,
   cancelPart,
+  skipPart,
   ...args
 }) => {
 
@@ -14,6 +15,8 @@ const Template = ({
   newLegsData.legs.forEach((leg, index) => {
     if (cancelPart) {
       leg.cancellation = cancelPart.indexOf(index + 1) !== -1;
+    } else if (skipPart) {
+      leg.skipped = skipPart.indexOf(index + 1) !== -1;
     } else {
       leg.cancellation = false;
     }
@@ -32,7 +35,9 @@ export const NoStops = Template.bind({});
 export const NoStopsOpenEnd = Template.bind({});
 export const Stop1 = Template.bind({});
 export const Stops2 = Template.bind({});
+export const Stops2SkippedStations = Template.bind({});
 export const Stops3 = Template.bind({});
+export const Stops3SkippedStations = Template.bind({});
 export const Stops4 = Template.bind({});
 export const Stops9 = Template.bind({});
 
@@ -52,8 +57,16 @@ Stops2.documentation = {
   title: '2 Stops'
 };
 
+Stops2SkippedStations.documentation = {
+  title: '2 Stops skipped stations'
+};
+
 Stops3.documentation = {
   title: '3 Stops'
+};
+
+Stops3SkippedStations.documentation = {
+  title: '3 Stops skipped stations'
 };
 
 Stops4.documentation = {
@@ -187,6 +200,29 @@ Stops2.args = {
   status: '50'
 };
 
+Stops2SkippedStations.argTypes = {
+  appearance,
+  skipPart: {
+    control: {
+      type: 'inline-check'
+    },
+    options: [
+      1,
+      2,
+      3
+    ]
+  },
+  legs,
+  openEnd,
+  status
+};
+
+Stops2SkippedStations.args = {
+  appearance: 'horizontal',
+  legs: sampleData.stop2Skipped,
+  status: '50'
+};
+
 Stops3.argTypes = {
   appearance,
   cancelPart: {
@@ -208,6 +244,30 @@ Stops3.argTypes = {
 Stops3.args = {
   appearance: 'horizontal',
   legs: sampleData.stop3,
+  status: 'future'
+};
+
+Stops3SkippedStations.argTypes = {
+  appearance,
+  skipPart: {
+    control: {
+      type: 'inline-check'
+    },
+    options: [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  legs,
+  openEnd,
+  status
+};
+
+Stops3SkippedStations.args = {
+  appearance: 'horizontal',
+  legs: sampleData.stop3Skipped,
   status: 'future'
 };
 

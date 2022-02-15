@@ -39,7 +39,8 @@ export default (jsonString: string): any => {
   let sum = 0;
   const allowedKeys = [
     'cancellation',
-    'duration'
+    'duration',
+    'skipped'
   ];
 
   legs.forEach((leg) => {

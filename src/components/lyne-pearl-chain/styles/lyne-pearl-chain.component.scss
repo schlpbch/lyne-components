@@ -24,6 +24,7 @@
   --color-current-location-dark: var(--color-red150-default);
   --color-cancellation: var(--color-red-default);
   --color-past: var(--color-metal-default);
+  --color-skipped: var(--color-red-default);
 }
 
 .pearl-chain {
@@ -146,6 +147,12 @@
 
 }
 
+.pearl-chain__leg--skipped:not(:first-child):before {
+  --dot-size: var(--dot-size-large);
+  border-color: var(--color-skipped);
+};
+
+
 // line on leg
 .pearl-chain__leg:after {
   content: '';
@@ -205,6 +212,18 @@
     border-top: pxToRem(1) dashed currentColor;
     transform: translateY(#{pxToRem(1)});
   }
+}
+
+.pearl-chain__leg-dash {
+  position: absolute;
+  left: pxToRem(-4);
+  top: 0;
+  z-index: 2;
+  height: pxToRem(var(--border-width));
+  width: pxToRem(17);
+  background: var(--color-skipped);
+  transform: rotate(45deg);
+  box-shadow: pxToRem(2) pxToRem(-2) 0 0 Canvas;
 }
 
 .pearl-chain__status {

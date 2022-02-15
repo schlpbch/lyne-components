@@ -113,35 +113,46 @@ export class LynePearlChain {
 
     return (
       <div class={classes}>
+          {/* render legs */}
+          {legs.map((leg) => {
+            const legStyle = {
+              'flex-basis': `${leg.duration}%`
+            };
 
-        {/* render legs */}
-        {legs.map((leg) => {
-          const legStyle = {
-            'flex-basis': `${leg.duration}%`
-          };
+            const legCancelClass = leg.cancellation
+              ? ' pearl-chain__leg--cancellation'
+              : '';
 
-          const legCancelClass = leg.cancellation
-            ? ' pearl-chain__leg--cancellation'
-            : '';
+            const legSkippedClass = leg.skipped
+              ? ' pearl-chain__leg--skipped'
+              : '';
 
-          return (
-            <div
-              class={`pearl-chain__leg${legCancelClass}`}
-              style={legStyle}
-            ></div>
-          );
-        })}
+            return (
+              <div
+                class={`pearl-chain__leg${legCancelClass}${legSkippedClass}`}
+                style={legStyle}
+              >
+                {
+                  leg.skipped
+                    ? (
+                        <div class="pearl-chain__leg-dash"></div>
+                    )
+                    : ''
+                }
+              </div>
+            );
+          })}
 
-        {/* render current location point */}
-        {statusIsRunning
-          ? (
-            <span
-              style={statusStyle}
-              class={`pearl-chain__status${animationClass}`}
-            ></span>
-          )
-          : ''
-        }
+          {/* render current location point */}
+          {statusIsRunning
+            ? (
+              <span
+                style={statusStyle}
+                class={`pearl-chain__status${animationClass}`}
+              ></span>
+            )
+            : ''
+          }
       </div>
     );
   }
