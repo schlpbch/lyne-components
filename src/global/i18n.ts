@@ -330,6 +330,22 @@ export const i18nShowOnMap: any = {
   it: 'Visualizzare sulla carta'
 };
 
+
+export const i18nStand: any = {
+  long: {
+    de: 'Kante',
+    en: 'Stand',
+    fr: 'Quai',
+    it: 'Corsia'
+  },
+  short: {
+    de: 'Kante',
+    en: 'Stand',
+    fr: 'Quai',
+    it: 'Corsia'
+  }
+};
+
 export const i18nTargetOpensInNewWindow: any = {
   de: 'Linkziel öffnet in neuem Fenster.',
   en: 'Link target opens in new window.',

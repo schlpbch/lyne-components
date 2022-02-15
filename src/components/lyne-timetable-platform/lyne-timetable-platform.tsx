@@ -8,7 +8,8 @@ import getDocumentLang from '../../global/helpers/get-document-lang';
 import {
   i18nPlatform,
   i18nPlatformArrivingOn,
-  i18nPlatformLeavingFrom
+  i18nPlatformLeavingFrom,
+  i18nStand
 } from '../../global/i18n';
 import { InterfaceLyneTimetablePlatformAttributes } from './lyne-timetable-platform.custom.d';
 
@@ -43,13 +44,23 @@ export class LyneTimetablePlatform {
 
     const config = JSON.parse(this.config);
 
+    let text;
+    let abbrTitle;
+
     let a11yLabel = `${i18nPlatformLeavingFrom[this._currentLanguage]} ${config.platform}.`;
 
     if (this.appearance === 'second-level-arrival') {
       a11yLabel = `${i18nPlatformArrivingOn[this._currentLanguage]} ${config.platform}.`;
     }
 
-    const text = `${i18nPlatform.short[this._currentLanguage]} `;
+    if (config.type === 'platform') {
+      text = `${i18nPlatform.short[this._currentLanguage]} `;
+      abbrTitle = `${i18nPlatform.long[this._currentLanguage]} `;
+    } else {
+      text = `${i18nStand.short[this._currentLanguage]} `;
+      abbrTitle = `${i18nStand.long[this._currentLanguage]} `;
+    }
+
 
     const appearanceClasses = ` platform--${this.appearance}`;
 
@@ -64,8 +75,8 @@ export class LyneTimetablePlatform {
           class='platform__text'
           role='presentation'
         >
-          {text}
-          {config.platform}
+          <abbr title={abbrTitle}>{text}</abbr>
+          {config.value}
         </span>
         <span class='platform__text--visually-hidden'>
           {a11yLabel}

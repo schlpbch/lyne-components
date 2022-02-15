@@ -51,6 +51,18 @@ LyneTimetablePlatformFirstLevel.documentation = {
   title: 'Lyne Timetable Platform - First Level'
 };
 
+export const LyneTimetableStandFirstLevel = Template.bind({});
+
+LyneTimetableStandFirstLevel.argTypes = defaultArgTypes;
+LyneTimetableStandFirstLevel.args = {
+  ...defaultArgs,
+  config: sampleData[2]
+};
+
+LyneTimetableStandFirstLevel.documentation = {
+  title: 'Lyne Timetable Stand - First Level'
+};
+
 export const LyneTimetableArrivalPlatformSecondLevel = Template.bind({});
 
 LyneTimetableArrivalPlatformSecondLevel.argTypes = defaultArgTypes;

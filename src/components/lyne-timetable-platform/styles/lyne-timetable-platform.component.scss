@@ -4,6 +4,10 @@
   white-space: nowrap;
 }
 
+.platform abbr {
+  text-decoration: none;
+}
+
 .platform--second-level-departure {
   @include text-s--bold();
   margin-block-end: pxToRem(var(--spacing-fixed-3x));

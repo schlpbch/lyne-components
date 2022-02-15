@@ -69,7 +69,7 @@ export default [
     duration: durationData[1],
     occupancy: occupancyItemsData[5],
     parkAndRail: parkAndRailData[0],
-    platform: platformData[1],
+    platform: platformData[2],
     rowHeader: rowHeaderData[1],
     travelHints: travelHintsData[1]
   },
