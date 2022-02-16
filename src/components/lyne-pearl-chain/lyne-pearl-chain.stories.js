@@ -220,7 +220,8 @@ Stops2SkippedStations.argTypes = {
 Stops2SkippedStations.args = {
   appearance: 'horizontal',
   legs: sampleData.stop2Skipped,
-  status: '50'
+  status: '50',
+  skipPart: '2 | 3'
 };
 
 Stops3.argTypes = {
@@ -268,7 +269,8 @@ Stops3SkippedStations.argTypes = {
 Stops3SkippedStations.args = {
   appearance: 'horizontal',
   legs: sampleData.stop3Skipped,
-  status: 'future'
+  status: 'future',
+  skipPart: '2 | 3 | 4'
 };
 
 Stops4.argTypes = {

@@ -296,6 +296,15 @@
   inset-inline-start: calc((#{pxToRem(var(--dot-size-large))} - #{pxToRem(var(--dot-size-small))}) / 2);
 }
 
+.pearl-chain--vertical .pearl-chain__leg--skipped:not(:first-child):before {
+  inset-inline-start: 0;
+}
+
+.pearl-chain--vertical .pearl-chain__leg-dash {
+  left: pxToRem(-4);
+  top: pxToRem(4);
+}
+
 // line on leg
 .pearl-chain--vertical .pearl-chain__leg:after {
   inset-block-start: 0;
