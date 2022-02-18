@@ -47,10 +47,10 @@ export class LyneTimetablePlatform {
     let text;
     let abbrTitle;
 
-    let a11yLabel = `${i18nPlatformLeavingFrom[this._currentLanguage]} ${config.platform}.`;
+    let a11yLabel = `${i18nPlatformLeavingFrom[this._currentLanguage]} ${config.value}.`;
 
     if (this.appearance === 'second-level-arrival') {
-      a11yLabel = `${i18nPlatformArrivingOn[this._currentLanguage]} ${config.platform}.`;
+      a11yLabel = `${i18nPlatformArrivingOn[this._currentLanguage]} ${config.value}.`;
     }
 
     if (config.type === 'platform') {

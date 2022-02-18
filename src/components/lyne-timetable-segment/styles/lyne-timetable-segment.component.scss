@@ -35,7 +35,6 @@
   @include mq($from: medium) {
     flex: 0 0 pxToRem(56);
   }
-  // background: lime;
 }
 
 .segment__cus-him-information {
@@ -46,7 +45,6 @@
   flex-basis: pxToRem(var(--dot-size-large));
   margin-inline-start: pxToRem(var(--spacing-fixed-1x));
   margin-inline-end: pxToRem(var(--spacing-fixed-3x));
-  // background: mediumseagreen;
 
   @include mq($from: medium) {
     margin-inline-end: pxToRem(var(--spacing-fixed-4x));
@@ -56,7 +54,6 @@
 
 .col--details {
   flex: 1 1 auto;
-  // background: pink;
 }
 
 .col--details p {

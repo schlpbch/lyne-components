@@ -97,6 +97,10 @@
   @include ellipsis();
 }
 
+.transportation-number--second-level .transportation-number__direction_text {
+  @include text-xs--regular();
+}
+
 .transportation-number--visually-hidden {
   @include screenReaderOnly();
 }
