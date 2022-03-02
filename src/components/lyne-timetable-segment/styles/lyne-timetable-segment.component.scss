@@ -96,4 +96,7 @@
   @include screenReaderOnly();
 }
 
+.segment > lyne-timetable-barrier-free:last-of-type {
+  margin-inline-start: pxToRem(86);
+}
 

@@ -9,6 +9,7 @@ import getDocumentLang from '../../global/helpers/get-document-lang';
 import {
   i18nApproximatelyDelayedBy,
   i18nArrival,
+  i18nBarrierFreeTravel,
   i18nClass,
   i18nDeparture,
   i18nOccupancy,
@@ -47,6 +48,11 @@ export class LyneTimetableSegment {
     arrivalSummary += `${config.arrivalTime.time} `;
     arrivalSummary += `${i18nPlatformArrivingOn[this._currentLanguage]} `;
     arrivalSummary += `${config.arrivalPlatform.platform}`;
+
+    if (config.arrivalBarrierFree) {
+      arrivalSummary += `${i18nBarrierFreeTravel[this._currentLanguage]} `;
+      arrivalSummary += '';
+    }
 
     if (delay > 0) {
       let delayText = ` ${i18nApproximatelyDelayedBy.multiple[this._currentLanguage]}`;
@@ -212,6 +218,15 @@ export class LyneTimetableSegment {
                     </lyne-timetable-cus-him>
                   : ''
               }
+              {
+                config.departureBarrierFree
+                  ?
+                  <lyne-timetable-barrier-free
+                    config={JSON.stringify(config.departureBarrierFree)}
+                  >
+                  </lyne-timetable-barrier-free>
+                  : ''
+              }
               <div class='inner'>
                 <lyne-timetable-transportation-number
                   appearance='second-level'
@@ -255,6 +270,17 @@ export class LyneTimetableSegment {
             </lyne-timetable-platform>
           </div>
         </div>
+
+        {
+          config.arrivalBarrierFree
+            ?
+            <lyne-timetable-barrier-free
+              config={JSON.stringify(config.arrivalBarrierFree)}
+            >
+            </lyne-timetable-barrier-free>
+            : ''
+        }
+
       </p>
     );
   }

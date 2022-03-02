@@ -19,6 +19,7 @@
 - [lyne-timetable-transportation-time](../lyne-timetable-transportation-time)
 - [lyne-pearl-chain](../lyne-pearl-chain)
 - [lyne-timetable-cus-him](../lyne-timetable-cus-him)
+- [lyne-timetable-barrier-free](../lyne-timetable-barrier-free)
 - [lyne-timetable-transportation-number](../lyne-timetable-transportation-number)
 - [lyne-timetable-travel-hints](../lyne-timetable-travel-hints)
 - [lyne-timetable-occupancy](../lyne-timetable-occupancy)
@@ -30,6 +31,7 @@ graph TD;
   lyne-timetable-segment --> lyne-timetable-transportation-time
   lyne-timetable-segment --> lyne-pearl-chain
   lyne-timetable-segment --> lyne-timetable-cus-him
+  lyne-timetable-segment --> lyne-timetable-barrier-free
   lyne-timetable-segment --> lyne-timetable-transportation-number
   lyne-timetable-segment --> lyne-timetable-travel-hints
   lyne-timetable-segment --> lyne-timetable-occupancy
