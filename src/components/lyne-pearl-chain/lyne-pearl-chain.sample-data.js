@@ -22,6 +22,13 @@ export default {
       false
     ]
   ]),
+  stop0Delayed: generateLegsData([
+    [
+      true,
+      100,
+      false
+    ]
+  ]),
   stop1: generateLegsData([
     [
       false,
@@ -190,12 +197,5 @@ export default {
       25,
       false
     ]
-  ]),
-  stop0Delayed: generateLegsData([
-    [
-      true,
-      100,
-      false
-    ]
-  ]),
+  ])
 };

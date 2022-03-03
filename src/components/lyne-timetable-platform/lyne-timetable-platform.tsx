@@ -61,7 +61,6 @@ export class LyneTimetablePlatform {
       abbrTitle = `${i18nStand.long[this._currentLanguage]} `;
     }
 
-
     const appearanceClasses = ` platform--${this.appearance}`;
 
     return (

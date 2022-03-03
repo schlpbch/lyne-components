@@ -43,7 +43,10 @@ export class LyneTimetableTransportationTime {
 
   public render(): JSX.Element {
     const config = JSON.parse(this.config);
-    const delay = config.delay;
+
+    const {
+      delay
+    } = config;
 
     let delayedClass = '';
 
@@ -60,9 +63,9 @@ export class LyneTimetableTransportationTime {
         additionalA11yLabelText = ` ${i18nApproximatelyDelayedBy.single[this._currentLanguage]}`;
       }
 
-      delayedClass = ` time--delayed`;
+      delayedClass = ' time--delayed';
 
-      a11yLabel += additionalA11yLabelText.replace(/({mins})/, delay);
+      a11yLabel += additionalA11yLabelText.replace(/(?:\{mins\})/u, delay);
     }
 
     const appearanceClasses = ` time--${this.appearance} time--${config.type}${delayedClass}`;
@@ -83,11 +86,11 @@ export class LyneTimetableTransportationTime {
         {
           delay > 0
             ? <span
-                aria-hidden='true'
-                class='time__delay'
-                role='presentation'
+              aria-hidden='true'
+              class='time__delay'
+              role='presentation'
             >
-               {i18nApproximately.short[this._currentLanguage]} {config.delay}’
+              {i18nApproximately.short[this._currentLanguage]} {config.delay}’
             </span>
             : ''
         }

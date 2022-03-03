@@ -337,7 +337,6 @@ export const i18nShowOnMap: any = {
   it: 'Visualizzare sulla carta'
 };
 
-
 export const i18nStand: any = {
   long: {
     de: 'Kante',

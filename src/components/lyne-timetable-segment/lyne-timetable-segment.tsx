@@ -40,19 +40,17 @@ export class LyneTimetableSegment {
 
   private _createA11yArrivalSummary(config): string {
 
-    let arrivalSummary = '',
-        delay = config.arrivalTime.delay;
+    let arrivalSummary = '';
 
-    arrivalSummary += `. ${i18nArrival[this._currentLanguage]}: `;
+    const {
+      delay
+    } = config.arrivalTime;
+
+    arrivalSummary += `${i18nArrival[this._currentLanguage]}: `;
     arrivalSummary += `${config.arrivalStation} `;
     arrivalSummary += `${config.arrivalTime.time} `;
     arrivalSummary += `${i18nPlatformArrivingOn[this._currentLanguage]} `;
-    arrivalSummary += `${config.arrivalPlatform.platform}`;
-
-    if (config.arrivalBarrierFree) {
-      arrivalSummary += `${i18nBarrierFreeTravel[this._currentLanguage]} `;
-      arrivalSummary += '';
-    }
+    arrivalSummary += `${config.arrivalPlatform.value}.`;
 
     if (delay > 0) {
       let delayText = ` ${i18nApproximatelyDelayedBy.multiple[this._currentLanguage]}`;
@@ -61,7 +59,12 @@ export class LyneTimetableSegment {
         delayText = ` ${i18nApproximatelyDelayedBy.single[this._currentLanguage]}`;
       }
 
-      arrivalSummary += delayText.replace(/({mins})/, delay);
+      arrivalSummary += delayText.replace(/(?:\{mins\})/u, delay);
+    }
+
+    if (config.arrivalBarrierFree) {
+      arrivalSummary += ` ${i18nBarrierFreeTravel[this._currentLanguage]} `;
+      arrivalSummary += config.arrivalBarrierFree.text;
     }
 
     return arrivalSummary;
@@ -70,14 +73,17 @@ export class LyneTimetableSegment {
 
   private _createA11yDepartureSummary(config): string {
 
-    let departureSummary = '',
-        delay = config.departureTime.delay;
+    let departureSummary = '';
+
+    const {
+      delay
+    } = config.departureTime;
 
     departureSummary += `. ${i18nDeparture[this._currentLanguage]}: `;
     departureSummary += `${config.departureStation} `;
     departureSummary += `${config.departureTime.time} `;
     departureSummary += `${i18nPlatformLeavingFrom[this._currentLanguage]} `;
-    departureSummary += `${config.departurePlatform.platform}`;
+    departureSummary += `${config.departurePlatform.value}.`;
 
     if (delay > 0) {
       let delayText = ` ${i18nApproximatelyDelayedBy.multiple[this._currentLanguage]}`;
@@ -86,7 +92,12 @@ export class LyneTimetableSegment {
         delayText = ` ${i18nApproximatelyDelayedBy.single[this._currentLanguage]}`;
       }
 
-      departureSummary += delayText.replace(/({mins})/, delay);
+      departureSummary += delayText.replace(/(?:\{mins\})/u, delay);
+    }
+
+    if (config.departureBarrierFree) {
+      departureSummary += ` ${i18nBarrierFreeTravel[this._currentLanguage]} `;
+      departureSummary += config.departureBarrierFree.text;
     }
 
     return departureSummary;
@@ -97,15 +108,17 @@ export class LyneTimetableSegment {
 
     let occupancySummary = '';
 
-    {occupancyItems.map((occupancyItem) => {
+    occupancyItems.forEach((occupancyItem) => {
 
-        const occupancyText = i18nOccupancy[occupancyItem.occupancy][this._currentLanguage];
+      const occupancyText = i18nOccupancy[occupancyItem.occupancy][this._currentLanguage];
 
-        const classText = occupancyItem.class === '1'
-          ? 'first'
-          : 'second';
-        occupancySummary += `${i18nClass[classText][this._currentLanguage]}. ${occupancyText} `;
-    })}
+      const classText = occupancyItem.class === '1'
+        ? 'first'
+        : 'second';
+
+      occupancySummary += `${i18nClass[classText][this._currentLanguage]}. ${occupancyText} `;
+
+    });
 
     return occupancySummary;
 
@@ -116,9 +129,9 @@ export class LyneTimetableSegment {
     let travelHintsSummary = '';
 
     if (travelHintsItems.length > 0) {
-      {travelHintsItems.map((travelHintItem) => (
-        travelHintsSummary += `${travelHintItem.text} `
-      ))};
+      travelHintsItems.forEach((travelHintItem) => {
+        travelHintsSummary += `${travelHintItem.text} `;
+      });
     }
 
     return travelHintsSummary;
@@ -136,7 +149,10 @@ export class LyneTimetableSegment {
    * @private
    */
   private _createA11ySummary(config): string {
-    const transportationNumber = config.transportationNumber;
+
+    const {
+      transportationNumber
+    } = config;
 
     let a11ySummary = '';
 
@@ -146,13 +162,13 @@ export class LyneTimetableSegment {
     a11ySummary += `${transportationNumber.direction}`;
 
     // Departure information
-    a11ySummary += `. ${this._createA11yDepartureSummary(config)}`;
+    a11ySummary += ` ${this._createA11yDepartureSummary(config)}`;
 
     // Arrival information
-    a11ySummary += `. ${this._createA11yArrivalSummary(config)}`;
+    a11ySummary += ` ${this._createA11yArrivalSummary(config)}`;
 
     // Occupancy information
-    a11ySummary += `. ${this._createA11yOccupancySummary(config.occupancy.occupancyItems)}`;
+    a11ySummary += ` ${this._createA11yOccupancySummary(config.occupancy.occupancyItems)}`;
 
     // Travel Hints information
     a11ySummary += `${this._createA11yTravelHintsSummary(config.travelHints.travelHintsItems)}`;
@@ -208,25 +224,26 @@ export class LyneTimetableSegment {
           <div class='col col--details'>
             <div class='segment__transportation-details'>
               <p class='departing-from'>{config.departureStation}</p>
+
               {
                 config.departureCusHim
-                  ?
-                    <lyne-timetable-cus-him
-                      appearance='second-level-message'
-                      config={JSON.stringify(config.departureCusHim)}
-                    >
-                    </lyne-timetable-cus-him>
+                  ? <lyne-timetable-cus-him
+                    appearance='second-level-message'
+                    config={JSON.stringify(config.departureCusHim)}
+                  >
+                  </lyne-timetable-cus-him>
                   : ''
               }
+
               {
                 config.departureBarrierFree
-                  ?
-                  <lyne-timetable-barrier-free
+                  ? <lyne-timetable-barrier-free
                     config={JSON.stringify(config.departureBarrierFree)}
                   >
                   </lyne-timetable-barrier-free>
                   : ''
               }
+
               <div class='inner'>
                 <lyne-timetable-transportation-number
                   appearance='second-level'
@@ -245,8 +262,7 @@ export class LyneTimetableSegment {
               </div>
               {
                 config.arrivalCusHim
-                  ?
-                  <lyne-timetable-cus-him
+                  ? <lyne-timetable-cus-him
                     appearance='second-level-message'
                     config={JSON.stringify(config.arrivalCusHim)}
                   >
@@ -273,9 +289,10 @@ export class LyneTimetableSegment {
 
         {
           config.arrivalBarrierFree
-            ?
-            <lyne-timetable-barrier-free
+            ? <lyne-timetable-barrier-free
+              aria-hidden='true'
               config={JSON.stringify(config.arrivalBarrierFree)}
+              role='presentation'
             >
             </lyne-timetable-barrier-free>
             : ''

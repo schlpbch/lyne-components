@@ -202,6 +202,8 @@ Stops2.args = {
 
 Stops2SkippedStations.argTypes = {
   appearance,
+  legs,
+  openEnd,
   skipPart: {
     control: {
       type: 'inline-check'
@@ -212,16 +214,14 @@ Stops2SkippedStations.argTypes = {
       3
     ]
   },
-  legs,
-  openEnd,
   status
 };
 
 Stops2SkippedStations.args = {
   appearance: 'horizontal',
   legs: sampleData.stop2Skipped,
-  status: '50',
-  skipPart: '2 | 3'
+  skipPart: '2 | 3',
+  status: '50'
 };
 
 Stops3.argTypes = {
@@ -250,6 +250,8 @@ Stops3.args = {
 
 Stops3SkippedStations.argTypes = {
   appearance,
+  legs,
+  openEnd,
   skipPart: {
     control: {
       type: 'inline-check'
@@ -261,16 +263,14 @@ Stops3SkippedStations.argTypes = {
       4
     ]
   },
-  legs,
-  openEnd,
   status
 };
 
 Stops3SkippedStations.args = {
   appearance: 'horizontal',
   legs: sampleData.stop3Skipped,
-  status: 'future',
-  skipPart: '2 | 3 | 4'
+  skipPart: '2 | 3 | 4',
+  status: 'future'
 };
 
 Stops4.argTypes = {
