@@ -176,7 +176,6 @@ export class LyneTimetableSegment {
     return a11ySummary;
 
   }
-
   public render(): JSX.Element {
 
     const config = JSON.parse(this.config);
@@ -184,14 +183,11 @@ export class LyneTimetableSegment {
     const a11ySummary = this._createA11ySummary(config);
 
     return (
-      <p
-        aria-describedby='test'
+      <section
+        aria-label={a11ySummary}
         class='segment'
         role='text'
       >
-        <div id='test'>
-          {a11ySummary}
-        </div>
         <div
           aria-hidden='true'
           class='cols'
@@ -298,7 +294,7 @@ export class LyneTimetableSegment {
             : ''
         }
 
-      </p>
+      </section>
     );
   }
 }

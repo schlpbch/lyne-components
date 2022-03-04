@@ -16,7 +16,7 @@ describe('lyne-timetable-platform', () => {
     expect(root)
       .toEqualHtml(`
         <lyne-timetable-platform
-            config="{&quot;platform&quot;:&quot;13A/C&quot;}"
+            config="{&quot;type&quot;:&quot;platform&quot;,&quot;value&quot;:&quot;13A/C&quot;}"
         >
           <mock:shadow-root>
             <p
@@ -29,7 +29,10 @@ describe('lyne-timetable-platform', () => {
                     class="platform__text"
                     role="presentation"
                 >
-                    Pl. 13A/C
+                    <abbr title="Platform ">
+                        Pl.
+                    </abbr>
+                    13A/C
                 </span>
                 <span class="platform__text--visually-hidden">from platform 13A/C.</span>
             </p>

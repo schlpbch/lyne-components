@@ -16,7 +16,7 @@ describe('lyne-timetable-transportation-time', () => {
     expect(root)
       .toEqualHtml(`
         <lyne-timetable-transportation-time
-            config="{&quot;time&quot;:&quot;15:14&quot;,&quot;type&quot;:&quot;departure&quot;}"
+            config="{&quot;delay&quot;:0,&quot;time&quot;:&quot;15:14&quot;,&quot;type&quot;:&quot;departure&quot;}"
         >
           <mock:shadow-root>
             <p
