@@ -496,6 +496,10 @@ export namespace Components {
          */
         "openEnd"?: boolean;
         /**
+          * Set the desired orientation of the pearl chain.
+         */
+        "orientation"?: InterfacePearlChainAttributes['orientation'];
+        /**
           * Define, if the pearl-chain represents a connection in the past, in the future or if it is a currently running connection. If it is currently running, provide a number between 0 and 100, which will represent the current location on the pearl-chain.
          */
         "status"?: InterfacePearlChainAttributes['status'];
@@ -1599,6 +1603,10 @@ declare namespace LocalJSX {
           * If set to true, we will not show a closing dot at the end of the line
          */
         "openEnd"?: boolean;
+        /**
+          * Set the desired orientation of the pearl chain.
+         */
+        "orientation"?: InterfacePearlChainAttributes['orientation'];
         /**
           * Define, if the pearl-chain represents a connection in the past, in the future or if it is a currently running connection. If it is currently running, provide a number between 0 and 100, which will represent the current location on the pearl-chain.
          */

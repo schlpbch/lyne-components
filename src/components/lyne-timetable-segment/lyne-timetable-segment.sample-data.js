@@ -17,8 +17,8 @@ export default [
     departureTime: transportationTimeData[0],
     occupancy: transportationOccupancyData[5],
     pearlChain: {
+      appearance: 'departure',
       legs: pearlChainData.stop0,
-      openEnd: true,
       status: 'future'
     },
     transportationNumber: transportationNumberData['train'],
@@ -34,8 +34,8 @@ export default [
     departureTime: transportationTimeData[4],
     occupancy: transportationOccupancyData[5],
     pearlChain: {
+      appearance: 'departure',
       legs: pearlChainData.stop0Delayed,
-      openEnd: true,
       status: 'future'
     },
     transportationNumber: transportationNumberData['train'],
@@ -51,8 +51,8 @@ export default [
     departureTime: transportationTimeData[0],
     occupancy: transportationOccupancyData[5],
     pearlChain: {
+      appearance: 'departure',
       legs: pearlChainData.stop0Delayed,
-      openEnd: true,
       status: 'future'
     },
     transportationNumber: transportationNumberData['train'],
@@ -67,8 +67,8 @@ export default [
     departureTime: transportationTimeData[0],
     occupancy: transportationOccupancyData[5],
     pearlChain: {
+      appearance: 'departure',
       legs: pearlChainData.stop0,
-      openEnd: false,
       status: 'future'
     },
     transportationNumber: transportationNumberData['train'],
@@ -85,8 +85,8 @@ export default [
     departureTime: transportationTimeData[4],
     occupancy: transportationOccupancyData[5],
     pearlChain: {
+      appearance: 'departure',
       legs: pearlChainData.stop0,
-      openEnd: false,
       status: 'future'
     },
     transportationNumber: transportationNumberData['train'],
@@ -105,8 +105,8 @@ export default [
     departureTime: transportationTimeData[4],
     occupancy: transportationOccupancyData[5],
     pearlChain: {
+      appearance: 'departure',
       legs: pearlChainData.stop0,
-      openEnd: false,
       status: 'future'
     },
     transportationNumber: transportationNumberData['train'],

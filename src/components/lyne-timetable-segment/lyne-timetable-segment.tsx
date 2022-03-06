@@ -176,6 +176,7 @@ export class LyneTimetableSegment {
     return a11ySummary;
 
   }
+
   public render(): JSX.Element {
 
     const config = JSON.parse(this.config);
@@ -210,10 +211,10 @@ export class LyneTimetableSegment {
 
           <div class='col col--pearlchain'>
             <lyne-pearl-chain
-              appearance='vertical'
+              appearance={config.pearlChain.appearance}
+              orientation='vertical'
               legs={JSON.stringify(config.pearlChain.legs)}
               status={config.pearlChain.status}
-              open-end={config.pearlChain.openEnd}
             ></lyne-pearl-chain>
           </div>
 

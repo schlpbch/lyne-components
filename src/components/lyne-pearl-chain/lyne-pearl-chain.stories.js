@@ -32,7 +32,10 @@ const Template = ({
 };
 
 export const NoStops = Template.bind({});
-export const NoStopsOpenEnd = Template.bind({});
+export const NoStopsVertical = Template.bind({});
+export const NoStopsVerticalArrival = Template.bind({});
+export const NoStopsVerticalDeparture = Template.bind({});
+export const NoStopsVerticalDepartureAndArrival = Template.bind({});
 export const Stop1 = Template.bind({});
 export const Stops2 = Template.bind({});
 export const Stops2SkippedStations = Template.bind({});
@@ -45,8 +48,20 @@ NoStops.documentation = {
   title: 'No stops'
 };
 
-NoStopsOpenEnd.documentation = {
-  title: 'No stop, open end'
+NoStopsVertical.documentation = {
+  title: 'No stop, vertical'
+};
+
+NoStopsVerticalArrival.documentation = {
+  title: 'No stop, vertical, arrival'
+};
+
+NoStopsVerticalDeparture.documentation = {
+  title: 'No stop, vertical, departure'
+};
+
+NoStopsVerticalDepartureAndArrival.documentation = {
+  title: 'No stop, vertical, departure'
 };
 
 Stop1.documentation = {
@@ -77,7 +92,7 @@ Stops9.documentation = {
   title: '9 Stops'
 };
 
-const appearance = {
+const orientation = {
   control: {
     type: 'select'
   },
@@ -110,14 +125,20 @@ const legs = {
   }
 };
 
-const openEnd = {
+const appearance = {
   control: {
-    type: 'boolean'
-  }
+    type: 'select'
+  },
+  options: [
+    'arrival',
+    'departure',
+    'departure-and-arrival',
+    'inter-segment',
+    'level-1'
+  ]
 };
 
 NoStops.argTypes = {
-  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -125,17 +146,17 @@ NoStops.argTypes = {
     options: [1]
   },
   legs,
-  openEnd,
+  orientation,
   status
 };
 
 NoStops.args = {
-  appearance: 'horizontal',
   legs: sampleData.stop0,
+  orientation: 'horizontal',
   status: 'future'
 };
 
-NoStopsOpenEnd.argTypes = {
+NoStopsVertical.argTypes = {
   appearance,
   cancelPart: {
     control: {
@@ -144,19 +165,78 @@ NoStopsOpenEnd.argTypes = {
     options: [1]
   },
   legs,
-  openEnd,
+  orientation,
   status
 };
 
-NoStopsOpenEnd.args = {
-  appearance: 'vertical',
+NoStopsVertical.args = {
+  appearance: appearance.options[3],
   legs: sampleData.stop0,
-  openEnd: true,
+  orientation: 'vertical',
+  status: 'future'
+};
+
+NoStopsVerticalArrival.argTypes = {
+  appearance,
+  cancelPart: {
+    control: {
+      type: 'inline-check'
+    },
+    options: [1]
+  },
+  legs,
+  orientation,
+  status
+};
+
+NoStopsVerticalArrival.args = {
+  appearance: appearance.options[0],
+  legs: sampleData.stop0,
+  orientation: 'vertical',
+  status: 'future'
+};
+
+NoStopsVerticalDeparture.argTypes = {
+  appearance,
+  cancelPart: {
+    control: {
+      type: 'inline-check'
+    },
+    options: [1]
+  },
+  legs,
+  orientation,
+  status
+};
+
+NoStopsVerticalDeparture.args = {
+  appearance: appearance.options[1],
+  legs: sampleData.stop0,
+  orientation: 'vertical',
+  status: 'future'
+};
+
+NoStopsVerticalDepartureAndArrival.argTypes = {
+  appearance,
+  cancelPart: {
+    control: {
+      type: 'inline-check'
+    },
+    options: [1]
+  },
+  legs,
+  orientation,
+  status
+};
+
+NoStopsVerticalDepartureAndArrival.args = {
+  appearance: appearance.options[2],
+  legs: sampleData.stop0,
+  orientation: 'vertical',
   status: 'future'
 };
 
 Stop1.argTypes = {
-  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -167,18 +247,17 @@ Stop1.argTypes = {
     ]
   },
   legs,
-  openEnd,
+  orientation,
   status
 };
 
 Stop1.args = {
-  appearance: 'horizontal',
   legs: sampleData.stop1,
+  orientation: 'horizontal',
   status: 'past'
 };
 
 Stops2.argTypes = {
-  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -190,20 +269,19 @@ Stops2.argTypes = {
     ]
   },
   legs,
-  openEnd,
+  orientation,
   status
 };
 
 Stops2.args = {
-  appearance: 'horizontal',
   legs: sampleData.stop2,
+  orientation: 'horizontal',
   status: '50'
 };
 
 Stops2SkippedStations.argTypes = {
-  appearance,
   legs,
-  openEnd,
+  orientation,
   skipPart: {
     control: {
       type: 'inline-check'
@@ -218,14 +296,13 @@ Stops2SkippedStations.argTypes = {
 };
 
 Stops2SkippedStations.args = {
-  appearance: 'horizontal',
   legs: sampleData.stop2Skipped,
+  orientation: 'horizontal',
   skipPart: '2 | 3',
   status: '50'
 };
 
 Stops3.argTypes = {
-  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -238,20 +315,19 @@ Stops3.argTypes = {
     ]
   },
   legs,
-  openEnd,
+  orientation,
   status
 };
 
 Stops3.args = {
-  appearance: 'horizontal',
   legs: sampleData.stop3,
+  orientation: 'horizontal',
   status: 'future'
 };
 
 Stops3SkippedStations.argTypes = {
-  appearance,
   legs,
-  openEnd,
+  orientation,
   skipPart: {
     control: {
       type: 'inline-check'
@@ -267,14 +343,13 @@ Stops3SkippedStations.argTypes = {
 };
 
 Stops3SkippedStations.args = {
-  appearance: 'horizontal',
   legs: sampleData.stop3Skipped,
+  orientation: 'horizontal',
   skipPart: '2 | 3 | 4',
   status: 'future'
 };
 
 Stops4.argTypes = {
-  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -288,18 +363,17 @@ Stops4.argTypes = {
     ]
   },
   legs,
-  openEnd,
+  orientation,
   status
 };
 
 Stops4.args = {
-  appearance: 'horizontal',
   legs: sampleData.stop4,
+  orientation: 'horizontal',
   status: 'past'
 };
 
 Stops9.argTypes = {
-  appearance,
   cancelPart: {
     control: {
       type: 'inline-check'
@@ -318,14 +392,13 @@ Stops9.argTypes = {
     ]
   },
   legs,
-  openEnd,
+  orientation,
   status
 };
 
 Stops9.args = {
-  appearance: 'horizontal',
   legs: sampleData.stop9,
-  openEnd,
+  orientation: 'horizontal',
   status: '66'
 };
 

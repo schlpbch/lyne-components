@@ -18,10 +18,16 @@ import legsData from './lyne-pearl-chain.helper';
 export class LynePearlChain {
 
   /**
+   * Set the desired orientation of
+   * the pearl chain.
+   */
+  @Prop() public orientation?: InterfacePearlChainAttributes['orientation'] = 'horizontal';
+
+  /**
    * Set the desired appearance of
    * the component.
    */
-  @Prop() public appearance?: InterfacePearlChainAttributes['appearance'] = 'horizontal';
+  @Prop() public appearance?: InterfacePearlChainAttributes['appearance'] = 'level-1';
 
   /**
    * Define, if the pearl-chain represents a connection in the past,
@@ -64,6 +70,8 @@ export class LynePearlChain {
 
     const appearanceClass = ` pearl-chain--${this.appearance}`;
 
+    const orientationClass = ` pearl-chain--${this.orientation}`;
+
     let departureCancelClass = '';
     let arrivalCancelClass = '';
     let openEndClass = '';
@@ -90,7 +98,7 @@ export class LynePearlChain {
       openEndClass = ' pearl-chain--open-end';
     }
 
-    const classes = `pearl-chain${statusClass}${departureCancelClass}${arrivalCancelClass}${openEndClass}${appearanceClass}`;
+    const classes = `pearl-chain${statusClass}${departureCancelClass}${arrivalCancelClass}${openEndClass}${appearanceClass}${orientationClass}`;
     const statusIsRunning = this.status && this.status !== 'past' && this.status !== 'future';
 
     if (statusIsRunning) {

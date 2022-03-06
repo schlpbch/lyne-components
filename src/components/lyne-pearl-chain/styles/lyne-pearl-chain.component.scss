@@ -11,6 +11,24 @@
   border-radius: 100%;
 }
 
+@mixin circle {
+  --dot-size: var(--dot-size-small);
+  @include dot;
+
+  box-sizing: border-box;
+  inset-block-start: calc(#{pxToRem(var(--dot-size))} / -2 + #{pxToRem(var(--border-width))} / 2);
+  inset-inline-start: 0;
+  background-color: var(--color-white);
+  border: pxToRem(var(--border-width)) solid currentColor;
+  z-index: 2;
+
+  @include ifForcedColors {
+    .pearl-chain--past & {
+      border-color: GrayText;
+    }
+  }
+}
+
 :host {
   display: block;
 
@@ -93,14 +111,16 @@
 }
 
 
-.pearl-chain--open-end {
+.pearl-chain--departure,
+.pearl-chain--inter-segment {
   padding-inline-end: 0;
-}
 
-// On level two of the timetable, we want to have an open end.
-// We therefore hide the :after element in this case.
-.pearl-chain--open-end:after {
-  display: none;
+  // On level two of the timetable, we want to have an open end.
+  // We therefore hide the :after element in this case.
+  &:after {
+    display: none;
+  }
+
 }
 
 .pearl-chain--past {
@@ -129,22 +149,7 @@
 
 // dot on leg
 .pearl-chain__leg:not(:first-child):before {
-  --dot-size: var(--dot-size-small);
-  @include dot;
-
-  box-sizing: border-box;
-  inset-block-start: calc(#{pxToRem(var(--dot-size))} / -2 + #{pxToRem(var(--border-width))} / 2);
-  inset-inline-start: 0;
-  background-color: var(--color-white);
-  border: pxToRem(var(--border-width)) solid currentColor;
-  z-index: 2;
-
-  @include ifForcedColors {
-    .pearl-chain--past & {
-      border-color: GrayText;
-    }
-  }
-
+  @include circle();
 }
 
 .pearl-chain__leg--skipped:not(:first-child):before {
@@ -262,7 +267,7 @@
 
 // Vertical appearance overwrites
 // ----------------------------------------------
-:host([appearance=vertical]) {
+:host([orientation=vertical]) {
   height: 100%;
 }
 
@@ -286,8 +291,19 @@
   background-repeat: repeat-y;
 }
 
-.pearl-chain--vertical.pearl-chain--open-end {
+.pearl-chain--vertical.pearl-chain--departure,
+.pearl-chain--vertical.pearl-chain--inter-segment {
   padding-block-end: 0;
+}
+
+.pearl-chain--vertical.pearl-chain--arrival,
+.pearl-chain--vertical.pearl-chain--inter-segment {
+
+  &:before {
+    @include circle();
+    inset-inline-start: calc((#{pxToRem(var(--dot-size-large))} - #{pxToRem(var(--dot-size-small))}) / 2);
+  }
+
 }
 
 // dot on leg
@@ -316,7 +332,7 @@
   inset-block-end: 0;
 }
 
-.pearl-chain--vertical.pearl-chain--open-end .pearl-chain__leg--cancellation:last-of-type:after {
+.pearl-chain--vertical.pearl-chain--departure .pearl-chain__leg--cancellation:last-of-type:after {
   inset-block-end: pxToRem(-2);
 }
 
