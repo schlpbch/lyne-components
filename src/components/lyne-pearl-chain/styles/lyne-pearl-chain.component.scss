@@ -275,6 +275,11 @@
   flex-direction: column;
   height: 100%;
   width: pxToRem(var(--dot-size-large));
+
+  @include mq($to: medium) {
+    padding-block-start: pxToRem(3);
+  }
+
 }
 
 .pearl-chain--vertical:before {
@@ -296,6 +301,15 @@
   padding-block-end: 0;
 }
 
+.pearl-chain--vertical.pearl-chain--departure,
+.pearl-chain--vertical.pearl-chain--departure-and-arrival {
+  &:before {
+    @include mq($to: medium) {
+      inset-block-start: pxToRem(-2);
+    }
+  }
+}
+
 .pearl-chain--vertical.pearl-chain--arrival,
 .pearl-chain--vertical.pearl-chain--inter-segment {
 
@@ -303,6 +317,11 @@
     @include circle();
     inset-block-start: pxToRem(1);
     inset-inline-start: calc((#{pxToRem(var(--dot-size-large))} - #{pxToRem(var(--dot-size-small))}) / 2);
+
+    @include mq($to: medium) {
+      inset-block-start: pxToRem(-1);
+    }
+
   }
 
 }
