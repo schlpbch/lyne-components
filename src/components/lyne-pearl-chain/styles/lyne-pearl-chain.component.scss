@@ -301,6 +301,7 @@
 
   &:before {
     @include circle();
+    inset-block-start: pxToRem(1);
     inset-inline-start: calc((#{pxToRem(var(--dot-size-large))} - #{pxToRem(var(--dot-size-small))}) / 2);
   }
 

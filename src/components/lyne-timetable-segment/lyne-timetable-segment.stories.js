@@ -23,70 +23,70 @@ const defaultArgTypes = {
 /* ************************************************* */
 /* The Stories                                       */
 /* ************************************************* */
-export const segment = Template.bind({});
+export const arrivalSegment = Template.bind({});
 
-segment.argTypes = defaultArgTypes;
-segment.args = {
-  config: sampleData[0]
+arrivalSegment.argTypes = defaultArgTypes;
+arrivalSegment.args = {
+  config: sampleData.arrival
 };
 
-segment.documentation = {
-  title: 'Segment'
+arrivalSegment.documentation = {
+  title: 'Arrival Segment'
 };
 
-export const segmentDelayedDeparture = Template.bind({});
+export const arrivalDelayedSegment = Template.bind({});
 
-segmentDelayedDeparture.argTypes = defaultArgTypes;
-segmentDelayedDeparture.args = {
-  config: sampleData[1]
+arrivalDelayedSegment.argTypes = defaultArgTypes;
+arrivalDelayedSegment.args = {
+  config: sampleData.arrivalDelayed
 };
 
-segmentDelayedDeparture.documentation = {
-  title: 'Segment Delayed Departure'
+arrivalDelayedSegment.documentation = {
+  title: 'Arrival Delayed Segment'
 };
 
-export const segmentDelayedArrival = Template.bind({});
+export const departureAndArrivalSegment = Template.bind({});
 
-segmentDelayedArrival.argTypes = defaultArgTypes;
-segmentDelayedArrival.args = {
-  config: sampleData[2]
+departureAndArrivalSegment.argTypes = defaultArgTypes;
+departureAndArrivalSegment.args = {
+  config: sampleData.departureAndArrival
 };
 
-segmentDelayedArrival.documentation = {
-  title: 'Segment Delayed Arrival'
+departureAndArrivalSegment.documentation = {
+  title: 'Departure & Arrival Segment'
 };
 
-export const segmentDelayedDepartureAndArrival = Template.bind({});
+export const departureAndArrivalDelayedSegment = Template.bind({});
 
-segmentDelayedDepartureAndArrival.argTypes = defaultArgTypes;
-segmentDelayedDepartureAndArrival.args = {
-  config: sampleData[4]
+departureAndArrivalDelayedSegment.argTypes = defaultArgTypes;
+departureAndArrivalDelayedSegment.args = {
+  config: sampleData.departureAndArrivalDelayed
 };
 
-segmentDelayedDepartureAndArrival.documentation = {
-  title: 'Segment Delayed Departure & Arrival'
+departureAndArrivalDelayedSegment.documentation = {
+  title: 'Departure & Arrival Delayed Segment'
 };
 
-export const segmentDelayedDepartureAndArrivalBarrierFreeInfo = Template.bind({});
+export const departureSegment = Template.bind({});
 
-segmentDelayedDepartureAndArrivalBarrierFreeInfo.argTypes = defaultArgTypes;
-segmentDelayedDepartureAndArrivalBarrierFreeInfo.args = {
-  config: sampleData[5]
+departureSegment.argTypes = defaultArgTypes;
+departureSegment.args = {
+  config: sampleData.departure
 };
 
-segmentDelayedDepartureAndArrivalBarrierFreeInfo.documentation = {
-  title: 'Segment Delayed Departure & Arrival with barrier free information'
+departureSegment.documentation = {
+  title: 'Departure Segment'
 };
 
-export const lastSegment = Template.bind({});
+export const departureDelayedSegment = Template.bind({});
 
-lastSegment.argTypes = defaultArgTypes;
-lastSegment.args = {
-  config: sampleData[3]
+departureDelayedSegment.argTypes = defaultArgTypes;
+departureDelayedSegment.args = {
+  config: sampleData.departureDelayed
 };
 
-lastSegment.documentation = {
-  title: 'Last Segment'
+departureDelayedSegment.documentation = {
+  title: 'Departure Delayed Segment'
 };
 
 export default {
