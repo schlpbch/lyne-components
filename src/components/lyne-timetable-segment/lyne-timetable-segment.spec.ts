@@ -4,7 +4,7 @@ import { LyneTimetableSegment } from './lyne-timetable-segment';
 import { newSpecPage } from '@stencil/core/testing';
 import sampleData from './lyne-timetable-segment.sample-data';
 
-const config = JSON.stringify(sampleData[0]);
+const config = JSON.stringify(sampleData.departure);
 
 describe('lyne-timetable-segment', () => {
   it('renders', async () => {

@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 import sampleData from './lyne-timetable-segment.sample-data';
 
-const config = JSON.stringify(sampleData[0]);
+const config = JSON.stringify(sampleData.departure);
 
 describe('lyne-timetable-segment', () => {
   let element,

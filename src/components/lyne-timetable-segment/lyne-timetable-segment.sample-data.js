@@ -41,6 +41,22 @@ export default {
     transportationNumber: transportationNumberData['train'],
     travelHints: transportationTravelHintsData[0]
   },
+  departure: {
+    arrivalPlatform: transportationPlatformData[1],
+    arrivalStation: 'St. Gallen, Mühlegg Talstation',
+    arrivalTime: transportationTimeData[1],
+    departurePlatform: transportationPlatformData[0],
+    departureStation: 'La Chaux-de-Fonds',
+    departureTime: transportationTimeData[0],
+    occupancy: transportationOccupancyData[5],
+    pearlChain: {
+      appearance: 'departure',
+      legs: pearlChainData.stop0,
+      status: 'future'
+    },
+    transportationNumber: transportationNumberData['train'],
+    travelHints: transportationTravelHintsData[0]
+  },
   departureAndArrival: {
     arrivalPlatform: transportationPlatformData[1],
     arrivalStation: 'St. Gallen, Mühlegg Talstation',
@@ -95,22 +111,6 @@ export default {
     transportationNumber: transportationNumberData['train'],
     travelHints: transportationTravelHintsData[0]
   },
-  departure: {
-    arrivalPlatform: transportationPlatformData[1],
-    arrivalStation: 'St. Gallen, Mühlegg Talstation',
-    arrivalTime: transportationTimeData[1],
-    departurePlatform: transportationPlatformData[0],
-    departureStation: 'La Chaux-de-Fonds',
-    departureTime: transportationTimeData[0],
-    occupancy: transportationOccupancyData[5],
-    pearlChain: {
-      appearance: 'departure',
-      legs: pearlChainData.stop0,
-      status: 'future'
-    },
-    transportationNumber: transportationNumberData['train'],
-    travelHints: transportationTravelHintsData[0]
-  },
   departureDelayed: {
     arrivalPlatform: transportationPlatformData[1],
     arrivalStation: 'St. Gallen, Mühlegg Talstation',
@@ -144,4 +144,4 @@ export default {
     transportationNumber: transportationNumberData['train'],
     travelHints: transportationTravelHintsData[0]
   }
-}
+};
