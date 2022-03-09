@@ -54,6 +54,15 @@
 
   }
 
+  @include ifInvertedColors {
+    border: pxToRem(1) solid var(--color-black-default);
+
+    &:disabled {
+      border-color: var(--color-black-alpha-50);
+    }
+
+  }
+
 }
 
 // Card appearance

@@ -7,6 +7,13 @@
   }
 };
 
+@mixin ifInvertedColors {
+  @media (inverted-colors: inverted) {
+    @content
+  }
+};
+
+
 @mixin visibleFocus {
   // TODO: missing design tokens
   --focus-outline-color: green;
