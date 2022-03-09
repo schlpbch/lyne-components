@@ -221,8 +221,8 @@
 
 .pearl-chain__leg-dash {
   position: absolute;
-  left: pxToRem(-4);
-  top: 0;
+  inset-inline-start: pxToRem(-4);
+  inset-block-start: 0;
   z-index: 2;
   height: pxToRem(var(--border-width));
   width: pxToRem(17);
@@ -337,8 +337,8 @@
 }
 
 .pearl-chain--vertical .pearl-chain__leg-dash {
-  left: pxToRem(-4);
-  top: pxToRem(4);
+  inset-inline-start: pxToRem(-4);
+  inset-block-start: pxToRem(4);
 }
 
 // line on leg
