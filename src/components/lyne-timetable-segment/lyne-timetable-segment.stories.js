@@ -67,6 +67,17 @@ departureAndArrivalDelayedSegment.documentation = {
   title: 'Departure & Arrival Delayed Segment'
 };
 
+export const departureAndArrivalDelayedSegmentBarrierFree = Template.bind({});
+
+departureAndArrivalDelayedSegmentBarrierFree.argTypes = defaultArgTypes;
+departureAndArrivalDelayedSegmentBarrierFree.args = {
+  config: sampleData.departureAndArrivalDelayedBarrierFree
+};
+
+departureAndArrivalDelayedSegmentBarrierFree.documentation = {
+  title: 'Departure & Arrival Delayed Segment, Barrier Free'
+};
+
 export const departureSegment = Template.bind({});
 
 departureSegment.argTypes = defaultArgTypes;

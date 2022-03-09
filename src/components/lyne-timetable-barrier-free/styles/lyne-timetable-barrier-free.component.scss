@@ -4,8 +4,9 @@
 @include host-component-properties;
 
 :host {
+  --icon-negative-correction: 2;
   --barrier-free-icon-size: 24;
-  --barrier-free-icon-padding-inline-start: calc(var(--barrier-free-icon-size) + var(--spacing-fixed-1x));
+  --barrier-free-icon-padding-inline-start: var(--barrier-free-icon-size);
 }
 
 .barrier-free {
@@ -14,20 +15,19 @@
   @include text-xs--regular();
   line-height: pxToRem(var(--barrier-free-icon-size));
   margin: 0;
-  color: var(--color-anthracite-default);
   padding-inline-start: pxToRem(var(--barrier-free-icon-padding-inline-start));
 }
 
 .barrier-free__icon {
   position: absolute;
   inset-block-start: 0;
-  inset-inline-start: 0;
-  fill: currentColor;
+  inset-inline-start: pxToRem(var(--icon-negative-correction), true);
   width: pxToRem(var(--barrier-free-icon-size));
   height: pxToRem(var(--barrier-free-icon-size));
 }
 
 .barrier-free__text {
+  display: flex;
   flex: 1 1 auto;
 }
 

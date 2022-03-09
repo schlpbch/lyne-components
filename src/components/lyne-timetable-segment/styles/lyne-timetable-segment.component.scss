@@ -18,6 +18,15 @@
   height: calc(100% - #{pxToRem(var(--spacing-fixed-4x))});
 }
 
+.segment > lyne-timetable-barrier-free {
+  margin-inline-start: pxToRem(74);
+
+  @include mq($from: medium) {
+    margin-inline-start: pxToRem(86);
+  }
+
+}
+
 .cols {
   display: flex;
 }

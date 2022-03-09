@@ -91,7 +91,7 @@ export default {
     transportationNumber: transportationNumberData['train'],
     travelHints: transportationTravelHintsData[0]
   },
-  departureAndArrivalDelayedA11y: {
+  departureAndArrivalDelayedBarrierFree: {
     arrivalBarrierFree: transportationBarrierFreeData[2],
     arrivalCusHim: transportationCusHimData[3],
     arrivalPlatform: transportationPlatformData[1],
