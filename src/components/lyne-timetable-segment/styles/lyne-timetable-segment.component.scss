@@ -27,6 +27,12 @@
 
 }
 
+.segment lyne-timetable-transportation-number {
+  @include mq($to: small) {
+    margin-inline-end: -100%; // Needed to fix alignment on level two in 320px and below viewports
+  }
+}
+
 .cols {
   display: flex;
 }
