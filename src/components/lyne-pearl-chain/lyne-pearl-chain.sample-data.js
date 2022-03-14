@@ -29,6 +29,13 @@ export default {
       false
     ]
   ]),
+  stop0Skipped: generateLegsData([
+    [
+      false,
+      100,
+      true
+    ]
+  ]),
   stop1: generateLegsData([
     [
       false,

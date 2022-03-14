@@ -58,7 +58,7 @@
 }
 
 // first and last dot
-.pearl-chain:before,
+.pearl-chain__leg:first-child:before,
 .pearl-chain:after {
   --dot-size: var(--dot-size-large);
   @include dot;
@@ -71,12 +71,16 @@
 
 }
 
-.pearl-chain--horizontal:before,
+.pearl-chain--horizontal .pearl-chain__leg:first-child:before,
 .pearl-chain--horizontal:after {
   inset-block-start: 0;
 }
 
-.pearl-chain:before {
+.pearl-chain--horizontal .pearl-chain__leg:first-child:before {
+  inset-block-start: pxToRem(-4);
+}
+
+.pearl-chain__leg:first-child:before {
   inset-inline-start: 0;
 }
 
@@ -84,14 +88,14 @@
   inset-inline-end: 0;
 }
 
-.pearl-chain.pearl-chain--past:before,
+.pearl-chain--past .pearl-chain__leg:first-child:before,
 .pearl-chain.pearl-chain--past:after {
   @include ifForcedColors {
     background-color: GrayText;
   }
 }
 
-.pearl-chain--departure-cancellation:before,
+.pearl-chain--departure-cancellation .pearl-chain__leg:first-child:before,
 .pearl-chain--arrival-cancellation:after {
   color: var(--color-cancellation);
 
@@ -101,14 +105,14 @@
 
 }
 
-.pearl-chain--departure-cancellation.pearl-chain--past:before,
+/* .pearl-chain--departure-cancellation .pearl-chain__leg:first-child:before,
 .pearl-chain--arrival-cancellation.pearl-chain--past:after {
   color: var(--color-past);
 
   @include ifForcedColors {
     color: GrayText;
   }
-}
+} */
 
 
 .pearl-chain--departure,
@@ -123,7 +127,8 @@
 
 }
 
-.pearl-chain--past {
+.pearl-chain--past,
+.pearl-chain__leg--past {
   color: var(--color-past);
 
   @include ifForcedColors {
@@ -231,20 +236,42 @@
   box-shadow: pxToRem(2) pxToRem(-2) 0 0 Canvas;
 }
 
+.pearl-chain__leg--skipped.pearl-chain__leg--past .pearl-chain__leg-dash {
+  background: var(--color-past);
+}
+
+.pearl-chain__leg--skipped.pearl-chain__leg--past:not(:first-child):before {
+  border-color: var(--color-past);
+}
+
 .pearl-chain__status {
-  --dot-size: var(--dot-size-large);
-  @include dot;
-
-  inset-block-start: 0;
-  background-color: var(--color-current-location);
-  z-index: 3;
-
+  position: absolute;
   // --status-position: defined in .tsx file
   $realChainLength: calc(100% - #{pxToRem(var(--dot-size-large))});
   $realPosition: calc(#{var(--status-position)} / 100 * #{$realChainLength});
+  inset-block-start: 0;
   inset-inline-start: $realPosition;
+  inset-inline-end: 0;
 
-  animation: pulse 3s infinite;
+  &:before {
+    --dot-size: var(--dot-size-large);
+    @include dot;
+    background-color: var(--color-current-location);
+    z-index: 3;
+    animation: pulse 3s infinite;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    inset-block-start: calc((#{pxToRem(var(--dot-size-large))} - #{pxToRem(var(--border-width))}) / 2);
+    inset-inline-start: pxToRem(var(--dot-size-large));
+    inset-inline-end: 0;
+    height: pxToRem(var(--border-width));
+    z-index: 1;
+    mix-blend-mode: color-burn;
+    background: var(--color-black-default);
+  }
 
   @include ifForcedColors {
     background-color: ActiveText;
@@ -282,8 +309,13 @@
 
 }
 
-.pearl-chain--vertical:before {
-  inset-block-start: 0;
+.pearl-chain--vertical .pearl-chain__leg:first-child:before {
+  inset-block-start: pxToRem(-4);
+
+  @include mq($to: medium) {
+    inset-block-start: pxToRem(-1);
+  }
+
 }
 
 .pearl-chain--vertical:after {
@@ -301,27 +333,21 @@
   padding-block-end: 0;
 }
 
-.pearl-chain--vertical.pearl-chain--departure,
-.pearl-chain--vertical.pearl-chain--departure-and-arrival {
+.pearl-chain--vertical.pearl-chain--departure .pearl-chain__leg:first-child,
+.pearl-chain--vertical.pearl-chain--departure-and-arrival .pearl-chain__leg:first-child {
   &:before {
     @include mq($to: medium) {
-      inset-block-start: pxToRem(-2);
+      inset-block-start: pxToRem(-4);
     }
   }
 }
 
-.pearl-chain--vertical.pearl-chain--arrival,
-.pearl-chain--vertical.pearl-chain--inter-segment {
+.pearl-chain--vertical.pearl-chain--arrival .pearl-chain__leg:first-child,
+.pearl-chain--vertical.pearl-chain--inter-segment .pearl-chain__leg:first-child {
 
   &:before {
     @include circle();
-    inset-block-start: pxToRem(1);
     inset-inline-start: calc((#{pxToRem(var(--dot-size-large))} - #{pxToRem(var(--dot-size-small))}) / 2);
-
-    @include mq($to: medium) {
-      inset-block-start: pxToRem(-1);
-    }
-
   }
 
 }
@@ -338,7 +364,8 @@
 
 .pearl-chain--vertical .pearl-chain__leg-dash {
   inset-inline-start: pxToRem(-4);
-  inset-block-start: pxToRem(4);
+  inset-block-start: unset;
+  inset-block-end: 0;
 }
 
 // line on leg

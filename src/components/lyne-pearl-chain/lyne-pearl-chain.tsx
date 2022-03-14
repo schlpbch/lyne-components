@@ -50,12 +50,6 @@ export class LynePearlChain {
   @Prop() public legs!: string;
 
   /**
-   * If set to true, we will not show a closing
-   * dot at the end of the line
-   */
-  @Prop() public openEnd?: boolean;
-
-  /**
    * Per default, the current location has a pulsating animation. You can
    * disable the animation with this property.
    */
@@ -74,7 +68,6 @@ export class LynePearlChain {
 
     let departureCancelClass = '';
     let arrivalCancelClass = '';
-    let openEndClass = '';
 
     if (legs.length > 0) {
       departureCancelClass = legs[0].cancellation
@@ -83,7 +76,7 @@ export class LynePearlChain {
 
       if (legs.length > 1) {
         arrivalCancelClass = legs[legs.length - 1].cancellation
-          ? ' pearl-chain--arrival-cancellation'
+          ? ' pearl-chain--inter-segment-cancellation'
           : '';
       }
 
@@ -94,11 +87,13 @@ export class LynePearlChain {
       }
     }
 
-    if (this.openEnd) {
-      openEndClass = ' pearl-chain--open-end';
-    }
+    const classes = `pearl-chain
+                     ${statusClass}
+                     ${departureCancelClass}
+                     ${arrivalCancelClass}
+                     ${appearanceClass}
+                     ${orientationClass}`;
 
-    const classes = `pearl-chain${statusClass}${departureCancelClass}${arrivalCancelClass}${openEndClass}${appearanceClass}${orientationClass}`;
     const statusIsRunning = this.status && this.status !== 'past' && this.status !== 'future';
 
     if (statusIsRunning) {
@@ -119,10 +114,14 @@ export class LynePearlChain {
       ? ' pearl-chain__status--no-animation'
       : '';
 
+    let duration = 0;
+
     return (
       <div class={classes}>
+
         {/* render legs */}
         {legs.map((leg) => {
+
           const legStyle = {
             'flex-basis': `${leg.duration}%`
           };
@@ -135,9 +134,18 @@ export class LynePearlChain {
             ? ' pearl-chain__leg--skipped'
             : '';
 
+          const legPastClass = duration < this.status
+            ? ' pearl-chain__leg--past'
+            : '';
+
+          duration += leg.duration;
+
           return (
             <div
-              class={`pearl-chain__leg${legCancelClass}${legSkippedClass}`}
+              class={`pearl-chain__leg
+                    ${legPastClass}
+                    ${legCancelClass}
+                    ${legSkippedClass}`}
               style={legStyle}
             >
               {
