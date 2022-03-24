@@ -27,6 +27,7 @@
 }
 
 .timetable__row {
+  @include card();
   @include card--m();
 
   position: relative;
