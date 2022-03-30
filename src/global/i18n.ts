@@ -323,6 +323,13 @@ export const i18nPlatformArrivingOn: any = {
   it: 'Arrivo sulla piattaforma'
 };
 
+export const i18nPlatformChange: any = {
+  de: 'Gleisänderung',
+  en: 'change of platform',
+  fr: 'changement de voie',
+  it: 'cambiamento di binario'
+};
+
 export const i18nPlatformLeavingFrom: any = {
   de: 'Von Gleis',
   en: 'from platform',
@@ -357,6 +364,13 @@ export const i18nTargetOpensInNewWindow: any = {
   en: 'Link target opens in new window.',
   fr: 'Le lien s\'ouvre dans une nouvelle fenêtre.',
   it: 'L\'obiettivo del link si apre in una nuova finestra.'
+};
+
+export const i18nTravelInformation: any = {
+  de: 'Reisehinweise',
+  en: 'Travel information',
+  fr: 'Informations sur le voyage',
+  it: 'Indicazioni di viaggio'
 };
 
 export const i18nXResultsAvailable = (resultsCount: number): any => ({

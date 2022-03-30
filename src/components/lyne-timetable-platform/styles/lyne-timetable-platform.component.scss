@@ -24,6 +24,11 @@
   justify-content: flex-end;
 }
 
+.platform--second-level-departure--changed,
+.platform--second-level-arrival--changed {
+  color: var(--color-red-default);
+}
+
 .platform__text--visually-hidden {
   @include screenReaderOnly();
 }

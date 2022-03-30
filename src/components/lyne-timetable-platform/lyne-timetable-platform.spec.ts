@@ -16,11 +16,11 @@ describe('lyne-timetable-platform', () => {
     expect(root)
       .toEqualHtml(`
         <lyne-timetable-platform
-            config="{&quot;type&quot;:&quot;platform&quot;,&quot;value&quot;:&quot;13A/C&quot;}"
+            config="{&quot;changed&quot;:false,&quot;type&quot;:&quot;platform&quot;,&quot;value&quot;:{&quot;actual&quot;:&quot;13A/C&quot;,&quot;planned&quot;:&quot;13A/C&quot;}}"
         >
           <mock:shadow-root>
             <p
-                aria-label="from platform 13A/C."
+                aria-label="from platform 13A/C (change of platform)."
                 class="platform platform--first-level"
                 role="text"
             >
@@ -34,7 +34,9 @@ describe('lyne-timetable-platform', () => {
                     </abbr>
                     13A/C
                 </span>
-                <span class="platform__text--visually-hidden">from platform 13A/C.</span>
+                <span class="platform__text--visually-hidden">
+                    from platform 13A/C (change of platform).
+                </span>
             </p>
           </mock:shadow-root>
         </lyne-timetable-platform>

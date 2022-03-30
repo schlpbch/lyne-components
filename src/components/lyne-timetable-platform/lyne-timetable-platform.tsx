@@ -8,6 +8,7 @@ import getDocumentLang from '../../global/helpers/get-document-lang';
 import {
   i18nPlatform,
   i18nPlatformArrivingOn,
+  i18nPlatformChange,
   i18nPlatformLeavingFrom,
   i18nStand
 } from '../../global/i18n';
@@ -45,13 +46,9 @@ export class LyneTimetablePlatform {
     const config = JSON.parse(this.config);
 
     let text;
+    let a11yLabel = '';
     let abbrTitle;
-
-    let a11yLabel = `${i18nPlatformLeavingFrom[this._currentLanguage]} ${config.value}.`;
-
-    if (this.appearance === 'second-level-arrival') {
-      a11yLabel = `${i18nPlatformArrivingOn[this._currentLanguage]} ${config.value}.`;
-    }
+    let platformNumber = config.value.planned;
 
     if (config.type === 'platform') {
       text = `${i18nPlatform.short[this._currentLanguage]} `;
@@ -61,7 +58,18 @@ export class LyneTimetablePlatform {
       abbrTitle = `${i18nStand.long[this._currentLanguage]} `;
     }
 
-    const appearanceClasses = ` platform--${this.appearance}`;
+    let appearanceClasses = ` platform--${this.appearance}`;
+
+    if (config.changed) {
+      appearanceClasses += ` platform--${this.appearance}--changed`;
+      platformNumber = `${config.value.actual}`;
+    }
+
+    if (this.appearance === 'second-level-arrival') {
+      a11yLabel += `${i18nPlatformArrivingOn[this._currentLanguage]} ${platformNumber} (${i18nPlatformChange[this._currentLanguage]}).`;
+    } else {
+      a11yLabel += `${i18nPlatformLeavingFrom[this._currentLanguage]} ${platformNumber} (${i18nPlatformChange[this._currentLanguage]}).`;
+    }
 
     return (
       <p
@@ -75,7 +83,7 @@ export class LyneTimetablePlatform {
           role='presentation'
         >
           <abbr title={abbrTitle}>{text}</abbr>
-          {config.value}
+          {platformNumber}
         </span>
         <span class='platform__text--visually-hidden'>
           {a11yLabel}

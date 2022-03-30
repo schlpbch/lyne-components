@@ -69,11 +69,24 @@ LyneTimetableArrivalPlatformSecondLevel.argTypes = defaultArgTypes;
 LyneTimetableArrivalPlatformSecondLevel.args = {
   ...defaultArgs,
   appearance: appearance.options[1],
-  config: sampleData[0]
+  config: sampleData[1]
 };
 
 LyneTimetableArrivalPlatformSecondLevel.documentation = {
   title: 'Lyne Timetable Arrival Platform - Second Level'
+};
+
+export const LyneTimetableArrivalPlatformSecondLevelChanged = Template.bind({});
+
+LyneTimetableArrivalPlatformSecondLevelChanged.argTypes = defaultArgTypes;
+LyneTimetableArrivalPlatformSecondLevelChanged.args = {
+  ...defaultArgs,
+  appearance: appearance.options[1],
+  config: sampleData[4]
+};
+
+LyneTimetableArrivalPlatformSecondLevelChanged.documentation = {
+  title: 'Lyne Timetable Arrival Platform - Second Level - Changed'
 };
 
 export const LyneTimetableDeparturePlatformSecondLevel = Template.bind({});
@@ -87,6 +100,19 @@ LyneTimetableDeparturePlatformSecondLevel.args = {
 
 LyneTimetableDeparturePlatformSecondLevel.documentation = {
   title: 'Lyne Timetable Departure Platform - Second Level'
+};
+
+export const LyneTimetableDeparturePlatformSecondLevelChanged = Template.bind({});
+
+LyneTimetableDeparturePlatformSecondLevelChanged.argTypes = defaultArgTypes;
+LyneTimetableDeparturePlatformSecondLevelChanged.args = {
+  ...defaultArgs,
+  appearance: appearance.options[2],
+  config: sampleData[3]
+};
+
+LyneTimetableDeparturePlatformSecondLevelChanged.documentation = {
+  title: 'Lyne Timetable Departure Platform - Second Level - Changed'
 };
 
 export default {

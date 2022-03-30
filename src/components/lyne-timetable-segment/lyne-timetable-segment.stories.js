@@ -45,17 +45,6 @@ arrivalDelayedSegment.documentation = {
   title: 'Arrival Delayed Segment'
 };
 
-export const arrivalSkippedSegment = Template.bind({});
-
-arrivalSkippedSegment.argTypes = defaultArgTypes;
-arrivalSkippedSegment.args = {
-  config: sampleData.arrivalSkipped
-};
-
-arrivalSkippedSegment.documentation = {
-  title: 'Arrival Skipped Segment'
-};
-
 export const departureAndArrivalSegment = Template.bind({});
 
 departureAndArrivalSegment.argTypes = defaultArgTypes;

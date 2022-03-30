@@ -14,7 +14,8 @@ import {
   i18nDeparture,
   i18nOccupancy,
   i18nPlatformArrivingOn,
-  i18nPlatformLeavingFrom
+  i18nPlatformLeavingFrom,
+  i18nTravelInformation
 } from '../../global/i18n';
 
 @Component({
@@ -50,7 +51,7 @@ export class LyneTimetableSegment {
     arrivalSummary += `${config.arrivalStation} `;
     arrivalSummary += `${config.arrivalTime.time} `;
     arrivalSummary += `${i18nPlatformArrivingOn[this._currentLanguage]} `;
-    arrivalSummary += `${config.arrivalPlatform.value}.`;
+    arrivalSummary += `${config.arrivalPlatform.value.actual}.`;
 
     if (delay > 0) {
       let delayText = ` ${i18nApproximatelyDelayedBy.multiple[this._currentLanguage]}`;
@@ -79,11 +80,11 @@ export class LyneTimetableSegment {
       delay
     } = config.departureTime;
 
-    departureSummary += `. ${i18nDeparture[this._currentLanguage]}: `;
+    departureSummary += `${i18nDeparture[this._currentLanguage]}: `;
     departureSummary += `${config.departureStation} `;
     departureSummary += `${config.departureTime.time} `;
     departureSummary += `${i18nPlatformLeavingFrom[this._currentLanguage]} `;
-    departureSummary += `${config.departurePlatform.value}.`;
+    departureSummary += `${config.departurePlatform.value.actual}.`;
 
     if (delay > 0) {
       let delayText = ` ${i18nApproximatelyDelayedBy.multiple[this._currentLanguage]}`;
@@ -126,11 +127,11 @@ export class LyneTimetableSegment {
 
   private _createA11yTravelHintsSummary(travelHintsItems): string {
 
-    let travelHintsSummary = '';
+    let travelHintsSummary = `${i18nTravelInformation[this._currentLanguage]}:`;
 
     if (travelHintsItems.length > 0) {
       travelHintsItems.forEach((travelHintItem) => {
-        travelHintsSummary += `${travelHintItem.text} `;
+        travelHintsSummary += ` ${travelHintItem.text}`;
       });
     }
 
@@ -157,12 +158,12 @@ export class LyneTimetableSegment {
     let a11ySummary = '';
 
     // Transportation information
-    a11ySummary += `${transportationNumber.meansOfTransport.text} `;
-    a11ySummary += `${transportationNumber.product.text} `;
-    a11ySummary += `${transportationNumber.direction}`;
+    a11ySummary += `${transportationNumber.meansOfTransport.text}`;
+    a11ySummary += ` ${transportationNumber.product.text}`;
+    a11ySummary += ` ${transportationNumber.direction}`;
 
     // Departure information
-    a11ySummary += ` ${this._createA11yDepartureSummary(config)}`;
+    a11ySummary += `. ${this._createA11yDepartureSummary(config)}`;
 
     // Arrival information
     a11ySummary += ` ${this._createA11yArrivalSummary(config)}`;
