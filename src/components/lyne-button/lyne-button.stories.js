@@ -1,3 +1,4 @@
+import images from '../../global/images';
 import {
   ColorCharcoalDefault,
   ColorWhiteDefault
@@ -9,19 +10,21 @@ import readme from './readme.md';
 
 const wrapperStyle = (context) => {
   if (context.args.variant === 'translucent') {
-    return 'background-color: rgba(173, 0, 255, 0.2);';
+    return `background: url('${images[1]}');background-size: cover;`;
+  }
+
+  if (context.args.variant === 'translucent-negative') {
+    return `background: url('${images[5]}');background-size: cover;`;
   }
 
   const variantsWithDarkBg = [
     'primary-negative',
     'secondary-negative',
-    'tertiary-negative',
-    'translucent-negative',
     'transparent-negative'
   ];
 
   if (variantsWithDarkBg.includes(context.args.variant)) {
-    return `background-color: ${ColorCharcoalDefault};`;
+    return 'background-color: #484040;';
   }
 
   return `background-color: ${ColorWhiteDefault};`;
@@ -93,12 +96,10 @@ const variant = {
   options: [
     'primary',
     'secondary',
-    'tertiary',
     'translucent',
     'transparent',
     'primary-negative',
     'secondary-negative',
-    'tertiary-negative',
     'translucent-negative',
     'transparent-negative'
   ],
@@ -145,12 +146,10 @@ const basicArgs = {
 
 export const primary = Template.bind({});
 export const secondary = Template.bind({});
-export const tertiary = Template.bind({});
 export const translucent = Template.bind({});
 export const transparent = Template.bind({});
 export const primaryNegative = Template.bind({});
 export const secondaryNegative = Template.bind({});
-export const tertiaryNegative = Template.bind({});
 export const translucentNegative = Template.bind({});
 export const transparentNegative = Template.bind({});
 export const noIcon = Template.bind({});
@@ -160,12 +159,10 @@ export const disabled = Template.bind({});
 
 primary.argTypes = basicArgTypes;
 secondary.argTypes = basicArgTypes;
-tertiary.argTypes = basicArgTypes;
 translucent.argTypes = basicArgTypes;
 transparent.argTypes = basicArgTypes;
 primaryNegative.argTypes = basicArgTypes;
 secondaryNegative.argTypes = basicArgTypes;
-tertiaryNegative.argTypes = basicArgTypes;
 translucentNegative.argTypes = basicArgTypes;
 transparentNegative.argTypes = basicArgTypes;
 noIcon.argTypes = basicArgTypes;
@@ -175,12 +172,10 @@ disabled.argTypes = basicArgTypes;
 
 primary.args = JSON.parse(JSON.stringify(basicArgs));
 secondary.args = JSON.parse(JSON.stringify(basicArgs));
-tertiary.args = JSON.parse(JSON.stringify(basicArgs));
 translucent.args = JSON.parse(JSON.stringify(basicArgs));
 transparent.args = JSON.parse(JSON.stringify(basicArgs));
 primaryNegative.args = JSON.parse(JSON.stringify(basicArgs));
 secondaryNegative.args = JSON.parse(JSON.stringify(basicArgs));
-tertiaryNegative.args = JSON.parse(JSON.stringify(basicArgs));
 translucentNegative.args = JSON.parse(JSON.stringify(basicArgs));
 transparentNegative.args = JSON.parse(JSON.stringify(basicArgs));
 noIcon.args = JSON.parse(JSON.stringify(basicArgs));
@@ -188,16 +183,26 @@ iconOnly.args = JSON.parse(JSON.stringify(basicArgs));
 sizeM.args = JSON.parse(JSON.stringify(basicArgs));
 disabled.args = JSON.parse(JSON.stringify(basicArgs));
 
+const [
+  primaryOptions,
+  secondaryOptions,
+  translucentOptions,
+  transparentOptions,
+  primaryNegativeOptions,
+  secondaryNegativeOptions,
+  translucentNegativeOptions,
+  transparentNegativeOptions
+] = variant.options;
+
 /* eslint-disable prefer-destructuring */
-secondary.args.variant = variant.options[1];
-tertiary.args.variant = variant.options[2];
-translucent.args.variant = variant.options[3];
-transparent.args.variant = variant.options[4];
-primaryNegative.args.variant = variant.options[5];
-secondaryNegative.args.variant = variant.options[6];
-tertiaryNegative.args.variant = variant.options[7];
-translucentNegative.args.variant = variant.options[8];
-transparentNegative.args.variant = variant.options[9];
+primary.args.variant = primaryOptions;
+secondary.args.variant = secondaryOptions;
+translucent.args.variant = translucentOptions;
+transparent.args.variant = transparentOptions;
+primaryNegative.args.variant = primaryNegativeOptions;
+secondaryNegative.args.variant = secondaryNegativeOptions;
+translucentNegative.args.variant = translucentNegativeOptions;
+transparentNegative.args.variant = transparentNegativeOptions;
 sizeM.args.size = size.options[1];
 /* eslint-enable prefer-destructuring */
 
@@ -215,10 +220,6 @@ primary.documentation = {
 
 secondary.documentation = {
   title: 'Secondary'
-};
-
-tertiary.documentation = {
-  title: 'Tertiary'
 };
 
 translucent.documentation = {
@@ -245,15 +246,6 @@ secondaryNegative.documentation = {
     }
   },
   title: 'Secondary Negative'
-};
-
-tertiaryNegative.documentation = {
-  container: {
-    styles: {
-      'background-color': ColorCharcoalDefault
-    }
-  },
-  title: 'Tertiary Negative'
 };
 
 translucentNegative.documentation = {
