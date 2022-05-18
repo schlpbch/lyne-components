@@ -33,7 +33,32 @@ const wrapperStyle = (context) => {
 // --- Component
 
 const Template = (args) => (
-  <lyne-button {...args}>{getMarkupForSvg(args.iconSlot)}</lyne-button>
+  <div>
+    <lyne-button {...args}>{getMarkupForSvg(args.iconSlot)}</lyne-button>
+  </div>
+);
+const FixedWidthTemplate = (args) => (
+  <div>
+    <lyne-button
+      {...args}
+      style={{
+        width: '200px'
+      }}
+    >
+      {getMarkupForSvg(args.iconSlot)}
+    </lyne-button>
+    <p>
+      <lyne-button
+        {...args}
+        label='Wide Button'
+        style={{
+          width: '600px'
+        }}
+      >
+        {getMarkupForSvg(args.iconSlot)}
+      </lyne-button>
+    </p>
+  </div>
 );
 
 // --- Arg types
@@ -156,6 +181,7 @@ export const noIcon = Template.bind({});
 export const iconOnly = Template.bind({});
 export const sizeM = Template.bind({});
 export const disabled = Template.bind({});
+export const fixedWidth = FixedWidthTemplate.bind({});
 
 primary.argTypes = basicArgTypes;
 secondary.argTypes = basicArgTypes;
@@ -169,6 +195,7 @@ noIcon.argTypes = basicArgTypes;
 iconOnly.argTypes = basicArgTypes;
 sizeM.argTypes = basicArgTypes;
 disabled.argTypes = basicArgTypes;
+fixedWidth.argTypes = basicArgTypes;
 
 primary.args = JSON.parse(JSON.stringify(basicArgs));
 secondary.args = JSON.parse(JSON.stringify(basicArgs));
@@ -182,6 +209,7 @@ noIcon.args = JSON.parse(JSON.stringify(basicArgs));
 iconOnly.args = JSON.parse(JSON.stringify(basicArgs));
 sizeM.args = JSON.parse(JSON.stringify(basicArgs));
 disabled.args = JSON.parse(JSON.stringify(basicArgs));
+fixedWidth.args = JSON.parse(JSON.stringify(basicArgs));
 
 const [
   primaryOptions,
@@ -204,6 +232,7 @@ secondaryNegative.args.variant = secondaryNegativeOptions;
 translucentNegative.args.variant = translucentNegativeOptions;
 transparentNegative.args.variant = transparentNegativeOptions;
 sizeM.args.size = size.options[1];
+fixedWidth.args.label = 'Button with long text';
 /* eslint-enable prefer-destructuring */
 
 noIcon.args.icon = false;
@@ -280,6 +309,10 @@ sizeM.documentation = {
 
 disabled.documentation = {
   title: 'Disabled'
+};
+
+fixedWidth.documentation = {
+  title: 'Fixed width with overflow'
 };
 
 export default {

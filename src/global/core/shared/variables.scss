@@ -168,20 +168,4 @@
       --size-form-element-l-min-height-medium
     );
   }
-
-  //////////////////////////////////////////////////////////////////////////////
-  ///
-  /// Responsive form element size
-
-  --size-form-element-m-min-height: var(--size-form-element-m-min-height-zero);
-  --size-form-element-l-min-height: var(--size-form-element-l-min-height-zero);
-
-  @include mq($from: medium) {
-    --size-form-element-m-min-height: var(
-      --size-form-element-m-min-height-medium
-    );
-    --size-form-element-l-min-height: var(
-      --size-form-element-l-min-height-medium
-    );
-  }
 }
